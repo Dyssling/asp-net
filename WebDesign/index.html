@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sv-se">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"/>
+    <script defer src="https://kit.fontawesome.com/41c8b474e2.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header-container">
+                <nav>
+                    <div class="nav-container">
+                        <img src="/images/logo.svg">
+                        <a href="">Overview</a>
+                        <a href="">Features</a>
+                        <a href="">Contact</a>
+                    </div>
+                </nav>
+                <nav>
+                    <div class="nav-container">
+                        <p>Light</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <p>Dark</p>
+                        <a class="sign-in" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
+                        <a class="sign-in sign-up" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+                        <button onclick=showMenu()><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                </nav>
+            </div>
+            <div id="menu" class="header-container mobile">
+                <nav>
+                    <div class="nav-container">
+                        <a href="">Overview</a>
+                        <a href="">Features</a>
+                        <a href="">Contact</a>
+                        <div class="switch-container">
+                            <p>Light</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <p>Dark</p>
+                        </div>
+                        <a class="sign-in" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
+                        <a class="sign-in sign-up" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            main
+        </main>
+        <footer>
+            footer
+        </footer>
+    </div>
+    <script>
+        function showMenu() {
+            if (document.getElementById("menu").style.display != "block"){
+                document.getElementById("menu").style.display = "block";
+            }
+
+            else{
+                document.getElementById("menu").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
