@@ -19,6 +19,26 @@ html, body{
     grid-template-rows: auto 1fr auto;
 }
 
+.btn{
+    background-color: #6366F1;
+
+    color: white;
+
+    padding: 8px 20px;
+
+    border-radius: 3px;
+}
+
+.light{
+    background-color: #EFF2FC;
+
+    color: #33354D;
+}
+
+a{
+  text-decoration: none;
+}
+
 //Toggle switch från W3Schools
 
 /* The switch - the box around the slider */
@@ -179,11 +199,19 @@ header{
                 }
 
                 .sign-in{
-                    background-color: #EFF2FC;
+                    text-align: center;
+                  
+                    margin: 0 10px;
 
-                    padding: 8px 20px;
+                    transition: ease-in-out 30ms;
 
-                    border-radius: 3px;
+                    &:hover{
+                      -moz-transform: scale(1.05);
+                      -ms-transform: scale(1.05);
+                      -o-transform: scale(1.05);
+                      -webkit-transform: scale(1.05);
+                      transform: scale(1.05);
+                    }
 
                     @media only screen and (max-width: 992px){
                       padding: 8px 15px;
@@ -248,7 +276,7 @@ header{
         .nav-container{
           display: block;
 
-          a{
+          .nav-links, .sign-in{
             display: block;
 
             margin: 30px auto;
@@ -271,7 +299,7 @@ header{
           }
 
           .sign-in{
-            margin: 30px auto 0px auto;
+            margin-bottom: 0;
 
             i{
               display: block;
@@ -283,7 +311,60 @@ header{
           }
         }
       }
-
-
     }
+}
+
+//Main
+
+main{
+
+//Showcase
+
+  .showcase{
+    position: relative;
+    .showcase-container{
+      width: 1300px;
+      margin: auto;
+
+      display: flex;
+
+      .showcase-box{
+        margin-top: 60px;
+        width: 50%;
+
+        h1{
+          font-size: 56px;
+
+          margin-bottom: 0;
+
+          padding-right: 100px;
+        }
+
+        p{
+          padding-right: 180px;
+
+          margin: 25px 0 45px 0;
+        }
+  
+        .btn{
+          padding: 12px 25px;
+        }
+
+        h4{
+          margin: 100px 0 45px 0;
+        }
+
+        img{
+          margin-right: 20px;
+        }
+      }
+
+      .showcase-image{
+        position:absolute;
+        right: 0;
+
+        width: 50%;
+      }
+    }
+  }
 }
