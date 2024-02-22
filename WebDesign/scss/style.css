@@ -17,6 +17,22 @@ html, body {
   grid-template-rows: auto 1fr auto;
 }
 
+.btn {
+  background-color: #6366F1;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 3px;
+}
+
+.light {
+  background-color: #EFF2FC;
+  color: #33354D;
+}
+
+a {
+  text-decoration: none;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -121,24 +137,23 @@ header .header-container nav .nav-container img {
     width: auto;
   }
 }
-header .header-container nav .nav-container a {
-  text-decoration: none;
+header .header-container nav .nav-container .nav-links {
   text-align: center;
   margin: 0 10px;
   color: #33354D;
   transition: ease-in-out 30ms;
 }
 @media only screen and (max-width: 1400px) {
-  header .header-container nav .nav-container a {
+  header .header-container nav .nav-container .nav-links {
     margin: 0 8px;
   }
 }
 @media only screen and (max-width: 768px) {
-  header .header-container nav .nav-container a {
+  header .header-container nav .nav-container .nav-links {
     display: none;
   }
 }
-header .header-container nav .nav-container a:hover {
+header .header-container nav .nav-container .nav-links:hover {
   transform: scale(1.05);
 }
 header .header-container nav .nav-container p {
@@ -161,9 +176,12 @@ header .header-container nav .nav-container p {
   }
 }
 header .header-container nav .nav-container .sign-in {
-  background-color: #EFF2FC;
-  padding: 8px 20px;
-  border-radius: 3px;
+  text-align: center;
+  margin: 0 10px;
+  transition: ease-in-out 30ms;
+}
+header .header-container nav .nav-container .sign-in:hover {
+  transform: scale(1.05);
 }
 @media only screen and (max-width: 992px) {
   header .header-container nav .nav-container .sign-in {
@@ -178,9 +196,10 @@ header .header-container nav .nav-container .sign-in i {
     display: none;
   }
 }
-header .header-container nav .nav-container .sign-up {
-  background-color: #6366F1;
-  color: white;
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container .sign-in {
+    display: none;
+  }
 }
 header .header-container nav .nav-container button {
   display: none;
@@ -197,13 +216,14 @@ header .header-container nav .nav-container button {
   }
 }
 header .header-container nav .nav-container button:hover {
-  background-color: rgba(245, 245, 245, 0.877);
+  background-color: rgba(245, 245, 245, 0.938);
 }
 header .mobile {
   display: none;
   position: absolute;
   width: 100%;
-  background-color: rgba(245, 245, 245, 0.877);
+  background-color: rgba(245, 245, 245, 0.938);
+  padding-bottom: 30px;
 }
 @media (min-width: 769px) {
   header .mobile {
@@ -213,7 +233,7 @@ header .mobile {
 header .mobile nav .nav-container {
   display: block;
 }
-header .mobile nav .nav-container a {
+header .mobile nav .nav-container .nav-links, header .mobile nav .nav-container .sign-in {
   display: block;
   margin: 30px auto;
   width: 70%;
@@ -230,11 +250,8 @@ header .mobile nav .nav-container .switch-container .switch {
   display: block;
 }
 header .mobile nav .nav-container .sign-in {
-  margin: 30px auto 0px auto;
+  margin-bottom: 0;
 }
 header .mobile nav .nav-container .sign-in i {
   display: block;
-}
-header .mobile nav .nav-container .sign-up {
-  margin-bottom: 30px;
 }
