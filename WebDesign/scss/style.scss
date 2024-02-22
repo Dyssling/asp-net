@@ -406,4 +406,64 @@ main{
       }
     }
   }
+
+  //Our Tool section
+
+  .our-tool{
+    background-color: #F3F6FF;
+
+    .our-tool-container{
+      width: 1300px;
+      margin: 230px auto 0 auto;
+
+      padding: 30px 0 150px 0;
+
+      @media only screen and (max-width: 1400px){
+        width: 85%;
+      }
+
+      h2{
+        font-size: 40px;
+
+        text-align: center;
+
+        margin-bottom: 20px;
+      }
+
+      .header-paragraph{
+        text-align: center;
+
+        color: #9397AD;
+
+        padding: 0 360px;
+
+        margin: 0;
+
+        @media only screen and (max-width: 1400px){
+          padding: 0;
+        }
+      }
+
+      .grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 400px);
+
+        justify-content: center;
+
+        margin-top: 35px;
+
+        @media only screen and (max-width: 768px){
+          grid-template-columns: repeat(auto-fit, 350px);
+        }
+
+        .grid-container{
+          text-align: center;
+
+          border: 1px solid #E2E5F1;
+
+          padding: 20px;
+        }
+      }
+    }
+  }
 }
