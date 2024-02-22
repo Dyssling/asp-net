@@ -51,6 +51,10 @@ a{
   text-decoration: none;
 }
 
+h2{
+  font-size: 40px;
+}
+
 //Toggle switch från W3Schools
 
 /* The switch - the box around the slider */
@@ -425,8 +429,6 @@ main{
       }
 
       h2{
-        font-size: 40px;
-
         text-align: center;
 
         margin-bottom: 20px;
@@ -465,6 +467,62 @@ main{
 
           padding: 20px;
         }
+      }
+    }
+  }
+
+  //Light dark section
+
+  .light-dark{
+    position:relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 0;
+
+    .dark-box{
+      position: absolute;
+      left: 0;
+
+      background-color: #0B0F19;
+      width: 50%;
+      height: 100%;
+
+      @media only screen and (max-width: 768px){
+        display: none;
+      }
+    }
+
+    h2{
+      position:relative;
+
+      margin: 0 0 0 30px;
+
+      text-align: center;
+
+      @media only screen and (max-width: 768px){
+        margin: 0 20px;
+      }
+
+      span{
+        color: white;
+
+        @media only screen and (max-width: 768px){
+          color: black;
+        }
+      }
+    }
+
+    img{
+      position: relative;
+
+      margin-top: 60px;
+
+      @media only screen and (max-width: 1200px){
+        width: 90%;
       }
     }
   }

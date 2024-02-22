@@ -38,6 +38,10 @@ a {
   text-decoration: none;
 }
 
+h2 {
+  font-size: 40px;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -355,7 +359,6 @@ main .our-tool .our-tool-container {
   }
 }
 main .our-tool .our-tool-container h2 {
-  font-size: 40px;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -385,4 +388,51 @@ main .our-tool .our-tool-container .grid .grid-container {
   text-align: center;
   border: 1px solid #E2E5F1;
   padding: 20px;
+}
+main .light-dark {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+}
+main .light-dark .dark-box {
+  position: absolute;
+  left: 0;
+  background-color: #0B0F19;
+  width: 50%;
+  height: 100%;
+}
+@media only screen and (max-width: 768px) {
+  main .light-dark .dark-box {
+    display: none;
+  }
+}
+main .light-dark h2 {
+  position: relative;
+  margin: 0 0 0 30px;
+  text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  main .light-dark h2 {
+    margin: 0 20px;
+  }
+}
+main .light-dark h2 span {
+  color: white;
+}
+@media only screen and (max-width: 768px) {
+  main .light-dark h2 span {
+    color: black;
+  }
+}
+main .light-dark img {
+  position: relative;
+  margin-top: 60px;
+}
+@media only screen and (max-width: 1200px) {
+  main .light-dark img {
+    width: 90%;
+  }
 }
