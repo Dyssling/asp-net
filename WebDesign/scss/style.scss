@@ -252,7 +252,7 @@ header{
                   }
 
                   &:hover{
-                    background-color: rgba(245, 245, 245, 0.938);
+                    background-color: rgba(245, 245, 245, 0.979);
                   }
                 }
             }
@@ -260,13 +260,15 @@ header{
     }
 
     .mobile{
+      z-index: 999;
+
       display: none;
 
       position: absolute;
 
       width: 100%;
 
-      background-color: rgba(245, 245, 245, 0.938);
+      background-color: rgba(245, 245, 245, 0.979);
 
       padding-bottom: 30px;
 
