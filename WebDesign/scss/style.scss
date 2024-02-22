@@ -27,6 +27,18 @@ html, body{
     padding: 8px 20px;
 
     border-radius: 3px;
+
+    transition: ease-in-out 30ms;
+
+    display: inline-block;
+
+    &:hover{
+      -moz-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      -o-transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05);
+    }
 }
 
 .light{
@@ -151,7 +163,7 @@ header{
                       width: auto;
                     }
                 }
-                a{
+                .nav-links{
                     text-decoration: none;
                     text-align: center;
 
@@ -198,23 +210,17 @@ header{
                   }
                 }
 
-                .sign-in{
+                .btn{
                     text-align: center;
                   
                     margin: 0 10px;
 
-                    transition: ease-in-out 30ms;
-
-                    &:hover{
-                      -moz-transform: scale(1.05);
-                      -ms-transform: scale(1.05);
-                      -o-transform: scale(1.05);
-                      -webkit-transform: scale(1.05);
-                      transform: scale(1.05);
-                    }
-
                     @media only screen and (max-width: 992px){
                       padding: 8px 15px;
+                    }
+
+                    @media only screen and (max-width: 768px){
+                      display: none;
                     }
 
                     i{
@@ -224,12 +230,6 @@ header{
                           display: none;
                         }
                     }
-                }
-
-                .sign-up{
-                    background-color: #6366F1;
-
-                    color: white;
                 }
 
                 button{
@@ -268,6 +268,8 @@ header{
 
       background-color: rgba(245, 245, 245, 0.877);
 
+      padding-bottom: 30px;
+
       @media(min-width: 769px){
         display: none !important;
     }
@@ -276,7 +278,7 @@ header{
         .nav-container{
           display: block;
 
-          .nav-links, .sign-in{
+          .nav-links, .btn{
             display: block;
 
             margin: 30px auto;
@@ -298,16 +300,12 @@ header{
             }
           }
 
-          .sign-in{
+          .btn{
             margin-bottom: 0;
 
             i{
               display: block;
             }
-          }
-          
-          .sign-up{
-            margin-bottom: 30px;
           }
         }
       }
@@ -322,6 +320,7 @@ main{
 
   .showcase{
     position: relative;
+
     .showcase-container{
       width: 1300px;
       margin: auto;

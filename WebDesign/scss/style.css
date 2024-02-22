@@ -22,6 +22,11 @@ html, body {
   color: white;
   padding: 8px 20px;
   border-radius: 3px;
+  transition: ease-in-out 30ms;
+  display: inline-block;
+}
+.btn:hover {
+  transform: scale(1.05);
 }
 
 .light {
@@ -137,7 +142,7 @@ header .header-container nav .nav-container img {
     width: auto;
   }
 }
-header .header-container nav .nav-container a {
+header .header-container nav .nav-container .nav-links {
   text-decoration: none;
   text-align: center;
   margin: 0 10px;
@@ -145,16 +150,16 @@ header .header-container nav .nav-container a {
   transition: ease-in-out 30ms;
 }
 @media only screen and (max-width: 1400px) {
-  header .header-container nav .nav-container a {
+  header .header-container nav .nav-container .nav-links {
     margin: 0 8px;
   }
 }
 @media only screen and (max-width: 768px) {
-  header .header-container nav .nav-container a {
+  header .header-container nav .nav-container .nav-links {
     display: none;
   }
 }
-header .header-container nav .nav-container a:hover {
+header .header-container nav .nav-container .nav-links:hover {
   transform: scale(1.05);
 }
 header .header-container nav .nav-container p {
@@ -176,17 +181,18 @@ header .header-container nav .nav-container p {
     display: none;
   }
 }
-header .header-container nav .nav-container .sign-in {
+header .header-container nav .nav-container .btn {
   text-align: center;
   margin: 0 10px;
-  transition: ease-in-out 30ms;
-}
-header .header-container nav .nav-container .sign-in:hover {
-  transform: scale(1.05);
 }
 @media only screen and (max-width: 992px) {
   header .header-container nav .nav-container .btn {
     padding: 8px 15px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container .btn {
+    display: none;
   }
 }
 header .header-container nav .nav-container .btn i {
@@ -194,11 +200,6 @@ header .header-container nav .nav-container .btn i {
 }
 @media only screen and (max-width: 992px) {
   header .header-container nav .nav-container .btn i {
-    display: none;
-  }
-}
-@media only screen and (max-width: 768px) {
-  header .header-container nav .nav-container .sign-in {
     display: none;
   }
 }
@@ -224,6 +225,7 @@ header .mobile {
   position: absolute;
   width: 100%;
   background-color: rgba(245, 245, 245, 0.877);
+  padding-bottom: 30px;
 }
 @media (min-width: 769px) {
   header .mobile {
@@ -233,7 +235,7 @@ header .mobile {
 header .mobile nav .nav-container {
   display: block;
 }
-header .mobile nav .nav-container .nav-links, header .mobile nav .nav-container .sign-in {
+header .mobile nav .nav-container .nav-links, header .mobile nav .nav-container .btn {
   display: block;
   margin: 30px auto;
   width: 70%;
@@ -249,9 +251,45 @@ header .mobile nav .nav-container .switch-container p {
 header .mobile nav .nav-container .switch-container .switch {
   display: block;
 }
-header .mobile nav .nav-container .sign-in {
+header .mobile nav .nav-container .btn {
   margin-bottom: 0;
 }
 header .mobile nav .nav-container .btn i {
   display: block;
+}
+
+main .showcase {
+  position: relative;
+}
+main .showcase .showcase-container {
+  width: 1300px;
+  margin: auto;
+  display: flex;
+}
+main .showcase .showcase-container .showcase-box {
+  margin-top: 60px;
+  width: 50%;
+}
+main .showcase .showcase-container .showcase-box h1 {
+  font-size: 56px;
+  margin-bottom: 0;
+  padding-right: 100px;
+}
+main .showcase .showcase-container .showcase-box p {
+  padding-right: 180px;
+  margin: 25px 0 45px 0;
+}
+main .showcase .showcase-container .showcase-box .btn {
+  padding: 12px 25px;
+}
+main .showcase .showcase-container .showcase-box h4 {
+  margin: 100px 0 45px 0;
+}
+main .showcase .showcase-container .showcase-box img {
+  margin-right: 20px;
+}
+main .showcase .showcase-container .showcase-image {
+  position: absolute;
+  right: 0;
+  width: 50%;
 }
