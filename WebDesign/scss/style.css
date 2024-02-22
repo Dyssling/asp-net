@@ -218,7 +218,7 @@ header .header-container nav .nav-container button {
   }
 }
 header .header-container nav .nav-container button:hover {
-  background-color: rgba(245, 245, 245, 0.877);
+  background-color: rgba(245, 245, 245, 0.938);
 }
 header .mobile {
   display: none;
