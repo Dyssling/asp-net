@@ -327,9 +327,29 @@ main{
 
       display: flex;
 
+      @media only screen and (max-width: 1400px){
+        width: 85%;
+      }
+
       .showcase-box{
         margin-top: 60px;
         width: 50%;
+
+        @media only screen and (max-width: 1400px){
+          width: 55%;
+        }
+
+        @media only screen and (max-width: 1200px){
+          width: 65%;
+        }
+
+        @media only screen and (max-width: 992px){
+          width: 100%;
+        }
+
+        @media only screen and (max-width: 768px){
+          text-align: center;
+        }
 
         h1{
           font-size: 56px;
@@ -337,12 +357,22 @@ main{
           margin-bottom: 0;
 
           padding-right: 100px;
+
+          @media only screen and (max-width: 768px){
+            padding: 0;
+
+            font-size: 45px;
+          }
         }
 
         p{
           padding-right: 180px;
 
           margin: 25px 0 45px 0;
+
+          @media only screen and (max-width: 768px){
+            padding: 0;
+          }
         }
   
         .btn{
@@ -363,6 +393,14 @@ main{
         right: 0;
 
         width: 50%;
+
+        @media only screen and (max-width: 1200px){
+          width: 45%;
+        }
+
+        @media only screen and (max-width: 992px){
+          display: none;
+        }
       }
     }
   }

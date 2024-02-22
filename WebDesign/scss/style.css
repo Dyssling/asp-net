@@ -266,18 +266,54 @@ main .showcase .showcase-container {
   margin: auto;
   display: flex;
 }
+@media only screen and (max-width: 1400px) {
+  main .showcase .showcase-container {
+    width: 85%;
+  }
+}
 main .showcase .showcase-container .showcase-box {
   margin-top: 60px;
   width: 50%;
+}
+@media only screen and (max-width: 1400px) {
+  main .showcase .showcase-container .showcase-box {
+    width: 55%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  main .showcase .showcase-container .showcase-box {
+    width: 65%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  main .showcase .showcase-container .showcase-box {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  main .showcase .showcase-container .showcase-box {
+    text-align: center;
+  }
 }
 main .showcase .showcase-container .showcase-box h1 {
   font-size: 56px;
   margin-bottom: 0;
   padding-right: 100px;
 }
+@media only screen and (max-width: 768px) {
+  main .showcase .showcase-container .showcase-box h1 {
+    padding: 0;
+    font-size: 45px;
+  }
+}
 main .showcase .showcase-container .showcase-box p {
   padding-right: 180px;
   margin: 25px 0 45px 0;
+}
+@media only screen and (max-width: 768px) {
+  main .showcase .showcase-container .showcase-box p {
+    padding: 0;
+  }
 }
 main .showcase .showcase-container .showcase-box .btn {
   padding: 12px 25px;
@@ -292,4 +328,14 @@ main .showcase .showcase-container .showcase-image {
   position: absolute;
   right: 0;
   width: 50%;
+}
+@media only screen and (max-width: 1200px) {
+  main .showcase .showcase-container .showcase-image {
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  main .showcase .showcase-container .showcase-image {
+    display: none;
+  }
 }
