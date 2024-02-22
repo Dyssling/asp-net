@@ -27,6 +27,18 @@ html, body{
     padding: 8px 20px;
 
     border-radius: 3px;
+
+    transition: ease-in-out 30ms;
+
+    display: inline-block;
+
+    &:hover{
+      -moz-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      -o-transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05);
+    }
 }
 
 .light{
@@ -152,6 +164,7 @@ header{
                     }
                 }
                 .nav-links{
+                    text-decoration: none;
                     text-align: center;
 
                     margin: 0 10px;
@@ -197,23 +210,17 @@ header{
                   }
                 }
 
-                .sign-in{
+                .btn{
                     text-align: center;
                   
                     margin: 0 10px;
 
-                    transition: ease-in-out 30ms;
-
-                    &:hover{
-                      -moz-transform: scale(1.05);
-                      -ms-transform: scale(1.05);
-                      -o-transform: scale(1.05);
-                      -webkit-transform: scale(1.05);
-                      transform: scale(1.05);
-                    }
-
                     @media only screen and (max-width: 992px){
                       padding: 8px 15px;
+                    }
+
+                    @media only screen and (max-width: 768px){
+                      display: none;
                     }
 
                     i{
@@ -222,10 +229,6 @@ header{
                         @media only screen and (max-width: 992px){
                           display: none;
                         }
-                    }
-
-                    @media only screen and (max-width: 768px){
-                      display: none;
                     }
                 }
 
@@ -267,6 +270,8 @@ header{
 
       padding-bottom: 30px;
 
+      padding-bottom: 30px;
+
       @media(min-width: 769px){
         display: none !important;
     }
@@ -275,7 +280,7 @@ header{
         .nav-container{
           display: block;
 
-          .nav-links, .sign-in{
+          .nav-links, .btn{
             display: block;
 
             margin: 30px auto;
@@ -297,7 +302,7 @@ header{
             }
           }
 
-          .sign-in{
+          .btn{
             margin-bottom: 0;
 
             i{
@@ -306,7 +311,99 @@ header{
           }
         }
       }
-
-
     }
+}
+
+//Main
+
+main{
+
+//Showcase
+
+  .showcase{
+    position: relative;
+
+    .showcase-container{
+      width: 1300px;
+      margin: auto;
+
+      display: flex;
+
+      @media only screen and (max-width: 1400px){
+        width: 85%;
+      }
+
+      .showcase-box{
+        margin-top: 60px;
+        width: 50%;
+
+        @media only screen and (max-width: 1400px){
+          width: 55%;
+        }
+
+        @media only screen and (max-width: 1200px){
+          width: 65%;
+        }
+
+        @media only screen and (max-width: 992px){
+          width: 100%;
+        }
+
+        @media only screen and (max-width: 768px){
+          text-align: center;
+        }
+
+        h1{
+          font-size: 56px;
+
+          margin-bottom: 0;
+
+          padding-right: 100px;
+
+          @media only screen and (max-width: 768px){
+            padding: 0;
+
+            font-size: 45px;
+          }
+        }
+
+        p{
+          padding-right: 180px;
+
+          margin: 25px 0 45px 0;
+
+          @media only screen and (max-width: 768px){
+            padding: 0;
+          }
+        }
+  
+        .btn{
+          padding: 12px 25px;
+        }
+
+        h4{
+          margin: 100px 0 45px 0;
+        }
+
+        img{
+          margin-right: 20px;
+        }
+      }
+
+      .showcase-image{
+        position:absolute;
+        right: 0;
+
+        width: 50%;
+
+        @media only screen and (max-width: 1200px){
+          width: 45%;
+        }
+
+        @media only screen and (max-width: 992px){
+          display: none;
+        }
+      }
+    }
+  }
 }
