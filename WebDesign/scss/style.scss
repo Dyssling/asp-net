@@ -56,7 +56,7 @@ h2{
 }
 
 img{
-  overflow: hidden; //Detta för att Chrome av någon anledning lägger till en annan overflow property på bilder, som sabbar responsiviteten.
+  overflow: hidden; //Detta f'r att Chrome av n'gon anledning l'gger till en annan overflow property p' bilder, som sabbar responsiviteten.
 }
 
 //Toggle switch från W3Schools
@@ -591,15 +591,156 @@ main{
 
           margin-top: 20px;
 
-          @media only screen and (max-width: 768px){
-            
-          }
-
           i{
             margin-left: 12px;
           }
         }
       }
+    }
+  }
+
+  .download-our-app{
+    background-color: #F3F6FF;
+
+    .download-our-app-container{
+      background-color: #EFF2FC;
+
+      width: 1300px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 650px);
+      justify-content: center;
+
+      padding: 65px 0;
+
+      @media only screen and (max-width: 1400px){
+        width: 85%;
+
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      }
+
+      @media only screen and (max-width: 768px){
+        width: 95%;
+
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      }
+
+      .image-container{
+        margin-left: 15%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media only screen and (max-width: 768px){
+          margin: 0;
+        }
+
+        img{
+          @media only screen and (max-width: 768px){
+            width: 90%;            
+          }
+        }
+      }
+
+      .app-download{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        padding: 0 18%;
+
+        @media only screen and (max-width: 1400px){
+          padding: 0 10%;
+        }
+
+        @media only screen and (max-width: 1200px){
+          padding: 0 5%;
+        }
+
+        h2{
+          margin-bottom: 40px;
+
+          @media only screen and (max-width: 768px){
+            text-align: center;
+          }
+        }
+
+        .app-download-container{          
+          width: 100%;
+
+          display: flex;
+          justify-content: space-between;
+
+          margin-bottom: 40px;
+
+          @media only screen and (max-width: 768px){
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .store-and-reviews{
+            @media only screen and (max-width: 768px){
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+
+            .store{
+              color: #9397AD;
+
+              margin: 0 0 12px 0;
+            }
+            div{
+              display: flex;
+  
+              i{
+                color: #FFBA08;
+              }
+            }
+
+            h3{
+              font-size: 24px;
+
+              margin: 18px 0 0 0;
+            }
+
+            .rating-reviews{
+              margin: 8px 0 0 0;
+            }
+          }
+
+          .download{
+            display: flex;
+            align-items: end;
+
+            @media only screen and (max-width: 768px){
+              margin-top: 20px;
+            }
+
+            a{
+              display: flex; //Bildens position blev konstig annars
+              
+              img{
+                transition: ease-in-out 30ms;
+
+                &:hover{
+                  -moz-transform: scale(1.05);
+                  -ms-transform: scale(1.05);
+                  -o-transform: scale(1.05);
+                  -webkit-transform: scale(1.05);
+                  transform: scale(1.05);
+                }
+              }
+            }
+          }
+        }
+      }
+
     }
   }
 }
