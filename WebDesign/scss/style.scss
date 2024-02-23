@@ -55,6 +55,10 @@ h2{
   font-size: 40px;
 }
 
+img{
+  overflow: hidden; //Detta för att Chrome av någon anledning lägger till en annan overflow property på bilder, som sabbar responsiviteten.
+}
+
 //Toggle switch från W3Schools
 
 /* The switch - the box around the slider */
@@ -523,6 +527,78 @@ main{
 
       @media only screen and (max-width: 1200px){
         width: 90%;
+      }
+    }
+  }
+
+  .manage-your-work{
+    padding: 100px 0;
+
+    .manage-your-work-container{
+      width: 1300px;
+      margin: auto;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media only screen and (max-width: 1400px){
+        width: 85%;
+      }
+
+      @media only screen and (max-width: 768px){
+        flex-direction: column;
+      }
+
+      img{
+        @media only screen and (max-width: 1400px){
+          width: 80%;
+        }
+
+        @media only screen and (max-width: 768px){
+          width: 100%;
+        }
+      }
+
+      div{
+        margin-left: 9%;
+
+        @media only screen and (max-width: 768px){
+          margin-left: 0;
+
+          text-align: center;
+        }
+
+        h3{
+          font-size: 32px;
+
+          margin: 0 0 25px 0;
+
+          @media only screen and (max-width: 768px){
+            text-align: center;
+          }
+        }
+        p{
+          i{
+            color: #6366F1;
+
+            margin-right: 10px;
+          }
+        }
+
+        .btn{
+          padding: 10px 22px;
+
+          margin-top: 20px;
+
+          @media only screen and (max-width: 768px){
+            
+          }
+
+          i{
+            margin-left: 12px;
+          }
+        }
       }
     }
   }

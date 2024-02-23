@@ -42,6 +42,10 @@ h2 {
   font-size: 40px;
 }
 
+img {
+  overflow: hidden;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -435,4 +439,63 @@ main .light-dark img {
   main .light-dark img {
     width: 90%;
   }
+}
+main .manage-your-work {
+  padding: 100px 0;
+}
+main .manage-your-work .manage-your-work-container {
+  width: 1300px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 1400px) {
+  main .manage-your-work .manage-your-work-container {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  main .manage-your-work .manage-your-work-container {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  main .manage-your-work .manage-your-work-container img {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  main .manage-your-work .manage-your-work-container img {
+    width: 100%;
+  }
+}
+main .manage-your-work .manage-your-work-container div {
+  margin-left: 9%;
+}
+@media only screen and (max-width: 768px) {
+  main .manage-your-work .manage-your-work-container div {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+main .manage-your-work .manage-your-work-container div h3 {
+  font-size: 32px;
+  margin: 0 0 25px 0;
+}
+@media only screen and (max-width: 768px) {
+  main .manage-your-work .manage-your-work-container div h3 {
+    text-align: center;
+  }
+}
+main .manage-your-work .manage-your-work-container div p i {
+  color: #6366F1;
+  margin-right: 10px;
+}
+main .manage-your-work .manage-your-work-container div .btn {
+  padding: 10px 22px;
+  margin-top: 20px;
+}
+main .manage-your-work .manage-your-work-container div .btn i {
+  margin-left: 12px;
 }
