@@ -499,3 +499,124 @@ main .manage-your-work .manage-your-work-container div .btn {
 main .manage-your-work .manage-your-work-container div .btn i {
   margin-left: 12px;
 }
+main .download-our-app {
+  background-color: #F3F6FF;
+}
+main .download-our-app .download-our-app-container {
+  background-color: #EFF2FC;
+  width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 650px);
+  justify-content: center;
+  padding: 65px 0;
+}
+@media only screen and (max-width: 1400px) {
+  main .download-our-app .download-our-app-container {
+    width: 85%;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  }
+}
+@media only screen and (max-width: 768px) {
+  main .download-our-app .download-our-app-container {
+    width: 95%;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+}
+main .download-our-app .download-our-app-container .image-container {
+  margin-left: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  main .download-our-app .download-our-app-container .image-container {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  main .download-our-app .download-our-app-container .image-container img {
+    width: 90%;
+  }
+}
+main .download-our-app .download-our-app-container .app-download {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 18%;
+}
+@media only screen and (max-width: 1400px) {
+  main .download-our-app .download-our-app-container .app-download {
+    padding: 0 10%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  main .download-our-app .download-our-app-container .app-download {
+    padding: 0 5%;
+  }
+}
+main .download-our-app .download-our-app-container .app-download h2 {
+  margin-bottom: 40px;
+}
+@media only screen and (max-width: 768px) {
+  main .download-our-app .download-our-app-container .app-download h2 {
+    text-align: center;
+  }
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+@media only screen and (max-width: 768px) {
+  main .download-our-app .download-our-app-container .app-download .app-download-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 768px) {
+  main .download-our-app .download-our-app-container .app-download .app-download-container .store-and-reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .store-and-reviews .store {
+  color: #9397AD;
+  margin: 0 0 12px 0;
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .store-and-reviews div {
+  display: flex;
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .store-and-reviews div i {
+  color: #FFBA08;
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .store-and-reviews h3 {
+  font-size: 24px;
+  margin: 18px 0 0 0;
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .store-and-reviews .rating-reviews {
+  margin: 8px 0 0 0;
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .download {
+  display: flex;
+  align-items: end;
+}
+@media only screen and (max-width: 768px) {
+  main .download-our-app .download-our-app-container .app-download .app-download-container .download {
+    margin-top: 20px;
+  }
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .download a {
+  display: flex;
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .download a img {
+  transition: ease-in-out 30ms;
+}
+main .download-our-app .download-our-app-container .app-download .app-download-container .download a img:hover {
+  transform: scale(1.05);
+}
