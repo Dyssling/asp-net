@@ -531,6 +531,8 @@ main{
     }
   }
 
+  //"Manage your work" section
+
   .manage-your-work{
     padding: 100px 0;
 
@@ -598,6 +600,8 @@ main{
       }
     }
   }
+
+  //"Download our app" section
 
   .download-our-app{
     background-color: #F3F6FF;
@@ -741,6 +745,52 @@ main{
         }
       }
 
+    }
+  }
+
+  //"Integrate" section
+
+  .integrate{
+    .integrate-container{
+      width: 1300px;
+      margin: auto;
+
+      padding: 60px 0;
+
+      @media only screen and (max-width: 1400px){
+        width: 85%;
+      }
+
+      h2{
+        text-align: center;
+
+        margin: 0 0 20px 0;
+      }
+
+      .integrate-text{
+        color: #9397AD;
+
+        margin: 0 auto 25px auto;
+
+        width: 55%;
+
+        text-align: center;
+
+        @media only screen and (max-width: 768px){
+          width: 75%;
+        }
+      }
+
+      .integrate-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        column-gap: 7%;
+        
+        div{
+          margin-top: 20%;
+        }
+        
+      }
     }
   }
 }
