@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv-se">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"/>
+    <script defer src="https://kit.fontawesome.com/41c8b474e2.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header-container">
+                <nav>
+                    <div class="nav-container">
+                        <img src="/images/logo.svg" alt="Logo">
+                        <a class="nav-links" href="">Overview</a>
+                        <a class="nav-links" href="">Features</a>
+                        <a class="nav-links" href="">Contact</a>
+                    </div>
+                </nav>
+                <nav>
+                    <div class="nav-container">
+                        <p>Light</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <p>Dark</p>
+                        <img class="avi" src="/images/profile-pic.png">
+                        <button onclick=showMenu()><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                </nav>
+            </div>
+            <div id="menu" class="header-container mobile">
+                <nav>
+                    <div class="nav-container">
+                        <a class="nav-links" href="">Overview</a>
+                        <a class="nav-links" href="">Features</a>
+                        <a class="nav-links" href="">Contact</a>
+                        <div class="switch-container">
+                            <p>Light</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <p>Dark</p>
+                        </div>
+                        <img class="avi" src="/images/profile-pic.png">
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            main
+        </main>
+        <footer>
+            <div class="socials">
+                <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <p>
+                © 2024 Silicon. All rights reserved. Pulvinar urna condimentum amet tempor, ornare integer. Lorem odio justo malesuada suspendisse viverra aliquet quisque turpis non. Feugiat in odio non nunc ornare consectetur.
+            </p>
+        </footer>
+    </div>
+    <script>
+        function showMenu() {
+            if (document.getElementById("menu").style.display != "block"){
+                document.getElementById("menu").style.display = "block";
+            }
+
+            else{
+                document.getElementById("menu").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
