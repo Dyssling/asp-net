@@ -10,6 +10,12 @@ html, body {
   font-family: "Manrope", sans-serif;
 }
 
+input, button {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+}
+
 .wrapper {
   min-height: 100vh;
   display: grid;
@@ -653,4 +659,127 @@ main .integrate .integrate-container .integrate-grid {
 }
 main .integrate .integrate-container .integrate-grid div {
   margin-top: 20%;
+}
+main .newsletter {
+  background-color: #F3F6FF;
+}
+main .newsletter .newsletter-container {
+  width: 900px;
+  margin: auto;
+  padding: 85px 0;
+}
+@media only screen and (max-width: 992px) {
+  main .newsletter .newsletter-container {
+    width: 85%;
+  }
+}
+main .newsletter .newsletter-container h2 {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+}
+@media only screen and (max-width: 768px) {
+  main .newsletter .newsletter-container h2 {
+    text-align: center;
+  }
+}
+main .newsletter .newsletter-container h2 img {
+  position: absolute;
+  right: -90px;
+}
+@media only screen and (max-width: 768px) {
+  main .newsletter .newsletter-container h2 img {
+    display: none;
+  }
+}
+main .newsletter .newsletter-container .sign-up {
+  display: flex;
+  margin: 36px 0 45px 0;
+}
+@media only screen and (max-width: 992px) {
+  main .newsletter .newsletter-container .sign-up {
+    display: block;
+  }
+}
+main .newsletter .newsletter-container .sign-up h3 {
+  margin: 0 6% 0 0;
+  font-size: 20px;
+  width: 20%;
+}
+@media only screen and (max-width: 992px) {
+  main .newsletter .newsletter-container .sign-up h3 {
+    text-align: center;
+    margin: 0 auto 50px auto;
+    width: 100%;
+  }
+}
+main .newsletter .newsletter-container .sign-up .sign-up-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  main .newsletter .newsletter-container .sign-up .sign-up-grid div {
+    margin: auto;
+  }
+}
+main .newsletter .newsletter-container .sign-up .sign-up-grid div input {
+  margin-bottom: 12px;
+}
+main .newsletter .newsletter-container .sign-up .sign-up-grid div label {
+  color: #565973;
+}
+main .newsletter .newsletter-container .input-container {
+  position: relative;
+}
+main .newsletter .newsletter-container .input-container input {
+  border: 1px solid #D4D7E5;
+  border-radius: 10px;
+  width: 76%;
+  padding: 10px 10px 10px 50px;
+}
+@media only screen and (max-width: 768px) {
+  main .newsletter .newsletter-container .input-container input {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+main .newsletter .newsletter-container .input-container input:focus {
+  outline: 1px solid #898b92;
+}
+main .newsletter .newsletter-container .input-container input::-moz-placeholder {
+  color: #B4B7C9;
+}
+main .newsletter .newsletter-container .input-container input::placeholder {
+  color: #B4B7C9;
+}
+main .newsletter .newsletter-container .input-container i {
+  position: absolute;
+  top: 13px;
+  left: 20px;
+  color: #B4B7C9;
+  font-size: 19px;
+}
+main .newsletter .newsletter-container .input-container button {
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+@media only screen and (max-width: 768px) {
+  main .newsletter .newsletter-container .input-container button {
+    margin: auto;
+    display: block;
+  }
+}
+main .newsletter .newsletter-container p {
+  color: #9397AD;
+  margin: 10px 0 0 0;
+}
+main .newsletter .newsletter-container p a {
+  text-decoration: underline;
+}
+main .newsletter .newsletter-container p a:hover {
+  text-decoration: none;
 }
