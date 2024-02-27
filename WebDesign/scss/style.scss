@@ -12,6 +12,12 @@ html, body{
     font-family: 'Manrope', sans-serif;
 }
 
+input, button{
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Manrope', sans-serif;
+}
+
 .wrapper{
     min-height: 100vh;
     display:grid;
@@ -790,6 +796,162 @@ main{
           margin-top: 20%;
         }
         
+      }
+    }
+  }
+
+  //Newsletter section
+
+  .newsletter{
+    background-color: #F3F6FF;
+
+    .newsletter-container{
+      width: 900px;
+      margin: auto;
+
+      padding: 85px 0;
+
+      @media only screen and (max-width: 992px){
+        width: 85%;
+      }
+
+      h2{
+        position: relative;
+
+        display: inline-block;
+
+        margin: 0;
+
+        @media only screen and (max-width: 768px){
+          text-align: center;
+        }
+
+        img{
+          position: absolute;
+          right: -90px;
+
+          @media only screen and (max-width: 768px){
+            display: none;
+          }
+        }
+      }
+
+      .sign-up{
+        display: flex;
+
+        margin: 36px 0 45px 0;
+
+        @media only screen and (max-width: 992px){
+          display: block;
+        }
+
+        h3{
+          margin: 0 6% 0 0;
+
+          font-size: 20px;
+
+          width: 20%;
+
+          @media only screen and (max-width: 992px){
+            text-align: center;
+
+            margin: 0 auto 50px auto;
+
+            width: 100%;
+          }
+        }
+
+        .sign-up-grid{
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+          width: 100%;
+
+          div{
+            @media only screen and (max-width: 768px){
+              margin: auto;
+            }
+
+            input{
+              margin-bottom: 12px;
+            }
+  
+            label{
+              color: #565973;
+            }
+            
+          }
+        }
+      }
+
+      .input-container{
+        position: relative;
+
+        input{
+          border: 1px solid #D4D7E5;
+          border-radius: 10px;
+
+          width: 76%;
+
+          padding: 10px 10px 10px 50px;
+
+          @media only screen and (max-width: 768px){
+            width: 100%;
+
+            margin-bottom: 15px;
+          }
+
+          &:focus{
+            outline: 1px solid #898b92;
+          }
+
+          &::placeholder{
+            color: #B4B7C9;
+          }
+        }
+
+        i{
+          position: absolute;
+          top: 13px;
+          left: 20px;
+
+          color: #B4B7C9;
+
+          font-size: 19px;
+        }
+
+        
+        button{
+          border: none;
+          border-radius: 8px;
+
+          padding: 11px 20px;
+
+          cursor: pointer;
+
+          margin-left: 10px;
+
+          @media only screen and (max-width: 768px){
+            margin: auto;
+
+            display: block;
+          }
+
+        }
+      }
+
+      p{
+        color: #9397AD;
+
+        margin: 10px 0 0 0;
+
+        a{
+          text-decoration: underline;
+
+          &:hover{
+            text-decoration: none;
+          }
+        }
       }
     }
   }
