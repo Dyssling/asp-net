@@ -12,7 +12,7 @@ html, body{
     font-family: 'Manrope', sans-serif;
 }
 
-input, button{
+input, button, select{
   font-size: 16px;
   font-weight: 400;
   font-family: 'Manrope', sans-serif;
@@ -65,7 +65,7 @@ img{
   overflow: hidden; //Detta f'r att Chrome av n'gon anledning l'gger till en annan overflow property p' bilder, som sabbar responsiviteten.
 }
 
-//Toggle switch från W3Schools
+//Toggle switch fr'n W3Schools
 
 /* The switch - the box around the slider */
 .switch {
@@ -347,6 +347,157 @@ header{
         }
       }
     }
+}
+
+//Main
+
+main{
+  .courses{
+    width: 1300px;
+    margin: auto;
+
+    @media(max-width: 1400px){
+      width: 85%;
+    }
+
+    @media(max-width: 992px){
+      width: 98%;
+    }
+
+    .breadcrumbs{
+      display: flex;
+      align-items: center;
+
+      margin-top: 20px;
+
+      @media(max-width: 1400px){
+        margin-left: 11px;
+      }
+
+      i{
+        color: #9397AD;
+
+        margin-right: 8px;
+      }
+
+      .fa-chevrons-right{
+        font-size: 10px;
+
+        margin: 0 14px;
+      }
+  
+      a{
+        color: #9397AD;
+
+        font-size: 14px;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+  
+      p{
+        color: #6366F1;
+  
+        display: inline-block;
+
+        font-size: 14px;
+      }
+    }
+
+    .heading-and-categories{
+      display: flex;
+
+      @media(max-width: 1400px){
+        padding: 0 10px;
+      }
+
+      @media(max-width: 768px){
+        display: block;
+      }
+
+      h1{
+        font-size: 40px;
+
+        margin: 10px 0;
+
+        @media(max-width: 768px){
+          text-align: center;
+        }
+      }
+
+      .inputs{
+        display: flex;
+        justify-content: right;
+        align-items: center;
+
+        width: 100%;
+
+        @media(max-width: 768px){
+          display: block;
+
+          margin-top: 25px;
+        }
+
+        .select-container{
+          width: 20%;
+          min-width: 200px;
+
+          margin-right: 25px;
+
+          @media(max-width: 768px){
+            margin: 0 auto 15px auto;
+          }
+
+          select{
+            padding: 10px;
+    
+            border: none;
+            border-right: 12px solid transparent; //Detta ger lite utrymme mellan pilen och kanten
+            outline: 1px solid #D4D7E5;
+    
+            border-radius: 6px;
+    
+            color: #565973;
+
+            width: 100%;
+          }
+        }
+
+        .input-container{
+          width: 26%;
+          min-width: 260px;
+
+          position: relative;
+
+          @media(max-width: 768px){
+            margin: auto;
+          }
+
+          i{
+            position: absolute;
+
+            right: 15px;
+            top: 11px;
+
+            font-size: 18px;
+
+            color: #33354D;
+          }
+
+          input{
+            padding: 10px;
+    
+            border: none;
+            outline: 1px solid #D4D7E5;
+            border-radius: 6px;
+
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Footer

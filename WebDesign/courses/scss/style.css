@@ -10,7 +10,7 @@ html, body {
   font-family: "Manrope", sans-serif;
 }
 
-input, button {
+input, button, select {
   font-size: 16px;
   font-weight: 400;
   font-family: "Manrope", sans-serif;
@@ -286,6 +286,128 @@ header .mobile nav .nav-container .btn {
 }
 header .mobile nav .nav-container .btn i {
   display: block;
+}
+
+main .courses {
+  width: 1300px;
+  margin: auto;
+}
+@media (max-width: 1400px) {
+  main .courses {
+    width: 85%;
+  }
+}
+@media (max-width: 992px) {
+  main .courses {
+    width: 98%;
+  }
+}
+main .courses .breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+@media (max-width: 1400px) {
+  main .courses .breadcrumbs {
+    margin-left: 11px;
+  }
+}
+main .courses .breadcrumbs i {
+  color: #9397AD;
+  margin-right: 8px;
+}
+main .courses .breadcrumbs .fa-chevrons-right {
+  font-size: 10px;
+  margin: 0 14px;
+}
+main .courses .breadcrumbs a {
+  color: #9397AD;
+  font-size: 14px;
+}
+main .courses .breadcrumbs a:hover {
+  text-decoration: underline;
+}
+main .courses .breadcrumbs p {
+  color: #6366F1;
+  display: inline-block;
+  font-size: 14px;
+}
+main .courses .heading-and-categories {
+  display: flex;
+}
+@media (max-width: 1400px) {
+  main .courses .heading-and-categories {
+    padding: 0 10px;
+  }
+}
+@media (max-width: 768px) {
+  main .courses .heading-and-categories {
+    display: block;
+  }
+}
+main .courses .heading-and-categories h1 {
+  font-size: 40px;
+  margin: 10px 0;
+}
+@media (max-width: 768px) {
+  main .courses .heading-and-categories h1 {
+    text-align: center;
+  }
+}
+main .courses .heading-and-categories .inputs {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  main .courses .heading-and-categories .inputs {
+    display: block;
+    margin-top: 25px;
+  }
+}
+main .courses .heading-and-categories .inputs .select-container {
+  width: 20%;
+  min-width: 200px;
+  margin-right: 25px;
+}
+@media (max-width: 768px) {
+  main .courses .heading-and-categories .inputs .select-container {
+    margin: 0 auto 15px auto;
+  }
+}
+main .courses .heading-and-categories .inputs .select-container select {
+  padding: 10px;
+  border: none;
+  border-right: 12px solid transparent;
+  outline: 1px solid #D4D7E5;
+  border-radius: 6px;
+  color: #565973;
+  width: 100%;
+}
+main .courses .heading-and-categories .inputs .input-container {
+  width: 26%;
+  min-width: 260px;
+  position: relative;
+}
+@media (max-width: 768px) {
+  main .courses .heading-and-categories .inputs .input-container {
+    margin: auto;
+  }
+}
+main .courses .heading-and-categories .inputs .input-container i {
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  font-size: 18px;
+  color: #33354D;
+}
+main .courses .heading-and-categories .inputs .input-container input {
+  padding: 10px;
+  border: none;
+  outline: 1px solid #D4D7E5;
+  border-radius: 6px;
+  width: 100%;
 }
 
 footer {
