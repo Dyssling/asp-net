@@ -409,6 +409,95 @@ main .courses .heading-and-categories .inputs .input-container input {
   border-radius: 6px;
   width: 100%;
 }
+main .courses .courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(416px, 1fr));
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  row-gap: 30px;
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+  main .courses .courses-grid {
+    margin-top: 40px;
+  }
+}
+main .courses .courses-grid .grid-container {
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  position: relative;
+}
+main .courses .courses-grid .grid-container button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #33354D;
+  padding: 7px 12px;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: ease-in-out 80ms;
+}
+main .courses .courses-grid .grid-container button:hover {
+  background-color: rgb(231, 231, 231);
+}
+main .courses .courses-grid .grid-container .best-seller {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  padding: 2px 10px;
+  border-radius: 5px;
+  background-color: #22C55E;
+  color: white;
+  font-size: 14px;
+}
+main .courses .courses-grid .grid-container img {
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+main .courses .courses-grid .grid-container .content-container {
+  width: 90%;
+  margin: auto;
+  display: block;
+  transition: ease-in-out 30ms;
+}
+main .courses .courses-grid .grid-container .content-container:hover {
+  transform: scale(1.02);
+}
+main .courses .courses-grid .grid-container .content-container h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: black;
+}
+main .courses .courses-grid .grid-container .content-container .author {
+  color: #565973;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+main .courses .courses-grid .grid-container .content-container .price {
+  color: #6366F1;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+}
+main .courses .courses-grid .grid-container .content-container div {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #E2E5F1;
+  margin-top: 12px;
+}
+main .courses .courses-grid .grid-container .content-container div i {
+  margin-right: 6px;
+  color: #9397AD;
+}
+main .courses .courses-grid .grid-container .content-container div p {
+  margin-right: 20px;
+  color: #9397AD;
+}
 
 footer {
   padding: 60px 20px;
