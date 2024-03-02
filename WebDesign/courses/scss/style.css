@@ -411,7 +411,7 @@ main .courses .heading-and-categories .inputs .input-container input {
 }
 main .courses .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(416px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   -moz-column-gap: 20px;
        column-gap: 20px;
   row-gap: 30px;
@@ -497,6 +497,39 @@ main .courses .courses-grid .grid-container .content-container div i {
 main .courses .courses-grid .grid-container .content-container div p {
   margin-right: 20px;
   color: #9397AD;
+}
+main .courses .pagnation {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+main .courses .pagnation a {
+  font-size: 14px;
+  color: #33354D;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  margin: 0 4px;
+  transition: ease-in-out 80ms;
+}
+main .courses .pagnation a:hover {
+  background-color: rgb(231, 231, 231);
+}
+main .courses .pagnation a i {
+  font-size: 10px;
+}
+main .courses .pagnation .previous {
+  background-color: #EFF2FC;
+}
+main .courses .pagnation .active {
+  background-color: #6366F1;
+  color: white;
+}
+main .courses .pagnation .active:hover {
+  color: #33354D;
 }
 
 footer {

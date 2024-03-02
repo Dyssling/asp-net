@@ -500,7 +500,7 @@ main{
 
     .courses-grid{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(416px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       column-gap: 20px;
       row-gap: 30px;
 
@@ -625,6 +625,53 @@ main{
               color: #9397AD;
             }
           }
+        }
+      }
+    }
+
+    .pagnation{
+      display: flex;
+      justify-content: center;
+
+      margin-top: 40px;
+
+      a{
+        font-size: 14px;
+        color: #33354D;
+
+        width: 36px;
+        height: 36px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 4px;
+
+        margin: 0 4px;
+
+        transition: ease-in-out 80ms;
+
+        &:hover{
+          background-color: rgb(231, 231, 231);
+        }
+
+        i{
+          font-size: 10px;
+        }
+      }
+
+      .previous{
+        background-color: #EFF2FC;
+      }
+
+      .active{
+        background-color: #6366F1;
+
+        color: white;
+
+        &:hover{
+          color: #33354D;
         }
       }
     }
