@@ -501,7 +501,7 @@ main .courses .courses-grid .grid-container .content-container div p {
 main .courses .pagnation {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin: 40px 0 80px 0;
 }
 main .courses .pagnation a {
   font-size: 14px;
@@ -530,6 +530,64 @@ main .courses .pagnation .active {
 }
 main .courses .pagnation .active:hover {
   color: #33354D;
+}
+main .work-with-us {
+  margin-bottom: 20px;
+}
+main .work-with-us .work-with-us-container {
+  width: 1300px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  background-color: #F3F6FF;
+  padding: 30px 4% 30px 0;
+}
+@media (max-width: 1400px) {
+  main .work-with-us .work-with-us-container {
+    width: 85%;
+  }
+}
+@media (max-width: 992px) {
+  main .work-with-us .work-with-us-container {
+    padding: 30px 0 30px 0;
+  }
+}
+main .work-with-us .work-with-us-container .flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .work-with-us .work-with-us-container .flex .flex-container {
+  width: 75%;
+}
+@media (max-width: 768px) {
+  main .work-with-us .work-with-us-container .flex .flex-container {
+    text-align: center;
+  }
+}
+main .work-with-us .work-with-us-container .flex .flex-container p {
+  font-size: 24px;
+  color: #565973;
+  margin: 0;
+}
+main .work-with-us .work-with-us-container .flex .flex-container h2 {
+  font-size: 40px;
+  margin-top: 20px;
+}
+main .work-with-us .work-with-us-container .flex .flex-container h2 span {
+  color: #6366F1;
+}
+main .work-with-us .work-with-us-container .flex .flex-container .btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+}
+main .work-with-us .work-with-us-container img {
+  margin-left: -6%;
+}
+@media (max-width: 768px) {
+  main .work-with-us .work-with-us-container img {
+    display: none;
+  }
 }
 
 footer {

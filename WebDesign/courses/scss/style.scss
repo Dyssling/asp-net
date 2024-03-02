@@ -633,7 +633,7 @@ main{
       display: flex;
       justify-content: center;
 
-      margin-top: 40px;
+      margin: 40px 0 80px 0;
 
       a{
         font-size: 14px;
@@ -672,6 +672,79 @@ main{
 
         &:hover{
           color: #33354D;
+        }
+      }
+    }
+  }
+
+  .work-with-us{
+    margin-bottom: 20px;
+
+    .work-with-us-container{
+      width: 1300px;
+      margin: auto;
+
+      display: flex;
+      justify-content: space-around;
+
+      background-color: #F3F6FF;
+
+      padding: 30px 4% 30px 0;
+
+      @media(max-width: 1400px){
+        width: 85%;
+      }
+
+      @media(max-width: 992px){
+        padding: 30px 0 30px 0;
+      }
+
+      .flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .flex-container{
+          width: 75%;
+
+          @media(max-width: 768px){
+
+
+            text-align: center;
+          }
+
+          p{
+            font-size: 24px;
+  
+            color: #565973;
+
+            margin: 0;
+          }
+  
+          h2{
+            font-size: 40px;
+
+            margin-top: 20px;
+
+            span{
+              color: #6366F1;
+            }
+          }
+      
+          .btn{
+            padding: 12px 24px;
+  
+            border-radius: 6px;
+          }
+        }
+        
+      }
+
+      img{
+        margin-left: -6%;
+
+        @media(max-width: 768px){
+          display: none;
         }
       }
     }
