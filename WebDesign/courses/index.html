@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="sv-se">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"/>
+    <script defer src="https://kit.fontawesome.com/41c8b474e2.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header-container">
+                <nav>
+                    <div class="nav-container">
+                        <img src="/images/logo.svg" alt="Logo">
+                        <a class="nav-links" href="">Overview</a>
+                        <a class="nav-links" href="">Features</a>
+                        <a class="nav-links" href="">Contact</a>
+                    </div>
+                </nav>
+                <nav>
+                    <div class="nav-container">
+                        <p>Light</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <p>Dark</p>
+                        <img class="avi" src="/images/profile-pic.png">
+                        <button onclick=showMenu()><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                </nav>
+            </div>
+            <div id="menu" class="header-container mobile">
+                <nav>
+                    <div class="nav-container">
+                        <a class="nav-links" href="">Overview</a>
+                        <a class="nav-links" href="">Features</a>
+                        <a class="nav-links" href="">Contact</a>
+                        <div class="switch-container">
+                            <p>Light</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <p>Dark</p>
+                        </div>
+                        <img class="avi" src="/images/profile-pic.png">
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="courses">
+                <div class="breadcrumbs">
+                    <i class="fa-regular fa-house"></i>
+                    <a href="">Home</a>
+                    <i class="fa-regular fa-chevrons-right"></i>
+                    <p>Courses</p>
+                </div>
+                <div class="heading-and-categories">
+                    <h1>Courses</h1>
+                    <div class="inputs">
+                        <div class="select-container">
+                            <select>
+                                <option value="" disabled selected>All categories</option>
+                            </select>
+                        </div>
+                        <div class="input-container">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search courses">
+                        </div>
+                    </div>
+                </div>
+                <div class="courses-grid">
+                    <div class="grid-container">
+                        <div class="best-seller">Best Seller</div>
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button><i class="fa-regular fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="pagnation">
+                    <a href=""><i class="fa-solid fa-chevron-left"></i></a>
+                    <a href="">1</a>
+                    <a class="previous" href="">2</a>
+                    <a class="active" href="">3</a>
+                    <a href="">4</a>
+                    <a href=""><i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </section>
+            <section class="work-with-us">
+                <div class="work-with-us-container">
+                    <div class="flex">
+                        <div class="flex-container">
+                            <p>Ready to get started?</p>
+                            <h2>Take Your <span>Skills</span> to the Next Level</h2>
+                            <a href="" class="btn">Work with us</a>
+                        </div>
+                    </div>
+                    <img src="/images/illustration.svg" alt="Illustration">
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="socials">
+                <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <p>
+                © 2024 Silicon. All rights reserved. Pulvinar urna condimentum amet tempor, ornare integer. Lorem odio justo malesuada suspendisse viverra aliquet quisque turpis non. Feugiat in odio non nunc ornare consectetur.
+            </p>
+        </footer>
+    </div>
+    <script>
+        function showMenu() {
+            if (document.getElementById("menu").style.display != "block"){
+                document.getElementById("menu").style.display = "block";
+            }
+
+            else{
+                document.getElementById("menu").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
