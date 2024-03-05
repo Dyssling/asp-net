@@ -426,6 +426,94 @@ main .course-heading .course-heading-container .author div p {
 main .course-heading .course-heading-container .author div .name {
   font-weight: 400;
 }
+main .course-intro .course-intro-container {
+  width: 1300px;
+  margin: 80px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 35px;
+       column-gap: 35px;
+}
+@media (max-width: 1400px) {
+  main .course-intro .course-intro-container {
+    width: 85%;
+  }
+}
+@media (max-width: 768px) {
+  main .course-intro .course-intro-container {
+    display: block;
+  }
+}
+main .course-intro .course-intro-container p {
+  color: #565973;
+}
+main .course-intro .course-intro-container .description-container {
+  width: 58%;
+}
+@media (max-width: 768px) {
+  main .course-intro .course-intro-container .description-container {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+}
+main .course-intro .course-intro-container .description-container h2 {
+  font-size: 40px;
+  margin: 0 0 20px 0;
+}
+main .course-intro .course-intro-container .description-container h3 {
+  font-size: 28px;
+  margin: 35px 0 25px 0;
+}
+main .course-intro .course-intro-container .description-container p i {
+  color: #6366F1;
+  margin-right: 8px;
+}
+main .course-intro .course-intro-container .card {
+  padding: 35px;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.075);
+  -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.075);
+  border-radius: 5px;
+}
+@media (max-width: 768px) {
+  main .course-intro .course-intro-container .card {
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+main .course-intro .course-intro-container .card h4 {
+  font-size: 24px;
+  margin: 0 0 15px 0;
+}
+main .course-intro .course-intro-container .card p i {
+  margin-right: 8px;
+}
+main .course-intro .course-intro-container .card .price {
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+  margin: 30px 0 15px 0;
+  display: flex;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  main .course-intro .course-intro-container .card .price {
+    justify-content: center;
+  }
+}
+main .course-intro .course-intro-container .card .price span {
+  font-size: 20px;
+  color: #9397AD;
+  text-decoration: line-through;
+  font-weight: 400;
+  margin: 6px 0 0 10px;
+}
+main .course-intro .course-intro-container .card .btn {
+  margin: 0;
+  padding: 12px 24px;
+}
 
 footer {
   padding: 60px 20px;
