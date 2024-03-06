@@ -700,6 +700,129 @@ main{
         }
       }
     }
+
+    .about-the-author{
+      margin-top: 50px;
+
+      .about-the-author-container{
+        width: 1300px;
+        margin: auto;
+
+        background-color: #0B0F19;
+        background-image: url("/images/authorpattern.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        display: grid;
+        grid-template-columns: 500px 1fr;
+        align-items: center;
+        
+
+        border-radius: 8px;
+
+        padding: 40px 0;
+
+        @media(max-width: 1400px){
+          width: 85%;
+
+          grid-template-columns: 400px 1fr;
+        }
+
+        @media(max-width: 992px){
+          grid-template-columns: 250px 1fr;
+        }
+
+        @media(max-width: 768px){
+          grid-template-columns: auto;
+          grid-template-rows: auto auto;
+        }
+
+        img{
+          margin:auto;
+
+          width: 82%;
+
+          border-radius: 8px;
+        }
+
+        .author-info{
+          padding: 50px 35px 50px 0;
+
+          margin:auto;
+
+          @media(max-width: 768px){
+            padding: 35px;
+
+            text-align: center;
+          }
+
+          .learn{
+            font-size: 20px;
+            color: #8a8b97;
+
+            margin: 0;
+          }
+          h2{
+            font-size: 40px;
+
+            color: white;
+
+            margin: 8px 0 12px 0;
+          }
+
+          .bio{
+            color: #babbc4;
+
+            margin-bottom: 35px;
+          }
+
+          div{
+            display: flex;
+
+            @media(max-width: 768px){
+              flex-direction: column;
+              align-items: center;
+              row-gap: 18px;
+            }
+
+            .youtube{
+              background-color: #EF4444;
+
+              font-size: 14px;
+
+              padding: 12px 24px;
+
+              margin-right: 20px;
+
+              @media(max-width: 768px){
+                margin: 0;
+              }
+
+              i{
+                font-size: 16px;
+
+                margin-right: 8px;
+              }
+            }
+
+            .facebook{
+              background-color: #4C82F7;
+
+              font-size: 14px;
+
+              padding: 12px 24px;
+
+              i{
+                font-size: 16px;
+
+                margin-right: 8px;
+              }
+            }
+          }
+        }
+      }
+    }
 }
 
 // Footer
