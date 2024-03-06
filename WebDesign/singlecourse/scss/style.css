@@ -459,7 +459,6 @@ main .course-intro .course-intro-container .description-container {
   }
 }
 main .course-intro .course-intro-container .description-container h2 {
-  font-size: 40px;
   margin: 0 0 20px 0;
 }
 main .course-intro .course-intro-container .description-container h3 {
@@ -513,6 +512,57 @@ main .course-intro .course-intro-container .card .price span {
 main .course-intro .course-intro-container .card .btn {
   margin: 0;
   padding: 12px 24px;
+}
+main .program-details {
+  margin-top: 80px;
+}
+main .program-details .program-details-container {
+  width: 1300px;
+  margin: auto;
+}
+@media (max-width: 1400px) {
+  main .program-details .program-details-container {
+    width: 85%;
+  }
+}
+main .program-details .program-details-container h2 {
+  margin-bottom: 20px;
+}
+main .program-details .program-details-container .details-container {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  -moz-column-gap: 35px;
+       column-gap: 35px;
+  align-items: center;
+  width: 750px;
+}
+@media (max-width: 992px) {
+  main .program-details .program-details-container .details-container {
+    width: 100%;
+  }
+}
+main .program-details .program-details-container .details-container .number {
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: 0;
+  outline: 10px solid #F3F6FF;
+  border-radius: 50%;
+}
+main .program-details .program-details-container .details-container div {
+  margin: 22px 0;
+}
+main .program-details .program-details-container .details-container div h4 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+main .program-details .program-details-container .details-container div p {
+  color: #565973;
+  margin: 0;
 }
 
 footer {
