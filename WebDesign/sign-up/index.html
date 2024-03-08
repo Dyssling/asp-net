@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sv-se">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"/>
+    <script defer src="https://kit.fontawesome.com/41c8b474e2.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header-container">
+                <nav>
+                    <div class="nav-container">
+                        <img src="/images/logo.svg" alt="Logo">
+                        <a class="nav-links" href="">Overview</a>
+                        <a class="nav-links" href="">Features</a>
+                        <a class="nav-links" href="">Contact</a>
+                    </div>
+                </nav>
+                <nav>
+                    <div class="nav-container">
+                        <p>Light</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <p>Dark</p>
+                        <a class="btn light" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
+                        <a class="btn" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+                        <button onclick=showMenu()><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                </nav>
+            </div>
+            <div id="menu" class="header-container mobile">
+                <nav>
+                    <div class="nav-container">
+                        <a class="nav-links" href="">Overview</a>
+                        <a class="nav-links" href="">Features</a>
+                        <a class="nav-links" href="">Contact</a>
+                        <div class="switch-container">
+                            <p>Light</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <p>Dark</p>
+                        </div>
+                        <a class="btn light" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
+                        <a class="btn" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="sign-up">
+                <h1>Create Account</h1>
+                <p class="sign-in-here">Already have an account? <a href="">Sign in here.</a></p>
+                <form>
+                    <div class="name-container">
+                        <div>
+                            <label for="fname">First name</label>
+                            <input type="text" id="fname" name="fname" placeholder="Enter your first name">
+                        </div>
+                        <div>
+                            <label for="lname">Last name</label>
+                            <input type="text" id="lname" name="lname" placeholder="Enter your last name">
+                        </div>
+                    </div>
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="********">
+                    <label for="conf-password">Confirm password</label>
+                    <input type="conf-password" id="conf-password" name="conf-password" placeholder="********">
+                    <div class="terms-container">
+                        <input type="checkbox" id="terms" name="terms"/>
+                        <label for="terms">I agree to the <a href="">Terms</a> & <a href="">Conditions.</a></label>
+                    </div>
+                    <button class="btn">Sign up</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>
+                © 2024 Silicon. All rights reserved. Pulvinar urna condimentum amet tempor, ornare integer. Lorem odio justo malesuada suspendisse viverra aliquet quisque turpis non. Feugiat in odio non nunc ornare consectetur.
+            </p>
+        </footer>
+    </div>
+    <script>
+        function showMenu() {
+            if (document.getElementById("menu").style.display != "block"){
+                document.getElementById("menu").style.display = "block";
+            }
+
+            else{
+                document.getElementById("menu").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
