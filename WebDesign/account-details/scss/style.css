@@ -1,0 +1,503 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: white;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+}
+
+input, button, select {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+}
+
+.btn {
+  background-color: #6366F1;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 3px;
+  transition: ease-in-out 30ms;
+  display: inline-block;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.light {
+  background-color: #EFF2FC;
+  color: #33354D;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+img {
+  overflow: hidden;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0 5px 0 5px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #565973;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #6366F1;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #6366F1;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+header {
+  font-weight: 600;
+  padding: 10px 0;
+  position: relative;
+}
+header .header-container {
+  width: 1300px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 1400px) {
+  header .header-container {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  header .header-container {
+    width: 98%;
+  }
+}
+header .header-container nav .nav-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+header .header-container nav .nav-container img {
+  margin: 0 40px 0 0;
+}
+@media only screen and (max-width: 1400px) {
+  header .header-container nav .nav-container img {
+    margin: 0 10px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  header .header-container nav .nav-container img {
+    width: 100px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container img {
+    width: auto;
+  }
+}
+header .header-container nav .nav-container .nav-links {
+  text-decoration: none;
+  text-align: center;
+  margin: 0 10px;
+  color: #33354D;
+  transition: ease-in-out 30ms;
+}
+@media only screen and (max-width: 1400px) {
+  header .header-container nav .nav-container .nav-links {
+    margin: 0 8px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container .nav-links {
+    display: none;
+  }
+}
+header .header-container nav .nav-container .nav-links:hover {
+  transform: scale(1.05);
+}
+header .header-container nav .nav-container p {
+  margin: 0 10px;
+  color: #565973;
+}
+@media only screen and (max-width: 1400px) {
+  header .header-container nav .nav-container p {
+    margin: 0 8px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container p {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container .switch {
+    display: none;
+  }
+}
+header .header-container nav .nav-container .avi {
+  border-radius: 50%;
+  width: 44px;
+  margin-left: 18px;
+}
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container .avi {
+    display: none;
+  }
+}
+header .header-container nav .nav-container .btn {
+  text-align: center;
+  margin: 0 10px;
+}
+@media only screen and (max-width: 992px) {
+  header .header-container nav .nav-container .btn {
+    padding: 8px 15px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container .btn {
+    display: none;
+  }
+}
+header .header-container nav .nav-container .btn i {
+  margin: 0 10px 0 0;
+}
+@media only screen and (max-width: 992px) {
+  header .header-container nav .nav-container .btn i {
+    display: none;
+  }
+}
+header .header-container nav .nav-container button {
+  display: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 42px;
+  padding: 0 5px;
+}
+@media only screen and (max-width: 768px) {
+  header .header-container nav .nav-container button {
+    display: block;
+  }
+}
+header .header-container nav .nav-container button:hover {
+  background-color: rgba(245, 245, 245, 0.979);
+}
+header .mobile {
+  z-index: 999;
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(245, 245, 245, 0.979);
+  padding-bottom: 30px;
+  padding-bottom: 30px;
+}
+@media (min-width: 769px) {
+  header .mobile {
+    display: none !important;
+  }
+}
+header .mobile nav .nav-container {
+  display: block;
+}
+header .mobile nav .nav-container .nav-links, header .mobile nav .nav-container .btn {
+  display: block;
+  margin: 30px auto;
+  width: 70%;
+}
+header .mobile nav .nav-container .switch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .mobile nav .nav-container .switch-container p {
+  display: block;
+}
+header .mobile nav .nav-container .switch-container .switch {
+  display: block;
+}
+header .mobile nav .nav-container .avi {
+  display: block;
+  margin: 30px auto 0 auto;
+}
+header .mobile nav .nav-container .btn {
+  margin-bottom: 0;
+}
+header .mobile nav .nav-container .btn i {
+  display: block;
+}
+
+main {
+  width: 1300px;
+  margin: 0 auto 45px auto;
+  display: grid;
+  grid-template-columns: 318px 1fr;
+}
+@media only screen and (max-width: 1400px) {
+  main {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  main {
+    grid-template-columns: 220px 1fr;
+  }
+}
+@media only screen and (max-width: 768px) {
+  main {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+  }
+}
+main .sidebar {
+  border-right: 1px solid #E2E5F1;
+  height: 100%;
+  text-align: center;
+  padding: 35px 12px;
+}
+@media only screen and (max-width: 768px) {
+  main .sidebar {
+    border: none;
+  }
+}
+main .sidebar .image-container {
+  position: relative;
+  display: inline-block;
+}
+main .sidebar .image-container img {
+  width: 120px;
+  border-radius: 50%;
+}
+main .sidebar .image-container a {
+  width: 36px;
+  height: 36px;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+  transition: ease-in-out 30ms;
+  color: black;
+}
+main .sidebar .image-container a:hover {
+  transform: scale(1.05);
+}
+main .sidebar h3 {
+  font-size: 20px;
+  margin: 10px 0 6px 0;
+}
+main .sidebar p {
+  margin: 0 0 30px 0;
+  color: #565973;
+}
+main .sidebar .sidebar-btn {
+  display: block;
+  text-align: left;
+  padding: 14px 24px;
+  border-radius: 8px;
+  transition: ease-in-out 80ms;
+  color: #33354D;
+}
+main .sidebar .sidebar-btn i {
+  margin-right: 12px;
+  color: #9397AD;
+}
+main .sidebar .sidebar-btn:hover {
+  background-color: #6366F1;
+  color: white;
+}
+main .sidebar .sidebar-btn:hover i {
+  color: white;
+}
+main .sidebar .active {
+  background-color: #6366F1;
+  color: white;
+}
+main .sidebar .active i {
+  color: white;
+}
+main .details {
+  padding: 50px 110px;
+}
+@media only screen and (max-width: 1400px) {
+  main .details {
+    padding: 50px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  main .details {
+    padding: 12px;
+  }
+}
+main .details h1 {
+  font-size: 32px;
+  margin: 0 0 22px 0;
+}
+main .details h3 {
+  font-size: 20px;
+  color: #6366F1;
+  margin: 0 0 18px 0;
+}
+main .details form label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+main .details form label span {
+  color: #9397AD;
+}
+main .details form input, main .details form textarea {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  outline: 1px solid #D4D7E5;
+  border-radius: 6px;
+  margin-bottom: 22px;
+}
+@media (max-width: 768px) {
+  main .details form input, main .details form textarea {
+    font-size: 14px;
+  }
+}
+main .details form .double-input-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+@media (max-width: 1200px) {
+  main .details form .double-input-container {
+    display: block;
+  }
+}
+main .details form textarea {
+  resize: none;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  height: 100px;
+}
+@media (max-width: 768px) {
+  main .details form textarea {
+    font-size: 14px;
+  }
+}
+main .details form .btn-container {
+  margin-top: 8px;
+}
+@media only screen and (max-width: 768px) {
+  main .details form .btn-container {
+    display: flex;
+  }
+}
+main .details form .btn-container .btn {
+  border: none;
+  border-radius: 6px;
+  margin-right: 15px;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+main .details .basic-info-form {
+  padding-bottom: 40px;
+  border-bottom: 1px solid #E2E5F1;
+  margin-bottom: 38px;
+}
+
+footer {
+  padding: 60px 20px;
+}
+footer .socials {
+  display: flex;
+  justify-content: space-between;
+  width: 220px;
+  margin: 0 auto 30px auto;
+}
+footer .socials a {
+  padding: 10px 12px;
+  background-color: #EFF2FC;
+  border-radius: 5px;
+  transition: ease-in-out 30ms;
+}
+footer .socials a:hover {
+  transform: scale(1.05);
+}
+footer .socials a i {
+  color: #33354D;
+  font-size: 20px;
+}
+footer .socials a:last-child i {
+  font-size: 17px;
+}
+footer p {
+  color: #9397AD;
+  max-width: 850px;
+  text-align: center;
+  font-size: 14px;
+  margin: auto;
+}
