@@ -16,7 +16,7 @@
                     <div class="nav-container">
                         <img src="/images/logo.svg" alt="Logo">
                         <a class="nav-links" href="">Overview</a>
-                        <a class="nav-links" href="">Features</a>
+                        <a class="nav-links" href="">Courses</a>
                         <a class="nav-links" href="">Contact</a>
                     </div>
                 </nav>
@@ -28,8 +28,7 @@
                             <span class="slider round"></span>
                         </label>
                         <p>Dark</p>
-                        <a class="btn light" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
-                        <a class="btn" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+                        <img class="avi" src="/images/profile-pic.png">
                         <button onclick=showMenu()><i class="fa-solid fa-bars"></i></button>
                     </div>
                 </nav>
@@ -48,8 +47,7 @@
                             </label>
                             <p>Dark</p>
                         </div>
-                        <a class="btn light" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
-                        <a class="btn" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+                        <img class="avi" src="/images/profile-pic.png">
                     </div>
                 </nav>
             </div>
@@ -67,8 +65,71 @@
                 <a class="sidebar-btn" href=""><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
                 <a class="sidebar-btn" href=""><i class="fa-regular fa-arrow-left-from-line"></i>Sign Out</a>
             </section>
+            <section class="details">
+                <h1>Account Details</h1>
+                <div class="basic-info-form">
+                    <h3>Basic Info</h3>
+                    <form>
+                        <div class="double-input-container">
+                            <div>
+                                <label for="fname">First name</label>
+                                <input type="text" id="fname" name="fname" placeholder="Enter your first name" value="John">
+                            </div>
+                            <div>
+                                <label for="lname">Last name</label>
+                                <input type="text" id="lname" name="lname" placeholder="Enter your last name" value="Doe">
+                            </div>
+                        </div>
+                        <div class="double-input-container">
+                            <div>
+                                <label for="email">Email address</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" value="john.doe@domain.com">
+                            </div>
+                            <div>
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" name="phone" placeholder="Enter your phone">
+                            </div>
+                        </div>
+                        <label for="bio">Bio <span>(optional)</span></label>
+                        <textarea name="bio" id="bio" placeholder="Add a short bio..."></textarea>
+                        <div class="btn-container">
+                            <button class="btn light">Cancel</button>
+                            <button class="btn">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="address-form">
+                    <h3>Address</h3>
+                    <form>
+                        <label for="address1">Address line 1</label>
+                        <input type="text" id="address1" name="address1" placeholder="Enter your address line">
+                        <label for="address2">Address line 2 <span>(optional)</span></label>
+                        <input type="text" id="address2" name="address2" placeholder="Enter your second address line">
+                        <div class="double-input-container">
+                            <div>
+                                <label for="postal">Postal code</label>
+                                <input type="text" id="postal" name="postal" placeholder="Enter your postal code">
+                            </div>
+                            <div>
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" placeholder="Enter your city">
+                            </div>
+                        </div>
+                        <div class="btn-container">
+                            <button class="btn light">Cancel</button>
+                            <button class="btn">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </main>
         <footer>
+            <div class="socials">
+                <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
             <p>
                 © 2024 Silicon. All rights reserved. Pulvinar urna condimentum amet tempor, ornare integer. Lorem odio justo malesuada suspendisse viverra aliquet quisque turpis non. Feugiat in odio non nunc ornare consectetur.
             </p>
