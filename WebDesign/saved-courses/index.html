@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="sv-se">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"/>
+    <script defer src="https://kit.fontawesome.com/41c8b474e2.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header-container">
+                <nav>
+                    <div class="nav-container">
+                        <img src="/images/logo.svg" alt="Logo">
+                        <a class="nav-links" href="">Overview</a>
+                        <a class="nav-links" href="">Courses</a>
+                        <a class="nav-links" href="">Contact</a>
+                    </div>
+                </nav>
+                <nav>
+                    <div class="nav-container">
+                        <p>Light</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <p>Dark</p>
+                        <img class="avi" src="/images/profile-pic.png">
+                        <button onclick=showMenu()><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                </nav>
+            </div>
+            <div id="menu" class="header-container mobile">
+                <nav>
+                    <div class="nav-container">
+                        <a class="nav-links" href="">Overview</a>
+                        <a class="nav-links" href="">Features</a>
+                        <a class="nav-links" href="">Contact</a>
+                        <div class="switch-container">
+                            <p>Light</p>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <p>Dark</p>
+                        </div>
+                        <img class="avi" src="/images/profile-pic.png">
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="sidebar">
+                <div class="image-container">
+                    <a href=""><i class="fa-solid fa-rotate-reverse"></i></a>
+                    <img src="/images/profile-pic.png" alt="Profile pic">
+                </div>
+                <h3>John Doe</h3>
+                <p>john.doe@domain.com</p>
+                <a class="sidebar-btn" href=""><i class="fa-regular fa-gear"></i>Account Details</a>
+                <a class="sidebar-btn" href=""><i class="fa-regular fa-lock"></i>Security</a>
+                <a class="sidebar-btn active" href=""><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                <a class="sidebar-btn" href=""><i class="fa-regular fa-arrow-left-from-line"></i>Sign Out</a>
+            </section>
+            <section class="saved-courses">
+                <div class="heading-and-delete">
+                    <h1>Saved Items</h1>
+                    <div class="delete-container">
+                        <button class="btn"><i class="fa-regular fa-trash"></i>Delete all</button>
+                    </div>
+                </div>
+                <div class="courses-grid">
+                    <div class="grid-container">
+                        <div class="best-seller">Best Seller</div>
+                        <button title="Remove"><i class="fa-solid fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button title="Remove"><i class="fa-solid fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-container">
+                        <button title="Remove"><i class="fa-solid fa-bookmark"></i></button>
+                        <img src="/images/writing-on-laptop.png" alt="Writing on laptop">
+                        <a href="" class="content-container">
+                            <h3>Fullstack Web Developer Course from Scratch</h3>
+                            <p class="author">By Robert Fox</p>
+                            <p class="price">$12.50</p>
+                            <div>
+                                <i class="fa-regular fa-clock"></i>
+                                <p>220 hours</p>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <p>94% (4.2K)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+        </main>
+        <footer>
+            <div class="socials">
+                <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <p>
+                © 2024 Silicon. All rights reserved. Pulvinar urna condimentum amet tempor, ornare integer. Lorem odio justo malesuada suspendisse viverra aliquet quisque turpis non. Feugiat in odio non nunc ornare consectetur.
+            </p>
+        </footer>
+    </div>
+    <script>
+        function showMenu() {
+            if (document.getElementById("menu").style.display != "block"){
+                document.getElementById("menu").style.display = "block";
+            }
+
+            else{
+                document.getElementById("menu").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

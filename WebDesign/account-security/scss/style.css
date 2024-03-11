@@ -308,6 +308,7 @@ main {
   main {
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
+    width: 98%;
   }
 }
 main .sidebar {
