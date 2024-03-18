@@ -1,0 +1,12 @@
+﻿<section class="sidebar">
+    <div class="image-container">
+        <a href=""><i class="fa-solid fa-rotate-reverse"></i></a>
+        <img src="~/images/profile-pic.png" alt="Profile pic">
+    </div>
+    <h3>John Doe</h3>
+    <p>john.doe@domain.com</p>
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "Details" ? " active" : "")" href=""><i class="fa-regular fa-gear"></i>Account Details</a> @* Conditional rendering för att sätta en active klass på rätt knapp *@
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "Security" ? " active" : "")" href=""><i class="fa-regular fa-lock"></i>Security</a>
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "SavedCourses" ? " active" : "")" href=""><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+    <a class="sidebar-btn" href=""><i class="fa-regular fa-arrow-left-from-line"></i>Sign Out</a>
+</section>

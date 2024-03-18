@@ -1,0 +1,7 @@
+﻿@section Styles {
+    <link rel="stylesheet" href="~/css/views/account_details.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/account_sidebar.min.css" asp-append-version="true" />
+}
+
+@await Html.PartialAsync("~/Views/Shared/Components/_AccountSidebar.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Sections/AccountDetails/_Details.cshtml")

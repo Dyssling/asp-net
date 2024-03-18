@@ -10,5 +10,13 @@
   {
     "outputFile": "wwwroot/css/views/home.css",
     "inputFile": "wwwroot/css/views/home.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/components/account_sidebar.css",
+    "inputFile": "wwwroot/css/components/account_sidebar.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/account_details.css",
+    "inputFile": "wwwroot/css/views/account_details.scss"
   }
 ]
