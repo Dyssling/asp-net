@@ -1,1 +1,11 @@
-﻿<div>main</div>
+﻿@section Styles{
+    <link rel="stylesheet" href="~/css/views/home.min.css" asp-append-version="true" />
+}
+
+@await Html.PartialAsync("~/Views/Shared/Sections/Home/_Showcase.cshtml");
+@await Html.PartialAsync("~/Views/Shared/Sections/Home/_OurTool.cshtml");
+@await Html.PartialAsync("~/Views/Shared/Sections/Home/_LightDark.cshtml");
+@await Html.PartialAsync("~/Views/Shared/Sections/Home/_ManageYourWork.cshtml");
+@await Html.PartialAsync("~/Views/Shared/Sections/Home/_DownloadOurApp.cshtml");
+@await Html.PartialAsync("~/Views/Shared/Sections/Home/_Integrate.cshtml");
+@await Html.PartialAsync("~/Views/Shared/Sections/Home/_Newsletter.cshtml");

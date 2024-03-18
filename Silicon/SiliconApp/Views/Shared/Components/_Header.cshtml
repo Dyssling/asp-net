@@ -1,10 +1,10 @@
 ﻿<div class="header-container">
     <nav>
         <div class="nav-container">
-            <img src="~/images/logo.svg">
-            <a href="">Overview</a>
-            <a href="">Features</a>
-            <a href="">Contact</a>
+            <img src="~/images/logo.svg" alt="Logo">
+            <a class="nav-links" href="">Overview</a>
+            <a class="nav-links" href="">Features</a>
+            <a class="nav-links" href="">Contact</a>
         </div>
     </nav>
     <nav>
@@ -15,8 +15,15 @@
                 <span class="slider round"></span>
             </label>
             <p>Dark</p>
-            <a class="sign-in" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
-            <a class="sign-in sign-up" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+            @if (true)
+            {
+                <a class="btn light" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
+                <a class="btn" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+            }
+            else
+            {
+                <img class="avi" src="~/images/profile-pic.png">
+            }
             <button onclick=toggleMenu()><i class="fa-solid fa-bars"></i></button>
         </div>
     </nav>
@@ -24,9 +31,9 @@
 <div id="menu" class="header-container mobile">
     <nav>
         <div class="nav-container">
-            <a href="">Overview</a>
-            <a href="">Features</a>
-            <a href="">Contact</a>
+            <a class="nav-links" href="">Overview</a>
+            <a class="nav-links" href="">Features</a>
+            <a class="nav-links" href="">Contact</a>
             <div class="switch-container">
                 <p>Light</p>
                 <label class="switch">
@@ -35,8 +42,15 @@
                 </label>
                 <p>Dark</p>
             </div>
-            <a class="sign-in" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
-            <a class="sign-in sign-up" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+            @if (true)
+            {
+                <a class="btn light" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
+                <a class="btn" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+            }
+            else
+            {
+                <img class="avi" src="~/images/profile-pic.png">
+            }
         </div>
     </nav>
 </div>
