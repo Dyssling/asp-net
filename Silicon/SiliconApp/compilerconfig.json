@@ -18,5 +18,13 @@
   {
     "outputFile": "wwwroot/css/views/account_details.css",
     "inputFile": "wwwroot/css/views/account_details.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/account_security.css",
+    "inputFile": "wwwroot/css/views/account_security.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/saved_courses.css",
+    "inputFile": "wwwroot/css/views/saved_courses.scss"
   }
 ]

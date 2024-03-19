@@ -13,6 +13,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=AccountDetails}/{action=Details}/{id?}");
+    pattern: "{controller=SavedCourses}/{action=Index}/{id?}");
 
 app.Run();

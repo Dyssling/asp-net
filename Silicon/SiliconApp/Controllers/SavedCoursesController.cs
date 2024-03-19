@@ -2,11 +2,11 @@
 
 namespace SiliconApp.Controllers
 {
-    public class AccountDetailsController : Controller
+    public class SavedCoursesController : Controller
     {
         public IActionResult Index()
         {
-            ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
+            ViewData["Active"] = "SavedCourses";
 
             return View();
         }
