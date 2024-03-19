@@ -26,5 +26,9 @@
   {
     "outputFile": "wwwroot/css/views/saved_courses.css",
     "inputFile": "wwwroot/css/views/saved_courses.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/contact.css",
+    "inputFile": "wwwroot/css/views/contact.scss"
   }
 ]

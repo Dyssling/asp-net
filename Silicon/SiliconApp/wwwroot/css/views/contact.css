@@ -1,0 +1,228 @@
+﻿.contact {
+  background-color: #F3F6FF;
+}
+.contact .contact-container {
+  width: 1300px;
+  margin: auto;
+  padding: 25px 0 85px 0;
+}
+@media (max-width: 1400px) {
+  .contact .contact-container {
+    width: 85%;
+  }
+}
+@media (max-width: 768px) {
+  .contact .contact-container {
+    width: 95%;
+  }
+}
+.contact .contact-container .breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+@media (max-width: 1400px) {
+  .contact .contact-container .breadcrumbs {
+    margin-left: 11px;
+  }
+}
+.contact .contact-container .breadcrumbs i {
+  color: #9397AD;
+  margin-right: 8px;
+}
+.contact .contact-container .breadcrumbs .fa-chevrons-right {
+  font-size: 10px;
+  margin: 0 14px;
+}
+.contact .contact-container .breadcrumbs a {
+  color: #9397AD;
+  font-size: 14px;
+}
+.contact .contact-container .breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.contact .contact-container .breadcrumbs p {
+  display: inline-block;
+  color: #6366F1;
+  font-size: 14px;
+}
+.contact .contact-container .contact-us {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 992px) {
+  .contact .contact-container .contact-us {
+    display: block;
+  }
+}
+.contact .contact-container .contact-us .contact-us-container h1 {
+  font-size: 40px;
+  margin: 0 0 55px 0;
+}
+@media (max-width: 768px) {
+  .contact .contact-container .contact-us .contact-us-container h1 {
+    text-align: center;
+  }
+}
+.contact .contact-container .contact-us .contact-us-container .info {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin-bottom: 44px;
+}
+@media (max-width: 1400px) {
+  .contact .contact-container .contact-us .contact-us-container .info {
+    width: 70%;
+  }
+}
+@media (max-width: 768px) {
+  .contact .contact-container .contact-us .contact-us-container .info {
+    margin: 0 auto 44px auto;
+    width: 95%;
+  }
+}
+.contact .contact-container .contact-us .contact-us-container .info .fa-envelope, .contact .contact-container .contact-us .contact-us-container .info .fa-user-plus {
+  color: #6366F1;
+  font-size: 22px;
+  min-width: 60px;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.contact .contact-container .contact-us .contact-us-container .info div h4 {
+  font-size: 24px;
+  margin: 0;
+}
+.contact .contact-container .contact-us .contact-us-container .info div p {
+  color: #565973;
+  margin: 12px 0 26px 0;
+}
+.contact .contact-container .contact-us .contact-us-container .info div a {
+  color: #6366F1;
+}
+.contact .contact-container .contact-us .contact-us-container .info div a i {
+  margin-left: 15px;
+}
+.contact .contact-container .contact-us .contact-form {
+  position: relative;
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container {
+  background-color: white;
+  position: absolute;
+  left: 0;
+  z-index: 100;
+  padding: 70px 70px 55px 70px;
+  width: 100%;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 1400px) {
+  .contact .contact-container .contact-us .contact-form .contact-form-container {
+    padding: 70px 30px 55px 30px;
+  }
+}
+@media (max-width: 992px) {
+  .contact .contact-container .contact-us .contact-form .contact-form-container {
+    position: relative;
+    margin-top: 70px;
+    padding: 70px 70px 55px 70px;
+  }
+}
+@media (max-width: 768px) {
+  .contact .contact-container .contact-us .contact-form .contact-form-container {
+    padding: 70px 20px 55px 20px;
+  }
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container h2 {
+  font-size: 32px;
+  margin-top: 0;
+}
+@media (max-width: 768px) {
+  .contact .contact-container .contact-us .contact-form .contact-form-container h2 {
+    text-align: center;
+  }
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form label span {
+  color: #9397AD;
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form input, .contact .contact-container .contact-us .contact-form .contact-form-container form select, .contact .contact-container .contact-us .contact-form .contact-form-container form textarea {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  outline: 1px solid #D4D7E5;
+  border-radius: 6px;
+  margin-bottom: 22px;
+}
+@media (max-width: 768px) {
+  .contact .contact-container .contact-us .contact-form .contact-form-container form input, .contact .contact-container .contact-us .contact-form .contact-form-container form select, .contact .contact-container .contact-us .contact-form .contact-form-container form textarea {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form select {
+  padding: 12px 15px;
+  border-right: 12px solid transparent;
+}
+@media (max-width: 768px) {
+  .contact .contact-container .contact-us .contact-form .contact-form-container form select {
+    border-right: 6px solid transparent;
+  }
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form textarea {
+  resize: none;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  height: 200px;
+}
+@media (max-width: 768px) {
+  .contact .contact-container .contact-us .contact-form .contact-form-container form textarea {
+    font-size: 14px;
+  }
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form .btn {
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 12px 24px;
+}
+@media (max-width: 768px) {
+  .contact .contact-container .contact-us .contact-form .contact-form-container form .btn {
+    display: block;
+    margin: auto;
+  }
+}
+
+.map {
+  width: 100%;
+  overflow: hidden;
+}
+.map .map-container {
+  display: inline-block;
+  position: relative;
+  right: -50%;
+}
+.map img {
+  width: 1920px;
+  position: relative;
+  left: -50%;
+}
+@media (max-width: 1400px) {
+  .map img {
+    width: 1400px;
+  }
+}
+@media (max-width: 768px) {
+  .map img {
+    width: 1200px;
+  }
+}
