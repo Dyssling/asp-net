@@ -6,6 +6,8 @@ namespace SiliconApp.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "Contact";
+
             return View();
         }
     }
