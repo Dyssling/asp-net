@@ -1,3 +1,7 @@
+header {
+    background-color: #F3F6FF;
+}
+
 .contact {
     background-color: #F3F6FF;
 
@@ -172,6 +176,9 @@
                             outline: 1px solid #D4D7E5;
                             border-radius: 6px;
                             margin-bottom: 22px;
+                            font-size: 16px;
+                            font-weight: 400;
+                            font-family: 'Manrope', sans-serif;
 
                             @media(max-width: 768px) {
                                 font-size: 14px;

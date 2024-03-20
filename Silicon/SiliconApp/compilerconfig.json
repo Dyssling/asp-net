@@ -30,5 +30,25 @@
   {
     "outputFile": "wwwroot/css/views/contact.css",
     "inputFile": "wwwroot/css/views/contact.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/courses.css",
+    "inputFile": "wwwroot/css/views/courses.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/not_found.css",
+    "inputFile": "wwwroot/css/views/not_found.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/sign_in.css",
+    "inputFile": "wwwroot/css/views/sign_in.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/sign_up.css",
+    "inputFile": "wwwroot/css/views/sign_up.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/single_course.css",
+    "inputFile": "wwwroot/css/views/single_course.scss"
   }
 ]

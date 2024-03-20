@@ -1,0 +1,89 @@
+.sign-up {
+    width: 540px;
+    margin: 80px auto 0 auto;
+
+    @media(max-width: 768px) {
+        width: 85%;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin: 0;
+    }
+
+    .sign-in-here {
+        color: #565973;
+        margin-bottom: 35px;
+
+        a {
+            color: #6366F1;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    form {
+        label {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #email, #password, #fname, #lname, #conf-password {
+            width: 100%;
+            padding: 12px 18px;
+            border: none;
+            outline: 1px solid #D4D7E5;
+            border-radius: 6px;
+            margin-bottom: 22px;
+
+            @media(max-width: 768px) {
+                font-size: 14px;
+            }
+        }
+
+        .name-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 20px;
+
+            @media(max-width: 768px) {
+                display: block;
+            }
+        }
+
+        .terms-container {
+            label {
+                display: inline;
+                font-weight: 400;
+                color: #565973;
+
+                a {
+                    color: #6366F1;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .btn {
+            display: block;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 22px 0;
+            padding: 12px 0;
+            width: 100%;
+        }
+    }
+}
+
+footer {
+    .socials {
+        display: none;
+    }
+}
