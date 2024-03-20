@@ -1,10 +1,17 @@
 ﻿<div class="header-container">
     <nav>
         <div class="nav-container">
-            <img src="~/images/logo.svg" alt="Logo">
-            <a class="nav-links" href="">Overview</a>
-            <a class="nav-links" href="">Features</a>
-            <a class="nav-links" href="">Contact</a>
+            <a class="logo" asp-controller="Home" asp-action="Index"><img src="~/images/logo.svg" alt="Logo"></a>
+            <a class="nav-links" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
+            @if (true)
+            {
+                <a class="nav-links" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+            }
+            else
+            {
+                <a class="nav-links" asp-controller="Courses" asp-action="Index">Courses</a>
+            }
+            <a class="nav-links" asp-controller="Contact" asp-action="Index">Contact</a>
         </div>
     </nav>
     <nav>
@@ -17,12 +24,12 @@
             <p>Dark</p>
             @if (true)
             {
-                <a class="btn light" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
-                <a class="btn" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+                <a class="btn light" asp-controller="Account" asp-action="SignIn"><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
+                <a class="btn" asp-controller="Account" asp-action="SignUp"><i class="fa-regular fa-user"></i>Sign up</a>
             }
             else
             {
-                <img class="avi" src="~/images/profile-pic.png">
+                <a class="avi-button" asp-controller="Account" asp-action="Details"><img class="avi" src="~/images/profile-pic.png"></a>
             }
             <button onclick=toggleMenu()><i class="fa-solid fa-bars"></i></button>
         </div>
@@ -31,9 +38,16 @@
 <div id="menu" class="header-container mobile">
     <nav>
         <div class="nav-container">
-            <a class="nav-links" href="">Overview</a>
-            <a class="nav-links" href="">Features</a>
-            <a class="nav-links" href="">Contact</a>
+            <a class="nav-links" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
+            @if (true)
+            {
+                <a class="nav-links" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+            }
+            else
+            {
+                <a class="nav-links" asp-controller="Courses" asp-action="Index">Courses</a>
+            }
+            <a class="nav-links" asp-controller="Contact" asp-action="Index">Contact</a>
             <div class="switch-container">
                 <p>Light</p>
                 <label class="switch">
@@ -44,12 +58,12 @@
             </div>
             @if (true)
             {
-                <a class="btn light" href=""><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
-                <a class="btn" href=""><i class="fa-regular fa-user"></i>Sign up</a>
+                <a class="btn light" asp-controller="Account" asp-action="SignIn"><i class="fa-regular fa-arrow-right-to-bracket"></i>Sign in</a>
+                <a class="btn" asp-controller="Account" asp-action="SignUp"><i class="fa-regular fa-user"></i>Sign up</a>
             }
             else
             {
-                <img class="avi" src="~/images/profile-pic.png">
+                <a class="avi-button" asp-controller="Account" asp-action="Details"><img class="avi" src="~/images/profile-pic.png"></a>
             }
         </div>
     </nav>

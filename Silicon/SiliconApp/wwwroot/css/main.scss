@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 html, body {
     background-color: white;
     margin: 0;
@@ -150,8 +154,10 @@ header {
                 align-items: center;
                 height: 100%;
 
-                img {
+                .logo {
                     margin: 0 40px 0 0;
+                    display: flex;
+                    align-items: center;
 
                     @media only screen and (max-width: 1400px) {
                         margin: 0 10px;
@@ -209,13 +215,17 @@ header {
                     }
                 }
 
-                .avi {
-                    border-radius: 50%;
-                    width: 44px;
+                .avi-button {
                     margin-left: 18px;
+                    width: 44px;
 
                     @media only screen and (max-width: 768px) {
                         display: none;
+                    }
+
+                    .avi {
+                        border-radius: 50%;
+                        width: 100%;
                     }
                 }
 
@@ -299,7 +309,7 @@ header {
                     }
                 }
 
-                .avi {
+                .avi-button {
                     display: block;
                     margin: 30px auto 0 auto;
                 }
