@@ -5,8 +5,8 @@
     </div>
     <h3>John Doe</h3>
     <p>john.doe@domain.com</p>
-    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "Details" ? " active" : "")" href=""><i class="fa-regular fa-gear"></i>Account Details</a> @* Conditional rendering för att sätta en active klass på rätt knapp *@
-    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "Security" ? " active" : "")" href=""><i class="fa-regular fa-lock"></i>Security</a>
-    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "SavedCourses" ? " active" : "")" href=""><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "Details" ? " active" : "")" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-gear"></i>Account Details</a> @* Conditional rendering för att sätta en active klass på rätt knapp *@
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "Security" ? " active" : "")" asp-controller="Account" asp-action="Security"><i class="fa-regular fa-lock"></i>Security</a>
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "SavedCourses" ? " active" : "")" asp-controller="Account" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
     <a class="sidebar-btn" href=""><i class="fa-regular fa-arrow-left-from-line"></i>Sign Out</a>
 </section>
