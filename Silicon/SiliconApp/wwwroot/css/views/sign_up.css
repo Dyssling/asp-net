@@ -26,6 +26,11 @@
   display: block;
   margin-bottom: 8px;
 }
+.sign-up form .field-validation-error {
+  color: red;
+  margin: -10px 0 24px 0;
+  display: block;
+}
 .sign-up form .text-input {
   width: 100%;
   padding: 12px 18px;
@@ -59,6 +64,11 @@
 }
 .sign-up form .terms-container label a:hover {
   text-decoration: underline;
+}
+.sign-up form .terms-container .field-validation-error {
+  color: red;
+  margin: 7px 0 34px 0;
+  display: block;
 }
 .sign-up form .btn {
   display: block;

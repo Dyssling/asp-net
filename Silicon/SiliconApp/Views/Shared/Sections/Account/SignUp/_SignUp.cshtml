@@ -8,21 +8,27 @@
             <div>
                 <label asp-for="Form.FirstName"></label>
                 <input asp-for="Form.FirstName" class="text-input" />
+                <span asp-validation-for="Form.FirstName"></span>
             </div>
             <div>
                 <label asp-for="Form.LastName"></label>
                 <input asp-for="Form.LastName" class="text-input" />
+                <span asp-validation-for="Form.LastName"></span>
             </div>
         </div>
         <label asp-for="Form.Email"></label>
         <input asp-for="Form.Email" class="text-input" />
+        <span asp-validation-for="Form.Email"></span>
         <label asp-for="Form.Password"></label>
         <input asp-for="Form.Password" class="text-input" />
+        <span asp-validation-for="Form.Password"></span>
         <label asp-for="Form.ConfirmPassword"></label>
         <input asp-for="Form.ConfirmPassword" class="text-input" />
+        <span asp-validation-for="Form.ConfirmPassword"></span>
         <div class="terms-container">
             <input asp-for="Form.TermsAndConditions" />
             <label asp-for="Form.TermsAndConditions">I agree to the <a href="">Terms</a> & <a href="">Conditions.</a></label>
+            <span asp-validation-for="Form.TermsAndConditions"></span>
         </div>
         <button type="submit" class="btn">Sign up</button>
     </form>
