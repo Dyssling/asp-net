@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SiliconApp.ViewModels;
 
 namespace SiliconApp.Controllers
 {
@@ -39,7 +40,19 @@ namespace SiliconApp.Controllers
         {
             ViewData["Title"] = "Sign Up";
 
-            return View();
+            return View(new SignUpViewModel());
+        }
+
+        [HttpPost]
+
+        public IActionResult SignUp(SignUpViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            return RedirectToRoute(new { controller = "Home", action = "Index" });
         }
     }
 }

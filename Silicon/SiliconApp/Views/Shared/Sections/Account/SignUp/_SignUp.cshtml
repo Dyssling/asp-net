@@ -1,27 +1,29 @@
-﻿<section class="sign-up">
+﻿@model SignUpViewModel
+
+<section class="sign-up">
     <h1>Create Account</h1>
     <p class="sign-in-here">Already have an account? <a asp-controller="Account" asp-action="SignIn">Sign in here.</a></p>
-    <form>
+    <form method="post" asp-controller="Account" asp-action="SignUp" novalidate>
         <div class="name-container">
             <div>
-                <label for="fname">First name</label>
-                <input type="text" id="fname" name="fname" placeholder="Enter your first name">
+                <label asp-for="Form.FirstName"></label>
+                <input asp-for="Form.FirstName" class="text-input" />
             </div>
             <div>
-                <label for="lname">Last name</label>
-                <input type="text" id="lname" name="lname" placeholder="Enter your last name">
+                <label asp-for="Form.LastName"></label>
+                <input asp-for="Form.LastName" class="text-input" />
             </div>
         </div>
-        <label for="email">Email address</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email address">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="********">
-        <label for="conf-password">Confirm password</label>
-        <input type="conf-password" id="conf-password" name="conf-password" placeholder="********">
+        <label asp-for="Form.Email"></label>
+        <input asp-for="Form.Email" class="text-input" />
+        <label asp-for="Form.Password"></label>
+        <input asp-for="Form.Password" class="text-input" />
+        <label asp-for="Form.ConfirmPassword"></label>
+        <input asp-for="Form.ConfirmPassword" class="text-input" />
         <div class="terms-container">
-            <input type="checkbox" id="terms" name="terms" />
-            <label for="terms">I agree to the <a href="">Terms</a> & <a href="">Conditions.</a></label>
+            <input asp-for="Form.TermsAndConditions" />
+            <label asp-for="Form.TermsAndConditions">I agree to the <a href="">Terms</a> & <a href="">Conditions.</a></label>
         </div>
-        <button class="btn">Sign up</button>
+        <button type="submit" class="btn">Sign up</button>
     </form>
 </section>

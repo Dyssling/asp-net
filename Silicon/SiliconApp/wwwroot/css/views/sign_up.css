@@ -26,7 +26,7 @@
   display: block;
   margin-bottom: 8px;
 }
-.sign-up form #email, .sign-up form #password, .sign-up form #fname, .sign-up form #lname, .sign-up form #conf-password {
+.sign-up form .text-input {
   width: 100%;
   padding: 12px 18px;
   border: none;
@@ -35,7 +35,7 @@
   margin-bottom: 22px;
 }
 @media (max-width: 768px) {
-  .sign-up form #email, .sign-up form #password, .sign-up form #fname, .sign-up form #lname, .sign-up form #conf-password {
+  .sign-up form .text-input {
     font-size: 14px;
   }
 }
