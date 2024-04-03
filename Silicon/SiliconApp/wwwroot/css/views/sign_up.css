@@ -67,7 +67,7 @@
 }
 .sign-up form .terms-container .field-validation-error {
   color: red;
-  margin: 7px 0 34px 0;
+  margin: 10px 0 34px 0;
   display: block;
 }
 .sign-up form .btn {
