@@ -52,7 +52,7 @@ namespace SiliconApp.Controllers
                 return View(viewModel);
             }
 
-            return RedirectToRoute(new { controller = "Home", action = "Index" });
+            return RedirectToRoute(new { controller = "Account", action = "SignIn" });
         }
     }
 }

@@ -23,7 +23,7 @@ namespace SiliconApp.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address", Prompt = "Enter your email address")]
         [Required(ErrorMessage = "You must enter your email address.")]
-        [RegularExpression("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$", ErrorMessage = "You must enter a valid email address.")]
+        [RegularExpression("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,})+$", ErrorMessage = "You must enter a valid email address.")]
 
         public string Email { get; set; } = null!;
 
@@ -43,6 +43,7 @@ namespace SiliconApp.Models
 
         [Display(Name = "I agree to the Terms & Conditions.")]
         [CheckBoxRequired(ErrorMessage = "You must accept the Terms & Conditions.")]
+        [Required(ErrorMessage = "You must accept the Terms & Conditions.")]
 
         public bool TermsAndConditions { get; set; } = false;
     }
