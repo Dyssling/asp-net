@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using SiliconApp.Models;
 using SiliconApp.ViewModels;
 
 namespace SiliconApp.Controllers
@@ -10,8 +12,41 @@ namespace SiliconApp.Controllers
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
             ViewData["Title"] = "Account Details";
 
-            return View();
+            return View(new AccountDetailsViewModel());
+            
         }
+
+        [HttpPost]
+        public IActionResult Details(AccountDetailsViewModel viewModel)
+        {
+            ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
+            ViewData["Title"] = "Account Details";
+
+            if (viewModel.BasicInfoForm.TestValue == "1")
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" }); //TODO: Här kan du göra en modelstate remove eller nåt skit
+            }
+
+            else if (viewModel.AddressForm.TestValue == "1")
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignUp" });
+            }
+
+            return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+        }
+
+        //[HttpPost]
+        //public IActionResult DetailsAddressForm(AccountDetailsViewModel viewModel)
+        //{
+            
+
+        //    //if (!ModelState.IsValid)
+        //    //{
+        //    //    return RedirectToAction(nameof(Details), viewModel);
+        //    //}
+
+        //    //return RedirectToAction(nameof(Details));
+        //}
 
         public IActionResult Security()
         {
@@ -39,6 +74,8 @@ namespace SiliconApp.Controllers
         [HttpPost]
         public IActionResult SignIn(SignInViewModel viewModel)
         {
+            ViewData["Title"] = "Sign In";
+
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
@@ -57,6 +94,8 @@ namespace SiliconApp.Controllers
         [HttpPost]
         public IActionResult SignUp(SignUpViewModel viewModel)
         {
+            ViewData["Title"] = "Sign Up";
+
             if (!ModelState.IsValid)
             {
                 return View(viewModel);

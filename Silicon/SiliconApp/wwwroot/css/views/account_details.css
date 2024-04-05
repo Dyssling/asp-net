@@ -51,7 +51,7 @@ main .details form label {
 main .details form label span {
   color: #9397AD;
 }
-main .details form input, main .details form textarea {
+main .details form .text-input {
   width: 100%;
   padding: 12px 18px;
   border: none;
@@ -60,9 +60,14 @@ main .details form input, main .details form textarea {
   margin-bottom: 22px;
 }
 @media (max-width: 768px) {
-  main .details form input, main .details form textarea {
+  main .details form .text-input {
     font-size: 14px;
   }
+}
+main .details form .field-validation-error {
+  color: red;
+  margin: -10px 0 24px 0;
+  display: block;
 }
 main .details form .double-input-container {
   display: grid;
