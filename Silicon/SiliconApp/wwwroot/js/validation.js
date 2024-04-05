@@ -1,3 +1,11 @@
+const requiredVal = (e) => {
+    if (e.target.value.length == 0) {
+        return false;
+    }
+
+    return true;
+};
+
 const lengthVal = (e) => {
     if (e.target.value.length < 2) {
         return false;
@@ -34,6 +42,22 @@ const passwordVal = (e) => {
     return true;
 }
 
+const requiredError = (e, result) => {
+    let span = document.querySelector(`[data-valmsg-for="${e.target.name}"]`);
+
+    if (result) {
+        span.classList.remove("field-validation-error");
+        span.classList.add("field-validation-valid");
+        span.innerHTML = "";
+    }
+
+    else if (!result) {
+        span.classList.add("field-validation-error");
+        span.classList.remove("field-validation-valid");
+        span.innerHTML = e.target.dataset.valRequired;
+    }
+};
+
 const lengthError = (e, result) => {
     let span = document.querySelector(`[data-valmsg-for="${e.target.name}"]`);
 
@@ -63,12 +87,12 @@ const regexError = (e, result) => {
         span.classList.add("field-validation-error");
         span.classList.remove("field-validation-valid");
 
-        if (e.target.dataset.valEqualtoOther !== undefined) {
+        if (e.target.dataset.valEqualtoOther !== undefined) { //Om detta är en confirm password grej, så skriver den ut det meddelandet.
             span.innerHTML = e.target.dataset.valEqualto;
         }
 
         else {
-            span.innerHTML = e.target.dataset.valRegex;
+            span.innerHTML = e.target.dataset.valRegex; //Annars skriver den ut regex meddelandet som vanligt.
         }
     }
 };
@@ -85,7 +109,13 @@ const initialValidateInput = (e) => { //Denna funktionen används som event liste
             break;
 
         case "password":
-            regexError(e, passwordVal(e));
+            if (e.target.dataset.valRegexPattern !== undefined) {
+                regexError(e, passwordVal(e));
+            }
+
+            else {
+                requiredError(e, requiredVal(e)); //Om det inte finns en regex property så innebär det att man bara ska validera att lösenordet inte är tomt.
+            }
             break;
     }
 
@@ -107,7 +137,13 @@ const validateInput = (e) => {
             break;
 
         case "password":
-            regexError(e, passwordVal(e));
+            if (e.target.dataset.valRegexPattern !== undefined) {
+                regexError(e, passwordVal(e));
+            }
+
+            else {
+                requiredError(e, requiredVal(e)); //Om det inte finns en regex property så innebär det att man bara ska validera att lösenordet inte är tomt.
+            }
             break;
     }
 }

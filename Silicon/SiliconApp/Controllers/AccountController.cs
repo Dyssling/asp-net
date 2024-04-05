@@ -33,7 +33,18 @@ namespace SiliconApp.Controllers
         {
             ViewData["Title"] = "Sign In";
 
-            return View();
+            return View(new SignInViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult SignIn(SignInViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            return RedirectToRoute(new { controller = "Home", action = "Index" });
         }
 
         public IActionResult SignUp()
@@ -44,7 +55,6 @@ namespace SiliconApp.Controllers
         }
 
         [HttpPost]
-
         public IActionResult SignUp(SignUpViewModel viewModel)
         {
             if (!ModelState.IsValid)
