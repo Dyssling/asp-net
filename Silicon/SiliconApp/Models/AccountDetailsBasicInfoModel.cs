@@ -36,7 +36,6 @@ namespace SiliconApp.Models
 
         public string? Bio { get; set; }
 
-        [DataType(DataType.Text)]
-        public string? TestValue { get; set; }
+        public string? BasicInfoFormValue { get; set; }
     }
 }

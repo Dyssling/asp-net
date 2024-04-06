@@ -2,8 +2,8 @@
 
 <div class="basic-info-form">
     <h3>Basic Info</h3>
-    <form method="post" asp-controller="Account" asp-action="Details" onsubmit="basicInfoSubmit()" novalidate>
-        <input id="basicInfoFormValue" asp-for="BasicInfoForm.TestValue" style="display:none;" />
+    <form method="post" asp-controller="Account" asp-action="Details" novalidate>
+        <input type="hidden" asp-for="BasicInfoForm.BasicInfoFormValue" />
         <div class="double-input-container">
             <div>
                 <label asp-for="BasicInfoForm.FirstName"></label>

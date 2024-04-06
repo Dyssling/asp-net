@@ -27,7 +27,6 @@ namespace SiliconApp.Models
 
         public string? City { get; set; }
 
-        [DataType(DataType.Text)]
-        public string? TestValue { get; set; }
+        public string? AddressFormValue { get; set; }
     }
 }

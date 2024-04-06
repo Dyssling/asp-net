@@ -1,11 +1,9 @@
 const basicInfoSubmit = () => {
-    document.getElementById("basicInfoFormValue").value = "1";
-    console.log("basic info submit metod");
+    document.getElementById("BasicInfoForm_BasicInfoFormValue").value = "1";
 }
 
 const addressSubmit = () => {
-    document.getElementById("addressFormValue").value = "1";
-    console.log("adres submit metod");
+    document.getElementById("AddressForm_AddressFormValue").value = "1";
 }
 
 const requiredVal = (e) => {

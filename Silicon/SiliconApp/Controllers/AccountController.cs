@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SiliconApp.Models;
 using SiliconApp.ViewModels;
+using System.Globalization;
 
 namespace SiliconApp.Controllers
 {
@@ -22,31 +23,70 @@ namespace SiliconApp.Controllers
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
             ViewData["Title"] = "Account Details";
 
-            if (viewModel.BasicInfoForm.TestValue == "1")
+            if (viewModel.BasicInfoForm.BasicInfoFormValue == "1")
             {
-                return RedirectToRoute(new { controller = "Home", action = "Index" }); //TODO: Här kan du göra en modelstate remove eller nåt skit
+                foreach (var property in typeof(AccountDetailsAddressModel).GetProperties()) //Bing Copilot hjälpte mig bygga denna loopen. Den tar bort varje fält i det andra formuläret från ModelState, så att bägge formulär inte valideras på samma gång. 
+                {
+                    var fieldName = property.Name; // Get the field name
+                    var fullKey = $"AddressForm.{fieldName}"; // Construct the full key
+
+                    // Remove field
+                    ModelState.Remove(fullKey);
+                }
+
+                //foreach (var property in typeof(AccountDetailsBasicInfoModel).GetProperties())
+                //{
+                //    var fieldName = property.Name; // Get the field name
+                //    var fullKey = $"BasicInfoForm.{fieldName}"; // Construct the full key
+
+                //    // Retrieve the user-entered value from the view model
+                //    var userEnteredValue = property.GetValue(viewModel.BasicInfoForm);
+
+                //    // Set the model value with the user-entered value
+                //    ModelState.SetModelValue(fullKey, new ValueProviderResult(userEnteredValue?.ToString(), CultureInfo.InvariantCulture));
+                //}
+
+                if (!ModelState.IsValid)
+                {
+                    return View(viewModel);
+                }
+
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
 
-            else if (viewModel.AddressForm.TestValue == "1")
+            else if (viewModel.AddressForm.AddressFormValue == "1")
             {
-                return RedirectToRoute(new { controller = "Account", action = "SignUp" });
+                foreach (var property in typeof(AccountDetailsBasicInfoModel).GetProperties())
+                {
+                    var fieldName = property.Name; // Get the field name
+                    var fullKey = $"BasicInfoForm.{fieldName}"; // Construct the full key
+
+                    // Remove field
+                    ModelState.Remove(fullKey);
+                }
+
+                //foreach (var property in typeof(AccountDetailsAddressModel).GetProperties())
+                //{
+                //    var fieldName = property.Name; // Get the field name
+                //    var fullKey = $"AddressForm.{fieldName}"; // Construct the full key
+
+                //    // Retrieve the user-entered value from the view model
+                //    var userEnteredValue = property.GetValue(viewModel.AddressForm);
+
+                //    // Set the model value with the user-entered value
+                //    ModelState.SetModelValue(fullKey, new ValueProviderResult(userEnteredValue?.ToString(), CultureInfo.InvariantCulture));
+                //}
+
+                if (!ModelState.IsValid)
+                {
+                    return View(viewModel);
+                }
+
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
 
-            return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+            return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //HÄR SKA DU ÄNDRA SEN TILL NÅN ANNAN SIDA, har bara denna nu när jag testar
         }
-
-        //[HttpPost]
-        //public IActionResult DetailsAddressForm(AccountDetailsViewModel viewModel)
-        //{
-            
-
-        //    //if (!ModelState.IsValid)
-        //    //{
-        //    //    return RedirectToAction(nameof(Details), viewModel);
-        //    //}
-
-        //    //return RedirectToAction(nameof(Details));
-        //}
 
         public IActionResult Security()
         {

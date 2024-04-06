@@ -2,8 +2,8 @@
 
 <div class="address-form">
     <h3>Address</h3>
-    <form method="post" asp-controller="Account" asp-action="Details" onsubmit="addressSubmit()" novalidate>
-        <input id="addressFormValue" asp-for="AddressForm.TestValue" style="display:none;" />
+    <form method="post" asp-controller="Account" asp-action="Details" novalidate>
+        <input type="hidden" asp-for="AddressForm.AddressFormValue" />
         <label asp-for="AddressForm.Address1"></label>
         <input asp-for="AddressForm.Address1" class="text-input">
         <span asp-validation-for="AddressForm.Address1"></span>
