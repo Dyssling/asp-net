@@ -1,0 +1,28 @@
+﻿@model AccountDetailsViewModel
+
+<div class="address-form">
+    <h3>Address</h3>
+    <form method="post" asp-controller="Account" asp-action="Details" onsubmit="addressSubmit()" novalidate>
+        <input type="hidden" asp-for="AddressForm.AddressFormValue" />
+        <label asp-for="AddressForm.Address1"></label>
+        <input asp-for="AddressForm.Address1" class="text-input">
+        <span asp-validation-for="AddressForm.Address1"></span>
+        <label asp-for="AddressForm.Address2">Address line 2 <span>(optional)</span></label>
+        <input asp-for="AddressForm.Address2" class="text-input">
+        <div class="double-input-container">
+            <div>
+                <label asp-for="AddressForm.PostalCode"></label>
+                <input asp-for="AddressForm.PostalCode" class="text-input">
+                <span asp-validation-for="AddressForm.PostalCode"></span>
+            </div>
+            <div>
+                <label asp-for="AddressForm.City"></label>
+                <input asp-for="AddressForm.City" class="text-input">
+            </div>
+        </div>
+        <div class="btn-container">
+            <button class="btn light">Cancel</button>
+            <button type="submit" class="btn">Save changes</button>
+        </div>
+    </form>
+</div>

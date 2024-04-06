@@ -1,0 +1,38 @@
+﻿@model AccountDetailsViewModel
+
+<div class="basic-info-form">
+    <h3>Basic Info</h3>
+    <form method="post" asp-controller="Account" asp-action="Details" onsubmit="basicInfoSubmit()" novalidate>
+        <input type="hidden" asp-for="BasicInfoForm.BasicInfoFormValue" />
+        <div class="double-input-container">
+            <div>
+                <label asp-for="BasicInfoForm.FirstName"></label>
+                <input asp-for="BasicInfoForm.FirstName" class="text-input" />
+                <span asp-validation-for="BasicInfoForm.FirstName"></span>
+            </div>
+            <div>
+                <label asp-for="BasicInfoForm.LastName"></label>
+                <input asp-for="BasicInfoForm.LastName" class="text-input" />
+                <span asp-validation-for="BasicInfoForm.LastName"></span>
+            </div>
+        </div>
+        <div class="double-input-container">
+            <div>
+                <label asp-for="BasicInfoForm.Email"></label>
+                <input asp-for="BasicInfoForm.Email" class="text-input" />
+                <span asp-validation-for="BasicInfoForm.Email"></span>
+            </div>
+            <div>
+                <label asp-for="BasicInfoForm.Phone"></label>
+                <input asp-for="BasicInfoForm.Phone" class="text-input" />
+                <span asp-validation-for="BasicInfoForm.Phone"></span>
+            </div>
+        </div>
+        <label asp-for="BasicInfoForm.Bio">Bio <span>(optional)</span></label>
+        <textarea asp-for="BasicInfoForm.Bio" class="text-input"></textarea>
+        <div class="btn-container">
+            <button class="btn light">Cancel</button>
+            <button type="submit" class="btn">Save changes</button>
+        </div>
+    </form>
+</div>

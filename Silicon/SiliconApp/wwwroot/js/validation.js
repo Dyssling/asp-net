@@ -1,3 +1,11 @@
+const basicInfoSubmit = () => {
+    document.getElementById("BasicInfoForm_BasicInfoFormValue").value = "1";
+}
+
+const addressSubmit = () => {
+    document.getElementById("AddressForm_AddressFormValue").value = "1";
+}
+
 const requiredVal = (e) => {
     if (e.target.value.length == 0) {
         return false;
@@ -42,6 +50,16 @@ const passwordVal = (e) => {
     return true;
 }
 
+const phoneVal = (e) => {
+    const regex = /^[0-9*#+ .()-]{7,}$/;
+
+    if (!regex.test(e.target.value) && e.target.value.length > 0) {
+        return false;
+    }
+
+    return true;
+}
+
 const requiredError = (e, result) => {
     let span = document.querySelector(`[data-valmsg-for="${e.target.name}"]`);
 
@@ -61,7 +79,7 @@ const requiredError = (e, result) => {
 const lengthError = (e, result) => {
     let span = document.querySelector(`[data-valmsg-for="${e.target.name}"]`);
 
-    if (result) {
+    if (result || e.target.value.length == 0) { //Om man inte har skrivit något i fältet så får man inget felmeddelande.
         span.classList.remove("field-validation-error");
         span.classList.add("field-validation-valid");
         span.innerHTML = "";
@@ -77,7 +95,7 @@ const lengthError = (e, result) => {
 const regexError = (e, result) => {
     let span = document.querySelector(`[data-valmsg-for="${e.target.name}"]`);
 
-    if (result) {
+    if (result || e.target.value.length == 0) {
         span.classList.remove("field-validation-error");
         span.classList.add("field-validation-valid");
         span.innerHTML = "";
@@ -101,7 +119,13 @@ const initialValidateInput = (e) => { //Denna funktionen används som event liste
 
     switch (e.target.type) {
         case "text":
-            lengthError(e, lengthVal(e));
+            if (e.target.name.includes("Phone")) {
+                regexError(e, phoneVal(e));
+            }
+
+            else {
+                lengthError(e, lengthVal(e));
+            }
             break;
 
         case "email":
@@ -129,7 +153,13 @@ const validateInput = (e) => {
 
     switch (e.target.type) {
         case "text":
-            lengthError(e, lengthVal(e));
+            if (e.target.name.includes("Phone")) {
+                regexError(e, phoneVal(e));
+            }
+
+            else {
+                lengthError(e, lengthVal(e));
+            }
             break;
 
         case "email":
