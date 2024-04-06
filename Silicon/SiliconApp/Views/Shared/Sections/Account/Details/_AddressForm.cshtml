@@ -2,7 +2,7 @@
 
 <div class="address-form">
     <h3>Address</h3>
-    <form method="post" asp-controller="Account" asp-action="Details" novalidate>
+    <form method="post" asp-controller="Account" asp-action="Details" onsubmit="addressSubmit()" novalidate>
         <input type="hidden" asp-for="AddressForm.AddressFormValue" />
         <label asp-for="AddressForm.Address1"></label>
         <input asp-for="AddressForm.Address1" class="text-input">

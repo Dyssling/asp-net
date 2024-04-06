@@ -27,7 +27,7 @@ namespace SiliconApp.Models
 
         [DataType(DataType.Text)]
         [Display(Name = "Phone", Prompt = "Enter your phone")]
-        [RegularExpression(@"\\+?([\\d|\\(][\\h|\\(\\d{3}\\)|\\.|\\-|\\d]{4,}\\d)", ErrorMessage = "The entered phone number is invalid.")]
+        [RegularExpression("^[0-9*#+ .()-]{7,}$", ErrorMessage = "The entered phone number is invalid.")]
 
         public string? Phone { get; set; }
 

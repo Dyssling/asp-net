@@ -2,7 +2,7 @@
 
 <div class="basic-info-form">
     <h3>Basic Info</h3>
-    <form method="post" asp-controller="Account" asp-action="Details" novalidate>
+    <form method="post" asp-controller="Account" asp-action="Details" onsubmit="basicInfoSubmit()" novalidate>
         <input type="hidden" asp-for="BasicInfoForm.BasicInfoFormValue" />
         <div class="double-input-container">
             <div>
