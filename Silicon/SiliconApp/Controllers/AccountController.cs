@@ -51,7 +51,7 @@ namespace SiliconApp.Controllers
                     return View(viewModel);
                 }
 
-                return RedirectToRoute(new { controller = "Home", action = "Index" });
+                return RedirectToRoute(new { controller = "Account", action = "Details" }); 
             }
 
             else if (viewModel.AddressForm.AddressFormValue == "1")
@@ -82,10 +82,10 @@ namespace SiliconApp.Controllers
                     return View(viewModel);
                 }
 
-                return RedirectToRoute(new { controller = "Home", action = "Index" });
+                return RedirectToRoute(new { controller = "Account", action = "Details" });
             }
 
-            return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //HÄR SKA DU ÄNDRA SEN TILL NÅN ANNAN SIDA, har bara denna nu när jag testar
+            return RedirectToRoute(new { controller = "Account", action = "Details" });
         }
 
         public IActionResult Security()
@@ -130,7 +130,7 @@ namespace SiliconApp.Controllers
                     return View(viewModel);
                 }
 
-                return RedirectToRoute(new { controller = "Home", action = "Index" });
+                return RedirectToRoute(new { controller = "Account", action = "Security" });
             }
 
             else if (viewModel.DeleteAccountForm.DeleteAccountFormValue == "1")
@@ -161,10 +161,10 @@ namespace SiliconApp.Controllers
                     return View(viewModel);
                 }
 
-                return RedirectToRoute(new { controller = "Home", action = "Index" });
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" });
             }
 
-            return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //HÄR SKA DU ÄNDRA SEN TILL NÅN ANNAN SIDA, har bara denna nu när jag testar
+            return RedirectToRoute(new { controller = "Account", action = "Security" });
         }
 
         public IActionResult SavedCourses()
