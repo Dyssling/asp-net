@@ -11,7 +11,7 @@
         <input asp-for="Form.Password" class="text-input" />
         <span asp-validation-for="Form.Password"></span>
         <div class="remember-me-container">
-            <input asp-for="Form.RememberMe" />
+            <input asp-for="Form.RememberMe" data-val="" data-val-required=""/>
             <label asp-for="Form.RememberMe"></label>
         </div>
         <button type="submit" class="btn">Sign in</button>
