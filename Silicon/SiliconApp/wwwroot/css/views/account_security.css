@@ -51,7 +51,7 @@ main .security form label {
 main .security form label span {
   color: #9397AD;
 }
-main .security form #current-pass, main .security form #new-pass, main .security form #confirm-pass {
+main .security form .text-input {
   width: 100%;
   padding: 12px 18px;
   border: none;
@@ -60,9 +60,14 @@ main .security form #current-pass, main .security form #new-pass, main .security
   margin-bottom: 22px;
 }
 @media (max-width: 768px) {
-  main .security form #current-pass, main .security form #new-pass, main .security form #confirm-pass {
+  main .security form .text-input {
     font-size: 14px;
   }
+}
+main .security form .field-validation-error {
+  color: red;
+  margin: -10px 0 24px 0;
+  display: block;
 }
 main .security form .double-input-container {
   display: grid;
@@ -108,4 +113,9 @@ main .security .delete-form form label {
   display: inline;
   font-weight: 400;
   color: #565973;
+}
+main .security .delete-form form .field-validation-error {
+  color: red;
+  margin: 10px 0 34px 0;
+  display: block;
 }
