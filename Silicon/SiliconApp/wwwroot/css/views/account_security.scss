@@ -53,7 +53,7 @@ main {
                 }
             }
 
-            #current-pass, #new-pass, #confirm-pass {
+            .text-input {
                 width: 100%;
                 padding: 12px 18px;
                 border: none;
@@ -64,6 +64,12 @@ main {
                 @media(max-width: 768px) {
                     font-size: 14px;
                 }
+            }
+
+            .field-validation-error {
+                color: red;
+                margin: -10px 0 24px 0;
+                display: block;
             }
 
             .double-input-container {
@@ -118,6 +124,12 @@ main {
                     display: inline;
                     font-weight: 400;
                     color: #565973;
+                }
+
+                .field-validation-error {
+                    color: red;
+                    margin: 10px 0 34px 0;
+                    display: block;
                 }
             }
         }

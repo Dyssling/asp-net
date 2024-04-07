@@ -6,6 +6,14 @@ const addressSubmit = () => {
     document.getElementById("AddressForm_AddressFormValue").value = "1";
 }
 
+const passwordSubmit = () => {
+    document.getElementById("PasswordForm_PasswordFormValue").value = "1";
+}
+
+const deleteAccountSubmit = () => {
+    document.getElementById("DeleteAccountForm_DeleteAccountFormValue").value = "1";
+}
+
 const requiredVal = (e) => {
     if (e.target.value.length == 0) {
         return false;
@@ -36,7 +44,7 @@ const passwordVal = (e) => {
     const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
     if (e.target.dataset.valEqualtoOther !== undefined) {
-        if (e.target.value !== document.getElementsByName(e.target.dataset.valEqualtoOther.replace("*", "Form"))[0].value) {
+        if (e.target.value !== document.getElementsByName(e.target.dataset.valEqualtoOther.replace("*", e.target.name.substring(0, e.target.name.indexOf('.'))))[0].value) { //Värdet jämförs med värdet i fältet vars namn är lika med DETTA fältets data-val-equal-to-other värde. Stjärn-karaktären ersätts med samma början på namnet innan punkten på DETTA fältet.
             return false;
         }
 
@@ -133,7 +141,7 @@ const initialValidateInput = (e) => { //Denna funktionen används som event liste
             break;
 
         case "password":
-            if (e.target.dataset.valRegexPattern !== undefined) {
+            if (e.target.dataset.valRegexPattern !== undefined || e.target.dataset.valEqualtoOther !== undefined) {
                 regexError(e, passwordVal(e));
             }
 
@@ -167,7 +175,7 @@ const validateInput = (e) => {
             break;
 
         case "password":
-            if (e.target.dataset.valRegexPattern !== undefined) {
+            if (e.target.dataset.valRegexPattern !== undefined || e.target.dataset.valEqualtoOther !== undefined) {
                 regexError(e, passwordVal(e));
             }
 

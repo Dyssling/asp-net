@@ -93,7 +93,78 @@ namespace SiliconApp.Controllers
             ViewData["Active"] = "Security";
             ViewData["Title"] = "Account Security";
 
-            return View();
+            return View(new AccountSecurityViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult Security(AccountSecurityViewModel viewModel)
+        {
+            ViewData["Active"] = "Security";
+            ViewData["Title"] = "Account Security";
+
+            if (viewModel.PasswordForm.PasswordFormValue == "1")
+            {
+                foreach (var property in typeof(AccountSecurityDeleteAccountModel).GetProperties()) //Bing Copilot hjälpte mig bygga denna loopen. Den tar bort varje fält i det andra formuläret från ModelState, så att bägge formulär inte valideras på samma gång. 
+                {
+                    var fieldName = property.Name; // Get the field name
+                    var fullKey = $"DeleteAccountForm.{fieldName}"; // Construct the full key
+
+                    // Remove field
+                    ModelState.Remove(fullKey);
+                }
+
+                //foreach (var property in typeof(AccountDetailsBasicInfoModel).GetProperties())
+                //{
+                //    var fieldName = property.Name; // Get the field name
+                //    var fullKey = $"BasicInfoForm.{fieldName}"; // Construct the full key
+
+                //    // Retrieve the user-entered value from the view model
+                //    var userEnteredValue = property.GetValue(viewModel.BasicInfoForm);
+
+                //    // Set the model value with the user-entered value
+                //    ModelState.SetModelValue(fullKey, new ValueProviderResult(userEnteredValue?.ToString(), CultureInfo.InvariantCulture));
+                //}
+
+                if (!ModelState.IsValid)
+                {
+                    return View(viewModel);
+                }
+
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
+
+            else if (viewModel.DeleteAccountForm.DeleteAccountFormValue == "1")
+            {
+                foreach (var property in typeof(AccountSecurityPasswordModel).GetProperties())
+                {
+                    var fieldName = property.Name; // Get the field name
+                    var fullKey = $"PasswordForm.{fieldName}"; // Construct the full key
+
+                    // Remove field
+                    ModelState.Remove(fullKey);
+                }
+
+                //foreach (var property in typeof(AccountDetailsAddressModel).GetProperties())
+                //{
+                //    var fieldName = property.Name; // Get the field name
+                //    var fullKey = $"AddressForm.{fieldName}"; // Construct the full key
+
+                //    // Retrieve the user-entered value from the view model
+                //    var userEnteredValue = property.GetValue(viewModel.AddressForm);
+
+                //    // Set the model value with the user-entered value
+                //    ModelState.SetModelValue(fullKey, new ValueProviderResult(userEnteredValue?.ToString(), CultureInfo.InvariantCulture));
+                //}
+
+                if (!ModelState.IsValid)
+                {
+                    return View(viewModel);
+                }
+
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
+
+            return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //HÄR SKA DU ÄNDRA SEN TILL NÅN ANNAN SIDA, har bara denna nu när jag testar
         }
 
         public IActionResult SavedCourses()
