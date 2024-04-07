@@ -1,4 +1,6 @@
-﻿<section class="contact">
+﻿@model ContactViewModel
+
+<section class="contact">
     <div class="contact-container">
         <div class="breadcrumbs">
             <i class="fa-regular fa-house"></i>
@@ -29,18 +31,19 @@
             <div class="contact-form">
                 <div class="contact-form-container">
                     <h2>Get In Contact With Us</h2>
-                    <form>
-                        <label for="name">Full name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your full name">
-                        <label for="email">Email address</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email address">
-                        <label for="service">Service <span>(optional)</span></label>
-                        <select id="service" name="service">
-                            <option value="" disabled selected>Choose the service you are interested in</option>
-                        </select>
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Enter your message here..."></textarea>
-                        <button class="btn">Send Contact Request</button>
+                    <form method="post" asp-controller="Contact" asp-action="Index" novalidate>
+                        <label asp-for="Form.FullName"></label>
+                        <input asp-for="Form.FullName" class="text-input" />
+                        <span asp-validation-for="Form.FullName"></span>
+                        <label asp-for="Form.Email"></label>
+                        <input asp-for="Form.Email" class="text-input" />
+                        <span asp-validation-for="Form.Email"></span>
+                        <label asp-for="Form.Service">Service <span>(optional)</span></label>
+                        <select asp-for="Form.Service" asp-items="Model.Form.ServiceItems"></select>
+                        <label asp-for="Form.Message"></label>
+                        <textarea asp-for="Form.Message" class="text-input"></textarea>
+                        <span asp-validation-for="Form.Message"></span>
+                        <button type="submit" class="btn">Send Contact Request</button>
                     </form>
                 </div>
             </div>

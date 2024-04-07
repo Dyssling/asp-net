@@ -169,7 +169,7 @@ header {
                             }
                         }
 
-                        input, select, textarea {
+                        .text-input {
                             width: 100%;
                             padding: 12px 18px;
                             border: none;
@@ -188,10 +188,20 @@ header {
 
                         select {
                             padding: 12px 15px;
+                            border: none;
                             border-right: 12px solid transparent; //Detta ger lite utrymme mellan pilen och kanten
+                            width: 100%;
+                            outline: 1px solid #D4D7E5;
+                            border-radius: 6px;
+                            margin-bottom: 22px;
+                            font-size: 16px;
+                            font-weight: 400;
+                            font-family: 'Manrope', sans-serif;
 
                             @media(max-width: 768px) {
                                 border-right: 6px solid transparent;
+                                font-size: 14px;
+                                padding: 12px 14px;
                             }
                         }
 
@@ -204,6 +214,12 @@ header {
                             @media(max-width: 768px) {
                                 font-size: 14px;
                             }
+                        }
+
+                        .field-validation-error {
+                            color: red;
+                            margin: -10px 0 24px 0;
+                            display: block;
                         }
 
                         .btn {

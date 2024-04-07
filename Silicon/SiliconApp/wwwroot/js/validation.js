@@ -125,64 +125,74 @@ const regexError = (e, result) => {
 
 const initialValidateInput = (e) => { //Denna funktionen används som event listener först när formuläret laddas. Det är alltså en blur först, sen byts det till keyup.
 
-    switch (e.target.type) {
-        case "text":
-            if (e.target.name.includes("Phone")) {
-                regexError(e, phoneVal(e));
-            }
-
-            else {
-                lengthError(e, lengthVal(e));
-            }
-            break;
-
-        case "email":
-            regexError(e, emailVal(e));
-            break;
-
-        case "password":
-            if (e.target.dataset.valRegexPattern !== undefined || e.target.dataset.valEqualtoOther !== undefined) {
-                regexError(e, passwordVal(e));
-            }
-
-            else {
-                requiredError(e, requiredVal(e)); //Om det inte finns en regex property så innebär det att man bara ska validera att lösenordet inte är tomt.
-            }
-            break;
+    if (e.target.tagName == "TEXTAREA") { //Om det är en textarea så görs en required validering.
+        requiredError(e, requiredVal(e));
     }
 
-    if (e.target.value.length > 0) {
-        e.target.removeEventListener("blur", e => initialValidateInput(e));
-        e.target.addEventListener("keyup", e => validateInput(e));
+    else {
+        switch (e.target.type) {
+            case "text":
+                if (e.target.name.includes("Phone")) {
+                    regexError(e, phoneVal(e));
+                }
+
+                else {
+                    lengthError(e, lengthVal(e));
+                }
+                break;
+
+            case "email":
+                regexError(e, emailVal(e));
+                break;
+
+            case "password":
+                if (e.target.dataset.valRegexPattern !== undefined || e.target.dataset.valEqualtoOther !== undefined) {
+                    regexError(e, passwordVal(e));
+                }
+
+                else {
+                    requiredError(e, requiredVal(e)); //Om det inte finns en regex property så innebär det att man bara ska validera att lösenordet inte är tomt.
+                }
+                break;
+        }
     }
+
+    e.target.removeEventListener("blur", e => initialValidateInput(e));
+    e.target.addEventListener("keyup", e => validateInput(e));
 }
 
 const validateInput = (e) => {
 
-    switch (e.target.type) {
-        case "text":
-            if (e.target.name.includes("Phone")) {
-                regexError(e, phoneVal(e));
-            }
+    if (e.target.tagName == "TEXTAREA") {
+        requiredError(e, requiredVal(e));
+    }
 
-            else {
-                lengthError(e, lengthVal(e));
-            }
-            break;
+    else {
+        switch (e.target.type) {
+            case "text":
+                if (e.target.name.includes("Phone")) {
+                    regexError(e, phoneVal(e));
+                }
 
-        case "email":
-            regexError(e, emailVal(e));
-            break;
+                else {
+                    lengthError(e, lengthVal(e));
+                }
+                break;
 
-        case "password":
-            if (e.target.dataset.valRegexPattern !== undefined || e.target.dataset.valEqualtoOther !== undefined) {
-                regexError(e, passwordVal(e));
-            }
+            case "email":
+                regexError(e, emailVal(e));
+                break;
 
-            else {
-                requiredError(e, requiredVal(e)); //Om det inte finns en regex property så innebär det att man bara ska validera att lösenordet inte är tomt.
-            }
-            break;
+            case "password":
+                if (e.target.dataset.valRegexPattern !== undefined || e.target.dataset.valEqualtoOther !== undefined) {
+                    regexError(e, passwordVal(e));
+                }
+
+                else {
+                    requiredError(e, requiredVal(e)); //Om det inte finns en regex property så innebär det att man bara ska validera att lösenordet inte är tomt.
+                }
+                break;
+        }
     }
 }
 
@@ -198,6 +208,22 @@ inputs.forEach(input => {
 
         else {
             input.addEventListener("keyup", e => validateInput(e)); //Om det redan står något i felmeddelandet när formuläret laddas in, så går den direkt till den andra event listenern.
+        }
+    }
+});
+
+let textareas = document.querySelectorAll("textarea"); //Här lägger jag på event listeners på de eventuella textarea fälten, eftersom de inte är "inputs".
+
+textareas.forEach(textarea => {
+
+    if (textarea.dataset.val === "true") {
+
+        if (document.querySelector(`[data-valmsg-for="${textarea.name}"]`).innerHTML.length == 0) {
+            textarea.addEventListener("blur", e => initialValidateInput(e));
+        }
+
+        else {
+            textarea.addEventListener("keyup", e => validateInput(e)); //Om det redan står något i felmeddelandet när formuläret laddas in, så går den direkt till den andra event listenern.
         }
     }
 });
