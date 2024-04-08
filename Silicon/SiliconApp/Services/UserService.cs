@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SiliconApp.Entities;
 using SiliconApp.Models;
 using SiliconApp.ViewModels;
+using System.Security.Claims;
 
 namespace SiliconApp.Services
 {
@@ -68,6 +69,28 @@ namespace SiliconApp.Services
 
             return "An error occurred while attempting to sign in."; //Övrigt fel
 
+        }
+
+        public bool IsUserSignedIn(ClaimsPrincipal user) //Metoden returnerar true om användaren är inloggad, annars false
+        {
+            if (_signInManager.IsSignedIn(user))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> SignOutUserAsync()
+        {
+            try
+            {
+                await _signInManager.SignOutAsync();
+                return true;
+            }
+
+            catch { }
+            return false;
         }
     }
 }

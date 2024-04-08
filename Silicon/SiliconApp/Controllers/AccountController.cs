@@ -138,7 +138,7 @@ namespace SiliconApp.Controllers
 
         public IActionResult SignIn()
         {
-            if (User != null) //Om användaren är inloggad kommer User objektet inte vara null
+            if (_userService.IsUserSignedIn(User))
             {
                 return RedirectToRoute(new { controller = "Account", action = "Details" }); //Om användaren är inloggad redirectas man till Account details
             }
@@ -172,7 +172,7 @@ namespace SiliconApp.Controllers
 
         public IActionResult SignUp()
         {
-            if (User != null)
+            if (_userService.IsUserSignedIn(User))
             {
                 return RedirectToRoute(new { controller = "Account", action = "Details" });
             }
@@ -203,6 +203,18 @@ namespace SiliconApp.Controllers
 
             return View(viewModel);
             
+        }
+
+        public new async Task<IActionResult> SignOut()
+        {
+            bool result = await _userService.SignOutUserAsync();
+
+            if (result)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+            }
+
+            return RedirectToRoute(new { controller = "Account", action = "Details" });
         }
     }
 }
