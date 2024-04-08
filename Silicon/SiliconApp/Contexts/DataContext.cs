@@ -1,16 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SiliconApp.Entities;
 
 namespace SiliconApp.Contexts
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<UserEntity>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
 
-        public DbSet<UserEntity> Users { get; set; }
         public DbSet<AddressEntity> Addresses { get; set; }
     }
 }
