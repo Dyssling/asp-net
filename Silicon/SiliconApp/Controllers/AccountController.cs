@@ -17,7 +17,7 @@ namespace SiliconApp.Controllers
             _userService = userService;
         }
 
-        public IActionResult Details()
+        public async Task<IActionResult> Details()
         {
             if (!_userService.IsUserSignedIn(User))
             {
@@ -27,15 +27,20 @@ namespace SiliconApp.Controllers
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
             ViewData["Title"] = "Account Details";
 
-            return View(new AccountDetailsViewModel());
+            var userEntity = await _userService.GetUserEntityAsync(User);
+
+            return View(new AccountDetailsViewModel() { UserEntity = userEntity });
             
         }
 
         [HttpPost]
-        public IActionResult Details(AccountDetailsViewModel viewModel)
+        public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
         {
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
             ViewData["Title"] = "Account Details";
+
+            var userEntity = await _userService.GetUserEntityAsync(User); //Av någon anledning passeras userEntity inte vidare från föregående Details action genom viewmodellen, så jag löser det manuellt...
+            viewModel.UserEntity = userEntity;
 
             if (viewModel.BasicInfoForm.BasicInfoFormValue == "1") //Om BasicInfoFormValue är lika med 1 så innebär det att basicInfoSubmit() har körts, vilket alltså innebär att det är BasicInfo formuläret som har skickats.
             {

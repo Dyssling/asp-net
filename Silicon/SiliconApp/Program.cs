@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SiliconApp.Contexts;
 using SiliconApp.Entities;
+using SiliconApp.Repositories;
 using SiliconApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
 
 }).AddEntityFrameworkStores<DataContext>();
 
+builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();

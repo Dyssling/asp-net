@@ -7,29 +7,29 @@
         <div class="double-input-container">
             <div>
                 <label asp-for="BasicInfoForm.FirstName"></label>
-                <input asp-for="BasicInfoForm.FirstName" class="text-input" />
+                <input asp-for="BasicInfoForm.FirstName" value="@Model.UserEntity.FirstName" class="text-input" />
                 <span asp-validation-for="BasicInfoForm.FirstName"></span>
             </div>
             <div>
                 <label asp-for="BasicInfoForm.LastName"></label>
-                <input asp-for="BasicInfoForm.LastName" class="text-input" />
+                <input asp-for="BasicInfoForm.LastName" value="@Model.UserEntity.LastName" class="text-input" />
                 <span asp-validation-for="BasicInfoForm.LastName"></span>
             </div>
         </div>
         <div class="double-input-container">
             <div>
                 <label asp-for="BasicInfoForm.Email"></label>
-                <input asp-for="BasicInfoForm.Email" class="text-input" />
+                <input asp-for="BasicInfoForm.Email" value="@Model.UserEntity.Email" class="text-input" />
                 <span asp-validation-for="BasicInfoForm.Email"></span>
             </div>
             <div>
                 <label asp-for="BasicInfoForm.Phone"></label>
-                <input asp-for="BasicInfoForm.Phone" class="text-input" />
+                <input asp-for="BasicInfoForm.Phone" value="@Model.UserEntity.PhoneNumber" class="text-input" />
                 <span asp-validation-for="BasicInfoForm.Phone"></span>
             </div>
         </div>
         <label asp-for="BasicInfoForm.Bio">Bio <span>(optional)</span></label>
-        <textarea asp-for="BasicInfoForm.Bio" class="text-input"></textarea>
+        <textarea asp-for="BasicInfoForm.Bio" value="@Model.UserEntity.Bio" class="text-input"></textarea>
         <div class="btn-container">
             <a class="btn light" asp-controller="Account" asp-action="Details">Cancel</a>
             <button type="submit" class="btn">Save changes</button>

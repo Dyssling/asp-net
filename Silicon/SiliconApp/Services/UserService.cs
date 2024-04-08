@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SiliconApp.Entities;
 using SiliconApp.Models;
+using SiliconApp.Repositories;
 using SiliconApp.ViewModels;
 using System.Security.Claims;
 
@@ -11,11 +12,13 @@ namespace SiliconApp.Services
     {
         private readonly UserManager<UserEntity> _userManager;
         private readonly SignInManager<UserEntity> _signInManager;
+        private readonly UserRepository _userRepository;
 
-        public UserService(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager)
+        public UserService(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, UserRepository userRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _userRepository = userRepository;
         }
 
         public async Task<string> CreateNewUserAsync(SignUpModel model)
@@ -48,6 +51,21 @@ namespace SiliconApp.Services
             catch { }
 
             return "An error occurred while creating the user."; //Om något annat skulle gå snett så får man ett error meddelande.
+
+        }
+
+        public async Task<UserEntity> GetUserEntityAsync(ClaimsPrincipal user)
+        {
+            try
+            {
+                var userEntity = await _userManager.GetUserAsync(user);
+                userEntity = await _userRepository.GetOneAsync(x => x == userEntity);
+
+                return userEntity;
+            }
+            catch { }
+
+            return null!;
 
         }
 
