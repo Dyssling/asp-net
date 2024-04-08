@@ -70,6 +70,9 @@
   margin: 10px 0 34px 0;
   display: block;
 }
+.sign-up form .error-message {
+  color: red;
+}
 .sign-up form .btn {
   display: block;
   border: none;

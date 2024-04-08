@@ -14,6 +14,9 @@
             <input asp-for="Form.RememberMe" data-val="" data-val-required=""/>
             <label asp-for="Form.RememberMe"></label>
         </div>
+        <p class="error-message">
+            @ViewData["ErrorMessage"]
+        </p>
         <button type="submit" class="btn">Sign in</button>
         <div class="forgot-password-container">
             <a href="">Forgot your password?</a>

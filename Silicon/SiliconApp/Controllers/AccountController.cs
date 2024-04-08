@@ -191,7 +191,7 @@ namespace SiliconApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignIn(SignInViewModel viewModel)
+        public async Task<IActionResult> SignIn(SignInViewModel viewModel)
         {
             ViewData["Title"] = "Sign In";
 
@@ -200,7 +200,16 @@ namespace SiliconApp.Controllers
                 return View(viewModel);
             }
 
-            return RedirectToRoute(new { controller = "Home", action = "Index" });
+            string message = await _userService.SignInUserAsync(viewModel.Form);
+
+            if (message == "Success!")
+            {
+                return RedirectToRoute(new { controller = "Account", action = "Details" });
+            }
+
+            ViewData["ErrorMessage"] = message;
+
+            return View(viewModel);
         }
 
         public IActionResult SignUp()

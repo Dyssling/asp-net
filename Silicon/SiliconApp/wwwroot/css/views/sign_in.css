@@ -49,6 +49,9 @@
   font-weight: 400;
   color: #565973;
 }
+.sign-in form .error-message {
+  color: red;
+}
 .sign-in form .btn {
   display: block;
   border: none;

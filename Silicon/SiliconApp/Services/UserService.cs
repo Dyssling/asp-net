@@ -9,10 +9,12 @@ namespace SiliconApp.Services
     public class UserService
     {
         private readonly UserManager<UserEntity> _userManager;
+        private readonly SignInManager<UserEntity> _signInManager;
 
-        public UserService(UserManager<UserEntity> userManager)
+        public UserService(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public async Task<string> CreateNewUserAsync(SignUpModel model)
@@ -45,6 +47,26 @@ namespace SiliconApp.Services
             catch { }
 
             return "An error occurred while creating the user.";
+
+        }
+
+       public async Task<string> SignInUserAsync(SignInModel model)
+        {
+            try
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+
+                if (result.Succeeded)
+                {
+                    return "Success!";
+                }
+
+                return "Incorrect email or password.";
+            }
+
+            catch { }
+
+            return "An error occurred while attempting to sign in.";
 
         }
     }
