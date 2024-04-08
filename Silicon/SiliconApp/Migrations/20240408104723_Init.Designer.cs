@@ -12,7 +12,7 @@ using SiliconApp.Contexts;
 namespace SiliconApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240408085343_Init")]
+    [Migration("20240408104723_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -97,15 +97,10 @@ namespace SiliconApp.Migrations
             modelBuilder.Entity("SiliconApp.Entities.UserEntity", b =>
                 {
                     b.HasOne("SiliconApp.Entities.AddressEntity", "Address")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("AddressId");
 
                     b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("SiliconApp.Entities.AddressEntity", b =>
-                {
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

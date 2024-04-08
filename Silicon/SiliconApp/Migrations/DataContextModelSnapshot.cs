@@ -94,15 +94,10 @@ namespace SiliconApp.Migrations
             modelBuilder.Entity("SiliconApp.Entities.UserEntity", b =>
                 {
                     b.HasOne("SiliconApp.Entities.AddressEntity", "Address")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("AddressId");
 
                     b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("SiliconApp.Entities.AddressEntity", b =>
-                {
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

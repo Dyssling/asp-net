@@ -10,7 +10,5 @@ namespace SiliconApp.Entities
         public string? Address2 { get; set; }
         public string? PostalCode { get; set; }
         public string? City { get; set; }
-
-        public ICollection<UserEntity> Users { get; set; } = new List<UserEntity>();
     }
 }
