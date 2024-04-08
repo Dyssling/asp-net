@@ -30,6 +30,9 @@
             <label asp-for="Form.TermsAndConditions">I agree to the <a href="">Terms</a> & <a href="">Conditions.</a></label>
             <span asp-validation-for="Form.TermsAndConditions"></span>
         </div>
+        <p class="error-message">
+            @ViewData["ErrorMessage"]
+        </p>
         <button type="submit" class="btn">Sign up</button>
     </form>
 </section>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SiliconApp.Entities;
+using SiliconApp.Models;
 using SiliconApp.ViewModels;
 
 namespace SiliconApp.Services
@@ -14,29 +15,34 @@ namespace SiliconApp.Services
             _userManager = userManager;
         }
 
-        public async Task<string> CreateNewUserAsync(SignUpViewModel viewModel)
+        public async Task<string> CreateNewUserAsync(SignUpModel model)
         {
-            var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.Form.Email);
-
-            if (exists)
+            try
             {
-                return "A user with the same email already exists.";
+                var exists = await _userManager.Users.AnyAsync(x => x.Email == model.Email);
+
+                if (exists)
+                {
+                    return "A user with the same email already exists.";
+                }
+
+                var userEntity = new UserEntity()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    UserName = model.Email
+                };
+
+                var result = await _userManager.CreateAsync(userEntity, model.Password);
+
+                if (result.Succeeded)
+                {
+                    return "Success!";
+                }
             }
 
-            var userEntity = new UserEntity()
-            {
-                FirstName = viewModel.Form.FirstName,
-                LastName = viewModel.Form.LastName,
-                Email = viewModel.Form.Email,
-                UserName = viewModel.Form.Email
-            };
-
-            var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);
-
-            if (result.Succeeded)
-            {
-                return "Success!";
-            }
+            catch { }
 
             return "An error occurred while creating the user.";
 

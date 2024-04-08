@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SiliconApp.Models;
+using SiliconApp.Services;
 using SiliconApp.ViewModels;
 using System.Globalization;
 
@@ -8,6 +9,13 @@ namespace SiliconApp.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly UserService _userService;
+
+        public AccountController(UserService userService)
+        {
+            _userService = userService;
+        }
+
         public IActionResult Details()
         {
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
@@ -203,7 +211,7 @@ namespace SiliconApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUp(SignUpViewModel viewModel)
+        public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
         {
             ViewData["Title"] = "Sign Up";
 
@@ -212,7 +220,17 @@ namespace SiliconApp.Controllers
                 return View(viewModel);
             }
 
-            return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+            string message = await _userService.CreateNewUserAsync(viewModel.Form);
+
+            if(message == "Success!")
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+            }
+
+            ViewData["ErrorMessage"] = message;
+
+            return View(viewModel);
+            
         }
     }
 }
