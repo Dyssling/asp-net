@@ -19,6 +19,11 @@ namespace SiliconApp.Controllers
 
         public IActionResult Details()
         {
+            if (!_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
+            }
+
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
             ViewData["Title"] = "Account Details";
 
@@ -75,6 +80,11 @@ namespace SiliconApp.Controllers
 
         public IActionResult Security()
         {
+            if (!_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
+            }
+
             ViewData["Active"] = "Security";
             ViewData["Title"] = "Account Security";
 
@@ -130,6 +140,11 @@ namespace SiliconApp.Controllers
 
         public IActionResult SavedCourses()
         {
+            if (!_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
+            }
+
             ViewData["Active"] = "SavedCourses";
             ViewData["Title"] = "Saved Courses";
 
