@@ -1,9 +1,9 @@
 ﻿@model SignInViewModel
 
-<section class="sign-in">
+<section id="sign-in" class="sign-in">
     <h1>Welcome Back</h1>
     <p class="sign-up-here">Don't have an account yet? <a asp-controller="Account" asp-action="SignUp">Sign up here.</a></p>
-    <form method="post" asp-controller="Account" asp-action="SignIn" novalidate>
+    <form method="post" asp-controller="Account" asp-action="SignIn" asp-fragment="sign-in" novalidate>
         <label asp-for="Form.Email"></label>
         <input asp-for="Form.Email" class="text-input" />
         <span asp-validation-for="Form.Email"></span>

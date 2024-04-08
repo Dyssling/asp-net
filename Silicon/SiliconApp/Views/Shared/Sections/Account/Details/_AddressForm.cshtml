@@ -1,8 +1,8 @@
 ﻿@model AccountDetailsViewModel
 
-<div class="address-form">
+<div id="address-form" class="address-form">
     <h3>Address</h3>
-    <form method="post" asp-controller="Account" asp-action="Details" onsubmit="addressSubmit()" novalidate>
+    <form method="post" asp-controller="Account" asp-action="Details" asp-fragment="address-form" onsubmit="addressSubmit()" novalidate>
         <input type="hidden" asp-for="AddressForm.AddressFormValue" />
         <label asp-for="AddressForm.Address1"></label>
         <input asp-for="AddressForm.Address1" class="text-input">

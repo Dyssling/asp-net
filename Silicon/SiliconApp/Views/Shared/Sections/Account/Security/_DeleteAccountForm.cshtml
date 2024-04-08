@@ -1,9 +1,9 @@
 ﻿@model AccountSecurityViewModel
 
-<div class="delete-form">
+<div id="delete-form" class="delete-form">
     <h3>Delete account</h3>
     <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we'll send you a link to reactivate your account.</p>
-    <form method="post" asp-controller="Account" asp-action="Security" onsubmit="deleteAccountSubmit()" novalidate>
+    <form method="post" asp-controller="Account" asp-action="Security" asp-fragment="delete-form" onsubmit="deleteAccountSubmit()" novalidate>
         <input type="hidden" asp-for="DeleteAccountForm.DeleteAccountFormValue" />
         <input asp-for="DeleteAccountForm.ConfirmDelete" />
         <label asp-for="DeleteAccountForm.ConfirmDelete"></label>

@@ -459,22 +459,22 @@ main .newsletter .newsletter-container .sign-up .sign-up-grid div label {
 main .newsletter .newsletter-container .input-container {
   position: relative;
 }
-main .newsletter .newsletter-container .input-container input {
+main .newsletter .newsletter-container .input-container .text-input {
   border: 1px solid #D4D7E5;
   border-radius: 10px;
   width: 76%;
   padding: 10px 10px 10px 50px;
 }
 @media only screen and (max-width: 768px) {
-  main .newsletter .newsletter-container .input-container input {
+  main .newsletter .newsletter-container .input-container .text-input {
     width: 100%;
     margin-bottom: 15px;
   }
 }
-main .newsletter .newsletter-container .input-container input:focus {
+main .newsletter .newsletter-container .input-container .text-input:focus {
   outline: 1px solid #898b92;
 }
-main .newsletter .newsletter-container .input-container input::placeholder {
+main .newsletter .newsletter-container .input-container .text-input::placeholder {
   color: #B4B7C9;
 }
 main .newsletter .newsletter-container .input-container i {
@@ -483,6 +483,16 @@ main .newsletter .newsletter-container .input-container i {
   left: 20px;
   color: #B4B7C9;
   font-size: 19px;
+}
+main .newsletter .newsletter-container .input-container .field-validation-error {
+  color: red;
+  margin: 15px 0 24px 0;
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  main .newsletter .newsletter-container .input-container .field-validation-error {
+    text-align: center;
+  }
 }
 main .newsletter .newsletter-container .input-container button {
   border: none;
@@ -500,6 +510,11 @@ main .newsletter .newsletter-container .input-container button {
 main .newsletter .newsletter-container p {
   color: #9397AD;
   margin: 10px 0 0 0;
+}
+@media only screen and (max-width: 768px) {
+  main .newsletter .newsletter-container p {
+    text-align: center;
+  }
 }
 main .newsletter .newsletter-container p a {
   text-decoration: underline;

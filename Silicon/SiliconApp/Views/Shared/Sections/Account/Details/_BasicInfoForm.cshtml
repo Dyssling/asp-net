@@ -1,8 +1,8 @@
 ﻿@model AccountDetailsViewModel
 
-<div class="basic-info-form">
+<div id="basic-info-form" class="basic-info-form">
     <h3>Basic Info</h3>
-    <form method="post" asp-controller="Account" asp-action="Details" onsubmit="basicInfoSubmit()" novalidate>
+    <form method="post" asp-controller="Account" asp-action="Details" asp-fragment="basic-info" onsubmit="basicInfoSubmit()" novalidate>
         <input type="hidden" asp-for="BasicInfoForm.BasicInfoFormValue" />
         <div class="double-input-container">
             <div>

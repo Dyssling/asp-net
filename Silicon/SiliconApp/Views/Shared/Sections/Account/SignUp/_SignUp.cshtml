@@ -1,9 +1,9 @@
 ﻿@model SignUpViewModel
 
-<section class="sign-up">
+<section id="sign-up" class="sign-up">
     <h1>Create Account</h1>
     <p class="sign-in-here">Already have an account? <a asp-controller="Account" asp-action="SignIn">Sign in here.</a></p>
-    <form method="post" asp-controller="Account" asp-action="SignUp" novalidate>
+    <form method="post" asp-controller="Account" asp-action="SignUp" asp-fragment="sign-up" novalidate>
         <div class="name-container">
             <div>
                 <label asp-for="Form.FirstName"></label>

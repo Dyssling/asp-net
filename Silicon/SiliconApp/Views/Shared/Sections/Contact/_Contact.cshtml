@@ -28,10 +28,10 @@
                     </div>
                 </div>
             </div>
-            <div class="contact-form">
+            <div id="contact-form" class="contact-form">
                 <div class="contact-form-container">
                     <h2>Get In Contact With Us</h2>
-                    <form method="post" asp-controller="Contact" asp-action="Index" novalidate>
+                    <form method="post" asp-controller="Contact" asp-action="Index" asp-fragment="contact-form" novalidate>
                         <label asp-for="Form.FullName"></label>
                         <input asp-for="Form.FullName" class="text-input" />
                         <span asp-validation-for="Form.FullName"></span>

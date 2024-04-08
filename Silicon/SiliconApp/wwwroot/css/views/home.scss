@@ -496,7 +496,7 @@ main {
             .input-container {
                 position: relative;
 
-                input {
+                .text-input {
                     border: 1px solid #D4D7E5;
                     border-radius: 10px;
                     width: 76%;
@@ -524,6 +524,16 @@ main {
                     font-size: 19px;
                 }
 
+                .field-validation-error {
+                    color: red;
+                    margin: 15px 0 24px 0;
+                    display: block;
+
+                    @media only screen and (max-width: 768px) {
+                        text-align: center;
+                    }
+                }
+
 
                 button {
                     border: none;
@@ -542,6 +552,10 @@ main {
             p {
                 color: #9397AD;
                 margin: 10px 0 0 0;
+
+                @media only screen and (max-width: 768px) {
+                    text-align: center;
+                }
 
                 a {
                     text-decoration: underline;
