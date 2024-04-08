@@ -58,8 +58,8 @@ namespace SiliconApp.Services
         {
             try
             {
-                var userEntity = await _userManager.GetUserAsync(user);
-                userEntity = await _userRepository.GetOneAsync(x => x == userEntity);
+                var userEntity = await _userManager.GetUserAsync(user); //Här hämtas en userEntity med hjälp av userManager. User claims skickas alltså in, en entitet returneras.
+                userEntity = await _userRepository.GetOneAsync(x => x == userEntity); //Samma entitet hämtas igen, fast genom _userRepository där man även får addressinformationen.
 
                 return userEntity;
             }
