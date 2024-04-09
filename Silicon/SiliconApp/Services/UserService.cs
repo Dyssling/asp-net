@@ -137,9 +137,9 @@ namespace SiliconApp.Services
             try
             {
                 var userResult = await _userManager.DeleteAsync(userEntity);
-                var addressResult = await _addressRepository.DeleteAsync(x => x.Id == userEntity.AddressId); //När användaren tas bort så tas även addressen bort, vars id är samma som användarens AddressId
+                await _addressRepository.DeleteAsync(x => x.Id == userEntity.AddressId); //När användaren tas bort så tas även addressen bort, vars id är samma som användarens AddressId. Om användaren inte har någon address entitet, så får man false tillbaka, vilket kvittar i detta fallet. Dock kan det även innebära att något gick snett, så i verkliga scenarion bör man göra någon typ av extra check
 
-                if (userResult.Succeeded && addressResult)
+                if (userResult.Succeeded)
                 {
                     return "Success!";
                 }

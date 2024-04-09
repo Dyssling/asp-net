@@ -120,6 +120,10 @@ main {
             }
 
             form {
+                .error-message {
+                    color: red;
+                }
+
                 .btn-container {
                     margin-top: 28px;
 

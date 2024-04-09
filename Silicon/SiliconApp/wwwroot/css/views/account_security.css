@@ -109,6 +109,9 @@ main .security .delete-form p {
   color: #565973;
   margin-bottom: 20px;
 }
+main .security .delete-form form .error-message {
+  color: red;
+}
 main .security .delete-form form .btn-container {
   margin-top: 28px;
 }

@@ -257,7 +257,7 @@ namespace SiliconApp.Controllers
             return RedirectToRoute(new { controller = "Account", action = "Security" });
         }
 
-        public IActionResult SavedCourses()
+        public async Task<IActionResult> SavedCourses()
         {
             if (!_userService.IsUserSignedIn(User))
             {
@@ -267,7 +267,14 @@ namespace SiliconApp.Controllers
             ViewData["Active"] = "SavedCourses";
             ViewData["Title"] = "Saved Courses";
 
-            return View();
+            var userEntity = await _userService.GetUserEntityAsync(User);
+
+            var viewModel = new AccountSavedCoursesViewModel()
+            {
+                UserEntity = userEntity
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult SignIn()
