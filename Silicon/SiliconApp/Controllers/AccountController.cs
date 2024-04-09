@@ -165,61 +165,93 @@ namespace SiliconApp.Controllers
             return RedirectToRoute(new { controller = "Account", action = "Details" });
         }
 
-        public IActionResult Security()
+        public async Task<IActionResult> Security()
         {
             if (!_userService.IsUserSignedIn(User))
             {
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" });
             }
 
             ViewData["Active"] = "Security";
             ViewData["Title"] = "Account Security";
 
-            return View(new AccountSecurityViewModel());
+            var userEntity = await _userService.GetUserEntityAsync(User);
+
+            var viewModel = new AccountSecurityViewModel()
+            {
+                UserEntity = userEntity
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Security(AccountSecurityViewModel viewModel)
+        public async Task<IActionResult> Security(AccountSecurityViewModel viewModel)
         {
+            if (!_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Kan hända att cookien går ut samtidigt som man gör en post, så därför är det bra att även här göra en inloggnings koll
+            }
+
             ViewData["Active"] = "Security";
             ViewData["Title"] = "Account Security";
 
+            var userEntity = await _userService.GetUserEntityAsync(User);
+            viewModel.UserEntity = new UserEntity()
+            {
+                FirstName = userEntity.FirstName,
+                LastName = userEntity.LastName,
+                Email = userEntity.Email
+            };
+
             if (viewModel.PasswordForm.PasswordFormValue == "1")
             {
-                foreach (var property in typeof(AccountSecurityDeleteAccountModel).GetProperties())
-                {
-                    var fieldName = property.Name; // Get the field name
-                    var fullKey = $"DeleteAccountForm.{fieldName}"; // Construct the full key
-
-                    // Remove field
-                    ModelState.Remove(fullKey);
-                }
+                ModelState["DeleteAccountForm.ConfirmDelete"]!.ValidationState = ModelValidationState.Valid;
+                ModelState["DeleteAccountForm.ConfirmDelete"]!.Errors.Clear();
 
                 if (!ModelState.IsValid)
                 {
                     return View(viewModel);
                 }
 
-                return RedirectToRoute(new { controller = "Account", action = "Security" });
+                string message = await _userService.UpdateUserPasswordAsync(userEntity, viewModel.PasswordForm.CurrentPassword, viewModel.PasswordForm.NewPassword);
+
+                if (message == "Success!")
+                {
+                    ViewData["PasswordSuccessMessage"] = "Your password has been updated!";
+
+                    return View(viewModel);
+                }
+
+                ViewData["PasswordErrorMessage"] = message;
+
+                return View(viewModel);
             }
 
             else if (viewModel.DeleteAccountForm.DeleteAccountFormValue == "1")
             {
-                foreach (var property in typeof(AccountSecurityPasswordModel).GetProperties())
-                {
-                    var fieldName = property.Name; // Get the field name
-                    var fullKey = $"PasswordForm.{fieldName}"; // Construct the full key
-
-                    // Remove field
-                    ModelState.Remove(fullKey);
-                }
+                ModelState["PasswordForm.CurrentPassword"]!.ValidationState = ModelValidationState.Valid;
+                ModelState["PasswordForm.CurrentPassword"]!.Errors.Clear();
+                ModelState["PasswordForm.NewPassword"]!.ValidationState = ModelValidationState.Valid;
+                ModelState["PasswordForm.NewPassword"]!.Errors.Clear();
+                ModelState["PasswordForm.ConfirmPassword"]!.ValidationState = ModelValidationState.Valid;
+                ModelState["PasswordForm.ConfirmPassword"]!.Errors.Clear();
 
                 if (!ModelState.IsValid)
                 {
                     return View(viewModel);
                 }
 
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+                string message = await _userService.DeleteUserAsync();
+
+                if (message == "Success!")
+                {
+                    return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+                }
+
+                ViewData["DeleteAccountErrorMessage"] = message;
+
+                return View(viewModel);
             }
 
             return RedirectToRoute(new { controller = "Account", action = "Security" });

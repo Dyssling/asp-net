@@ -122,13 +122,11 @@ namespace SiliconApp.Services
                     return "Success!";
                 }
 
-                return "An error occurred while updating your password.";
-
             }
 
             catch { }
 
-            return "An error occurred while updating the password.";
+            return "An error occurred while updating your password.";
         }
 
        public async Task<string> SignInUserAsync(SignInModel model)

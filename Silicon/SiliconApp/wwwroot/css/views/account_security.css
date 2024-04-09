@@ -79,6 +79,12 @@ main .security form .double-input-container {
     display: block;
   }
 }
+main .security form .error-message {
+  color: red;
+}
+main .security form .success-message {
+  color: green;
+}
 main .security form .btn-container {
   margin-top: 8px;
 }

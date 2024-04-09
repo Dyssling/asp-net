@@ -8,6 +8,9 @@
         <input asp-for="DeleteAccountForm.ConfirmDelete" />
         <label asp-for="DeleteAccountForm.ConfirmDelete"></label>
         <span asp-validation-for="DeleteAccountForm.ConfirmDelete"></span>
+        <p class="error-message">
+            @ViewData["DeleteAccountErrorMessage"]
+        </p>
         <div class="btn-container">
             <button type="submit" class="btn">Delete</button>
         </div>
