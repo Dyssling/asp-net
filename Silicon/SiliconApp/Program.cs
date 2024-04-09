@@ -17,6 +17,7 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
 }).AddEntityFrameworkStores<DataContext>();
 
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();

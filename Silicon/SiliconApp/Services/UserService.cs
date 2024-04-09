@@ -13,12 +13,14 @@ namespace SiliconApp.Services
         private readonly UserManager<UserEntity> _userManager;
         private readonly SignInManager<UserEntity> _signInManager;
         private readonly UserRepository _userRepository;
+        private readonly AddressRepository _addressRepository;
 
-        public UserService(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, UserRepository userRepository)
+        public UserService(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, UserRepository userRepository, AddressRepository addressRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _userRepository = userRepository;
+            _addressRepository = addressRepository;
         }
 
         public async Task<string> CreateNewUserAsync(SignUpModel model)
@@ -122,11 +124,30 @@ namespace SiliconApp.Services
                     return "Success!";
                 }
 
+                return "Your current password was incorrect.";
             }
 
             catch { }
 
             return "An error occurred while updating your password.";
+        }
+
+        public async Task<string> DeleteUserAsync(UserEntity userEntity)
+        {
+            try
+            {
+                var userResult = await _userManager.DeleteAsync(userEntity);
+                var addressResult = await _addressRepository.DeleteAsync(x => x.Id == userEntity.AddressId); //När användaren tas bort så tas även addressen bort, vars id är samma som användarens AddressId
+
+                if (userResult.Succeeded && addressResult)
+                {
+                    return "Success!";
+                }
+            }
+
+            catch { }
+
+            return "An error occurred while deleting your account.";
         }
 
        public async Task<string> SignInUserAsync(SignInModel model)

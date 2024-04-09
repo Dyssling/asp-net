@@ -234,19 +234,19 @@ namespace SiliconApp.Controllers
                 ModelState["PasswordForm.CurrentPassword"]!.Errors.Clear();
                 ModelState["PasswordForm.NewPassword"]!.ValidationState = ModelValidationState.Valid;
                 ModelState["PasswordForm.NewPassword"]!.Errors.Clear();
-                ModelState["PasswordForm.ConfirmPassword"]!.ValidationState = ModelValidationState.Valid;
-                ModelState["PasswordForm.ConfirmPassword"]!.Errors.Clear();
+                ModelState["PasswordForm.ConfirmNewPassword"]!.ValidationState = ModelValidationState.Valid;
+                ModelState["PasswordForm.ConfirmNewPassword"]!.Errors.Clear();
 
                 if (!ModelState.IsValid)
                 {
                     return View(viewModel);
                 }
 
-                string message = await _userService.DeleteUserAsync();
+                string message = await _userService.DeleteUserAsync(userEntity);
 
                 if (message == "Success!")
                 {
-                    return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+                    return RedirectToRoute(new { controller = "Account", action = "SignOut" });
                 }
 
                 ViewData["DeleteAccountErrorMessage"] = message;
@@ -341,6 +341,11 @@ namespace SiliconApp.Controllers
 
         public new async Task<IActionResult> SignOut()
         {
+            if (!_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+            }
+
             bool result = await _userService.SignOutUserAsync();
 
             if (result)
