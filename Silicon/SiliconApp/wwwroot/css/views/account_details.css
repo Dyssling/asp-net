@@ -90,6 +90,10 @@ main .details form textarea {
     font-size: 14px;
   }
 }
+main .details form .error-message {
+  color: red;
+  margin-top: -5px;
+}
 main .details form .btn-container {
   margin-top: 8px;
 }

@@ -25,11 +25,9 @@ namespace SiliconApp.Repositories
                 return entityList;
 
             }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-                return null!;
-            }
+            catch { }
+
+            return null!;
         }
 
         public override async Task<UserEntity> GetOneAsync(Expression<Func<UserEntity, bool>> expression)
@@ -42,10 +40,8 @@ namespace SiliconApp.Repositories
                     return entity;
                 }
             }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+            catch { }
+
             return null!;
         }
     }

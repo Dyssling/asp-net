@@ -69,6 +69,68 @@ namespace SiliconApp.Services
 
         }
 
+        public async Task<string> UpdateUserAsync(UserEntity userEntity)
+        {
+            try
+            {
+                var user = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email); //Här får man ut en userEntity om en sådan med samma email redan finns
+
+                if (user != null && user.Id != userEntity.Id) //Om den hämtade entitetens id inte är samma som den givna entitetens id (vilket det inte kommer vara om det är två olika användare)
+                {
+                    return "A user with the same email already exists.";
+                }
+
+                var userResult = await _userManager.UpdateAsync(userEntity);
+                var userNameResult = await _userManager.SetUserNameAsync(userEntity, userEntity.Email); //Man måste även ändra användarnamnet i denna separata userManager metod
+
+                if (userResult.Succeeded && userNameResult.Succeeded)
+                {
+                    return "Success!";
+                }
+            }
+
+            catch { }
+
+            return "An error occurred while updating the user.";
+        }
+
+        public async Task<string> UpdateUserAddressInfoAsync(UserEntity userEntity)
+        {
+            try
+            {
+                var userResult = await _userManager.UpdateAsync(userEntity);
+
+                if (userResult.Succeeded)
+                {
+                    return "Success!";
+                }
+            }
+
+            catch { }
+
+            return "An error occurred while updating the user.";
+        }
+
+        public async Task<string> UpdateUserPasswordAsync(UserEntity userEntity, string currentPassword, string newPassword)
+        {
+            try
+            {
+                var passwordResult = await _userManager.ChangePasswordAsync(userEntity, currentPassword, newPassword);
+
+                if (passwordResult.Succeeded)
+                {
+                    return "Success!";
+                }
+
+                return "An error occurred while updating your password.";
+
+            }
+
+            catch { }
+
+            return "An error occurred while updating the password.";
+        }
+
        public async Task<string> SignInUserAsync(SignInModel model)
         {
             try

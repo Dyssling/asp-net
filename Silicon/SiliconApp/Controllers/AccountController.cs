@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using SiliconApp.Entities;
 using SiliconApp.Models;
 using SiliconApp.Services;
 using SiliconApp.ViewModels;
@@ -29,55 +30,136 @@ namespace SiliconApp.Controllers
 
             var userEntity = await _userService.GetUserEntityAsync(User);
 
-            return View(new AccountDetailsViewModel() { UserEntity = userEntity });
-            
+            var viewModel = new AccountDetailsViewModel() //Här populerar jag min viewModel med värdena från den inloggade användaren, alltså userEntity.
+            {
+                BasicInfoForm = new AccountDetailsBasicInfoModel()
+                {
+                    FirstName = userEntity.FirstName,
+                    LastName = userEntity.LastName,
+                    Email = userEntity.Email!,
+                    Phone = userEntity.PhoneNumber,
+                    Bio = userEntity.Bio
+                },
+
+                AddressForm = new AccountDetailsAddressModel()
+                {
+                    Address1 = userEntity.Address?.Address1,
+                    Address2 = userEntity.Address?.Address2,
+                    PostalCode = userEntity.Address?.PostalCode,
+                    City = userEntity.Address?.City
+                },
+
+                UserEntity = userEntity
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
         {
+            if (!_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Kan hända att cookien går ut samtidigt som man gör en post, så därför är det bra att även här göra en inloggnings koll
+            }
+
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
             ViewData["Title"] = "Account Details";
 
-            var userEntity = await _userService.GetUserEntityAsync(User); //Av någon anledning passeras userEntity inte vidare från föregående Details action genom viewmodellen, så jag löser det manuellt...
-            viewModel.UserEntity = userEntity;
+            var userEntity = await _userService.GetUserEntityAsync(User);
+            viewModel.UserEntity = new UserEntity() //Om jag INTE gör en NY entitet på detta viset så uppdateras informationen direkt i en och samma entitet på nåt jävla vis, och informationen i sidebaren uppdateras då även när den inte ska det, eftersom den självaste underliggande entiteten har uppdaterats antar jag???
+            {
+                FirstName = userEntity.FirstName,
+                LastName = userEntity.LastName,
+                Email = userEntity.Email
+            };
 
             if (viewModel.BasicInfoForm.BasicInfoFormValue == "1") //Om BasicInfoFormValue är lika med 1 så innebär det att basicInfoSubmit() har körts, vilket alltså innebär att det är BasicInfo formuläret som har skickats.
             {
-                foreach (var property in typeof(AccountDetailsAddressModel).GetProperties()) //Bing Copilot hjälpte mig bygga denna foreach loopen. Den tar bort varje fält i det andra formuläret från ModelState, så att bägge formulär inte valideras på samma gång. 
+                viewModel.AddressForm = new AccountDetailsAddressModel() //Värdena i det andra formuläret måste populeras igen, eftersom de inte stannar kvar i viewModel när det görs en post från detta formuläret.
                 {
-                    var fieldName = property.Name; // Get the field name
-                    var fullKey = $"AddressForm.{fieldName}"; // Construct the full key
-
-                    // Remove field
-                    ModelState.Remove(fullKey);
-                }
+                    Address1 = userEntity.Address?.Address1,
+                    Address2 = userEntity.Address?.Address2,
+                    PostalCode = userEntity.Address?.PostalCode,
+                    City = userEntity.Address?.City
+                };
 
                 if (!ModelState.IsValid)
                 {
                     return View(viewModel);
                 }
 
-                return RedirectToRoute(new { controller = "Account", action = "Details" }); 
+                userEntity.FirstName = viewModel.BasicInfoForm.FirstName;
+                userEntity.LastName = viewModel.BasicInfoForm.LastName;
+                userEntity.Email = viewModel.BasicInfoForm.Email;
+                userEntity.PhoneNumber = viewModel.BasicInfoForm.Phone;
+                userEntity.Bio = viewModel.BasicInfoForm.Bio;
+
+                string message = await _userService.UpdateUserAsync(userEntity);
+
+                if (message == "Success!")
+                {
+                    return RedirectToRoute(new { controller = "Account", action = "Details" });
+                }
+
+                ViewData["BasicInfoErrorMessage"] = message; //Om användaren inte kunde uppdateras så skrivs felmeddelandet ut på sidan.
+
+                return View(viewModel);
             }
 
             else if (viewModel.AddressForm.AddressFormValue == "1") //Om det däremot är AddressFormValue som är lika med 1, så är det Address formuläret som har skickats.
             {
-                foreach (var property in typeof(AccountDetailsBasicInfoModel).GetProperties())
+                viewModel.BasicInfoForm = new AccountDetailsBasicInfoModel()
                 {
-                    var fieldName = property.Name; // Get the field name
-                    var fullKey = $"BasicInfoForm.{fieldName}"; // Construct the full key
+                    FirstName = userEntity.FirstName,
+                    LastName = userEntity.LastName,
+                    Email = userEntity.Email!,
+                    Phone = userEntity.PhoneNumber,
+                    Bio = userEntity.Bio
+                };
 
-                    // Remove field
-                    ModelState.Remove(fullKey);
-                }
+                //Dessa ModelState rader är för att göra alla required fält till Valid i det andra formuläret, och även ta bort dess felmeddelanden från modellen (vet inte om det behövs eftersom dessa fält ändå kommer populeras)
+                ModelState["BasicInfoForm.FirstName"]!.ValidationState = ModelValidationState.Valid;
+                ModelState["BasicInfoForm.FirstName"]!.Errors.Clear();
+                ModelState["BasicInfoForm.LastName"]!.ValidationState = ModelValidationState.Valid;
+                ModelState["BasicInfoForm.LastName"]!.Errors.Clear();
+                ModelState["BasicInfoForm.Email"]!.ValidationState = ModelValidationState.Valid;
+                ModelState["BasicInfoForm.Email"]!.Errors.Clear();
 
                 if (!ModelState.IsValid)
                 {
                     return View(viewModel);
                 }
 
-                return RedirectToRoute(new { controller = "Account", action = "Details" });
+                if (userEntity.Address == null) //Om userEntity inte har någon address entitet så skapas en ny med den angivna informationen.
+                {
+                    userEntity.Address = new AddressEntity()
+                    {
+                        Address1 = viewModel.AddressForm.Address1,
+                        Address2 = viewModel.AddressForm.Address2,
+                        PostalCode = viewModel.AddressForm.PostalCode,
+                        City = viewModel.AddressForm.City
+                    };
+                }
+
+                else
+                {
+                    userEntity.Address.Address1 = viewModel.AddressForm.Address1;
+                    userEntity.Address.Address2 = viewModel.AddressForm.Address2;
+                    userEntity.Address.PostalCode = viewModel.AddressForm.PostalCode;
+                    userEntity.Address.City = viewModel.AddressForm.City;
+                }
+
+                string message = await _userService.UpdateUserAddressInfoAsync(userEntity);
+
+                if (message == "Success!")
+                {
+                    return RedirectToRoute(new { controller = "Account", action = "Details" });
+                }
+
+                ViewData["AddressErrorMessage"] = message; //Om användaren inte kunde uppdateras så skrivs felmeddelandet ut på sidan.
+
+                return View(viewModel);
             }
 
             return RedirectToRoute(new { controller = "Account", action = "Details" });
