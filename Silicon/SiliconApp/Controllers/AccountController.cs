@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SiliconApp.Entities;
 using SiliconApp.Models;
@@ -9,6 +10,7 @@ using System.Globalization;
 
 namespace SiliconApp.Controllers
 {
+    //Allting som har att göra med validering av formulären på sidor där det finns två formulär, har jag gjort mer komplicerat än det behöver vara. Hade istället kunnat använda TryValidateModel och sedan bara returnera en View där jag stoppar in en annan action, och samma viewModel.
     public class AccountController : Controller
     {
         private readonly UserService _userService;
@@ -18,17 +20,23 @@ namespace SiliconApp.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         public async Task<IActionResult> Details()
         {
-            if (!_userService.IsUserSignedIn(User))
-            {
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
-            }
+            //if (!_userService.IsUserSignedIn(User))
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
+            //}
 
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
             ViewData["Title"] = "Account Details";
 
             var userEntity = await _userService.GetUserEntityAsync(User);
+
+            //if (userEntity == null)
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignOut" }); //Om användaren skulle råka vara null (innebär antagligen att användaren tagits bort) så loggas den ut
+            //}
 
             var viewModel = new AccountDetailsViewModel() //Här populerar jag min viewModel med värdena från den inloggade användaren, alltså userEntity.
             {
@@ -56,17 +64,24 @@ namespace SiliconApp.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
         {
-            if (!_userService.IsUserSignedIn(User))
-            {
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Kan hända att cookien går ut samtidigt som man gör en post, så därför är det bra att även här göra en inloggnings koll
-            }
+            //if (!_userService.IsUserSignedIn(User))
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Kan hända att cookien går ut samtidigt som man gör en post, så därför är det bra att även här göra en inloggnings koll
+            //}
 
             ViewData["Active"] = "Details"; //För att man sedan ska kunna sätta en active klass på rätt knapp
             ViewData["Title"] = "Account Details";
 
             var userEntity = await _userService.GetUserEntityAsync(User);
+
+            //if (userEntity == null)
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            //}
+
             viewModel.UserEntity = new UserEntity() //Om jag INTE gör en NY entitet på detta viset så uppdateras informationen direkt i en och samma entitet på nåt jävla vis, och informationen i sidebaren uppdateras då även när den inte ska det, eftersom den självaste underliggande entiteten har uppdaterats antar jag???
             {
                 FirstName = userEntity.FirstName,
@@ -165,17 +180,23 @@ namespace SiliconApp.Controllers
             return RedirectToRoute(new { controller = "Account", action = "Details" });
         }
 
+        [Authorize]
         public async Task<IActionResult> Security()
         {
-            if (!_userService.IsUserSignedIn(User))
-            {
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" });
-            }
+            //if (!_userService.IsUserSignedIn(User))
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+            //}
 
             ViewData["Active"] = "Security";
             ViewData["Title"] = "Account Security";
 
             var userEntity = await _userService.GetUserEntityAsync(User);
+
+            if (userEntity == null)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            }
 
             var viewModel = new AccountSecurityViewModel()
             {
@@ -186,17 +207,24 @@ namespace SiliconApp.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Security(AccountSecurityViewModel viewModel)
         {
-            if (!_userService.IsUserSignedIn(User))
-            {
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Kan hända att cookien går ut samtidigt som man gör en post, så därför är det bra att även här göra en inloggnings koll
-            }
+            //if (!_userService.IsUserSignedIn(User))
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Kan hända att cookien går ut samtidigt som man gör en post, så därför är det bra att även här göra en inloggnings koll
+            //}
 
             ViewData["Active"] = "Security";
             ViewData["Title"] = "Account Security";
 
             var userEntity = await _userService.GetUserEntityAsync(User);
+
+            if (userEntity == null)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            }
+
             viewModel.UserEntity = new UserEntity()
             {
                 FirstName = userEntity.FirstName,
@@ -257,17 +285,23 @@ namespace SiliconApp.Controllers
             return RedirectToRoute(new { controller = "Account", action = "Security" });
         }
 
+        [Authorize]
         public async Task<IActionResult> SavedCourses()
         {
-            if (!_userService.IsUserSignedIn(User))
-            {
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
-            }
+            //if (!_userService.IsUserSignedIn(User))
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
+            //}
 
             ViewData["Active"] = "SavedCourses";
             ViewData["Title"] = "Saved Courses";
 
             var userEntity = await _userService.GetUserEntityAsync(User);
+
+            if (userEntity == null)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            }
 
             var viewModel = new AccountSavedCoursesViewModel()
             {
@@ -346,12 +380,13 @@ namespace SiliconApp.Controllers
             
         }
 
+        [Authorize]
         public new async Task<IActionResult> SignOut()
         {
-            if (!_userService.IsUserSignedIn(User))
-            {
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" });
-            }
+            //if (!_userService.IsUserSignedIn(User))
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+            //}
 
             bool result = await _userService.SignOutUserAsync();
 

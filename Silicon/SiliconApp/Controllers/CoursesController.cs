@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SiliconApp.Services;
 
 namespace SiliconApp.Controllers
@@ -12,14 +13,22 @@ namespace SiliconApp.Controllers
             _userService = userService;
         }
 
-        public IActionResult Index()
+        [Authorize]
+        public async Task<IActionResult> Index()
         {
-            if (!_userService.IsUserSignedIn(User))
-            {
-                return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
-            }
+            //if (!_userService.IsUserSignedIn(User))
+            //{
+            //    return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
+            //}
 
             ViewData["Title"] = "Courses";
+
+            var userEntity = await _userService.GetUserEntityAsync(User);
+
+            if (userEntity == null)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            }
 
             return View();
         }
