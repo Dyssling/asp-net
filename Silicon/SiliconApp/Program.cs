@@ -32,6 +32,24 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserService>();
 
+string appId = "";
+string appSecret = "";
+string clientId = "";
+string clientSecret = "";
+
+builder.Services.AddAuthentication()
+
+    .AddFacebook(x =>
+    {
+        x.AppId = appId;
+        x.AppSecret = appSecret;
+    })
+    .AddGoogle(x =>
+    {
+        x.ClientId = clientId;
+        x.ClientSecret = clientSecret;
+    });
+
 var app = builder.Build();
 
 app.UseHsts();
