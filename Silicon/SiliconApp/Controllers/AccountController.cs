@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SiliconApp.Entities;
@@ -14,10 +15,12 @@ namespace SiliconApp.Controllers
     public class AccountController : Controller
     {
         private readonly UserService _userService;
+        private readonly SignInManager<UserEntity> _signInManager;
 
-        public AccountController(UserService userService)
+        public AccountController(UserService userService, SignInManager<UserEntity> signInManager)
         {
             _userService = userService;
+            _signInManager = signInManager;
         }
 
         [Authorize]
@@ -396,6 +399,41 @@ namespace SiliconApp.Controllers
             }
 
             return RedirectToRoute(new { controller = "Account", action = "Details" });
+        }
+
+        public IActionResult Facebook()
+        {
+            if (_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "Details" });
+            }
+
+            var props = _userService.ExternalAuthProps("Facebook"); //Konfigurerar external authentication properties, och lagrar dem i props variabeln
+            return new ChallengeResult("Facebook", props); //Sedan utförs en challenge, som alltså kommer använda sig av de konfigurerade propsen och dirigera dig till Facebook, och sedan tillbaka till den inställda redirect URLen, i detta fallet FacebookCallback
+        }
+
+        public async Task<IActionResult> FacebookCallback()
+        {
+            if (_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "Details" });
+            }
+
+            var info = await _signInManager.GetExternalLoginInfoAsync(); //Hämta information från den externa autentiseringen
+
+            string message = await _userService.SignInExternalUserAsync(info!); //Logga in den externa användaren i vårt system (eventuellt skapas även användaren i systemet först)
+
+            if (message == "Success!")
+            {
+                if (User != null) //En extra check på om man har blivit inloggad
+                {
+                    return RedirectToRoute(new { controller = "Account", action = "Details" });
+                }
+            }
+
+            ViewData["ErrorMessage"] = message; //Om något gick snett så får man ut meddelandet på SignIn sidan sedan (eftersom man redirectas dit)
+
+            return RedirectToRoute(new { controller = "Account", action = "SignIn" });
         }
     }
 }

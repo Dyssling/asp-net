@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SiliconApp.Entities;
 using SiliconApp.Models;
 using SiliconApp.Repositories;
 using SiliconApp.ViewModels;
+using System.Diagnostics;
 using System.Security.Claims;
 
 namespace SiliconApp.Services
@@ -154,7 +156,7 @@ namespace SiliconApp.Services
         {
             try
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false); //Här försöker man logga in användaren med den angivna användarinformationen.
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, false); //Här försöker man logga in användaren med den angivna användarinformationen.
 
                 if (result.Succeeded) //Om man lyckades får man ett success meddelande
                 {
@@ -190,6 +192,85 @@ namespace SiliconApp.Services
 
             catch { }
             return false;
+        }
+
+        public AuthenticationProperties ExternalAuthProps(string provider)
+        {
+            try
+            {
+                return _signInManager.ConfigureExternalAuthenticationProperties(provider, $"/account/{provider}callback");
+            }
+
+            catch { }
+
+            return null!;
+        }
+
+        public async Task<string> SignInExternalUserAsync(ExternalLoginInfo info)
+        {
+            try
+            {
+                if (info != null)
+                {
+                    var userEntity = new UserEntity()
+                    {
+                        Id = info.Principal.FindFirstValue(ClaimTypes.NameIdentifier)!,
+                        FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
+                        LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                        UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!
+                    };
+
+                    var user = await _userRepository.GetOneAsync(x => x.Id == userEntity.Id);
+
+                    if (user == null)
+                    {
+                        var userWithSameEmail = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email);
+
+                        if (userWithSameEmail != null)
+                        {
+                            return "A user with the same email already exists.";
+                        }
+
+                        var result = await _userManager.CreateAsync(userEntity);
+
+                        if (result.Succeeded)
+                        {
+                            user = await _userRepository.GetOneAsync(x => x.Id == userEntity.Id);
+                        }
+                    }
+
+                    if (user != null)
+                    {
+                        if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
+                        {
+                            var userWithSameEmail = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email);
+
+                            if (userWithSameEmail != null)
+                            {
+                                return "A user with the new email already exists.";
+                            }
+
+                            user.FirstName = userEntity.FirstName;
+                            user.LastName = userEntity.LastName;
+                            user.Email = userEntity.Email;
+
+                            await _userManager.UpdateAsync(user);
+                        }
+
+                        await _signInManager.SignInAsync(user, true);
+
+                        return "Success!";
+                    }
+                }
+            }
+
+            catch (Exception error)
+            {
+                Debug.WriteLine(error);
+            }
+
+            return "Failed to authenticate user.";
         }
     }
 }

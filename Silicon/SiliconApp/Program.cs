@@ -5,6 +5,7 @@ using SiliconApp.Entities;
 using SiliconApp.Repositories;
 using SiliconApp.Services;
 using SiliconApp.Helpers.Middlewares;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
