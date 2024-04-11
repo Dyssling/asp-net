@@ -33,10 +33,10 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserService>();
 
-string appId = "";
-string appSecret = "";
-string clientId = "";
-string clientSecret = "";
+string appId = "";          //Facebook App Id
+string appSecret = "";      //Facebook App secret
+string clientId = "";       //Google App Id
+string clientSecret = "";   //Google App secret
 
 builder.Services.AddAuthentication()
 

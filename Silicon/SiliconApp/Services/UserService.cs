@@ -245,8 +245,9 @@ namespace SiliconApp.Services
                         if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
                         {
                             var userWithSameEmail = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email);
+                            
 
-                            if (userWithSameEmail != null)
+                            if (userWithSameEmail != null && userWithSameEmail.Id != userEntity.Id) //Om det finns en användare med samma email MEN ett annat Id, så innebär det att det finns en ANNAN användare med samma email i databasen
                             {
                                 return "A user with the new email already exists.";
                             }
