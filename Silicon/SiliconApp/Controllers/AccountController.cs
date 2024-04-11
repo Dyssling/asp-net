@@ -256,11 +256,17 @@ namespace SiliconApp.Controllers
             {
                 FirstName = userEntity.FirstName,
                 LastName = userEntity.LastName,
-                Email = userEntity.Email
+                Email = userEntity.Email,
+                IsExternal = userEntity.IsExternal
             };
 
             if (viewModel.PasswordForm.PasswordFormValue == "1")
             {
+                if (userEntity.IsExternal) //Om användaren är extern så ska man bara omdirigeras tillbaka till den vanliga Security kontrollern
+                {
+                    return RedirectToRoute(new { controller = "Account", action = "Security" });
+                }
+
                 ModelState["DeleteAccountForm.ConfirmDelete"]!.ValidationState = ModelValidationState.Valid;
                 ModelState["DeleteAccountForm.ConfirmDelete"]!.Errors.Clear();
 
@@ -456,6 +462,41 @@ namespace SiliconApp.Controllers
             }
 
             TempData["TempErrorMessage"] = message; //Om något gick snett så får man ut meddelandet på SignIn sidan som man redirectas till (eftersom man redirectas dit)
+
+            return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+        }
+
+        public IActionResult Google()
+        {
+            if (_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "Details" });
+            }
+
+            var props = _userService.ExternalAuthProps("Google");
+            return new ChallengeResult("Google", props);
+        }
+
+        public async Task<IActionResult> GoogleCallback()
+        {
+            if (_userService.IsUserSignedIn(User))
+            {
+                return RedirectToRoute(new { controller = "Account", action = "Details" });
+            }
+
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            string message = await _userService.SignInExternalUserAsync(info!);
+
+            if (message == "Success!")
+            {
+                if (User != null)
+                {
+                    return RedirectToRoute(new { controller = "Account", action = "Details" });
+                }
+            }
+
+            TempData["TempErrorMessage"] = message;
 
             return RedirectToRoute(new { controller = "Account", action = "SignIn" });
         }

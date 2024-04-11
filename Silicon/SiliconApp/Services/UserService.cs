@@ -216,11 +216,13 @@ namespace SiliconApp.Services
                     {
                         Id = info.Principal.FindFirstValue(ClaimTypes.NameIdentifier)!,
                         FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
-                        LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
+                        LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)! ?? "", //Om last name skulle vara null så blir det en tom string istället så att den ändå kan läggas in i databasen i detta fallet
                         Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
                         UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
                         IsExternal = true
                     };
+
+
 
                     var user = await _userRepository.GetOneAsync(x => x.Id == userEntity.Id);
 
