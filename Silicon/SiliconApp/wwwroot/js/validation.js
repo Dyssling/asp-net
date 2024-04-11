@@ -200,7 +200,7 @@ let inputs = document.querySelectorAll("input");
 
 inputs.forEach(input => {
 
-    if (input.dataset.val === "true") {
+    if (input.dataset.val === "true" && !input.disabled) {
 
         if (document.querySelector(`[data-valmsg-for="${input.name}"]`).innerHTML.length == 0) {
             input.addEventListener("blur", e => initialValidateInput(e));

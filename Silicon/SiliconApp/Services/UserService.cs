@@ -218,7 +218,8 @@ namespace SiliconApp.Services
                         FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
                         LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
                         Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
-                        UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!
+                        UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                        IsExternal = true
                     };
 
                     var user = await _userRepository.GetOneAsync(x => x.Id == userEntity.Id);
@@ -242,10 +243,9 @@ namespace SiliconApp.Services
 
                     if (user != null)
                     {
-                        if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
+                        if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email || !user.IsExternal)
                         {
                             var userWithSameEmail = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email);
-                            
 
                             if (userWithSameEmail != null && userWithSameEmail.Id != userEntity.Id) //Om det finns en användare med samma email MEN ett annat Id, så innebär det att det finns en ANNAN användare med samma email i databasen
                             {
@@ -255,6 +255,7 @@ namespace SiliconApp.Services
                             user.FirstName = userEntity.FirstName;
                             user.LastName = userEntity.LastName;
                             user.Email = userEntity.Email;
+                            user.IsExternal = true;
 
                             await _userManager.UpdateAsync(user);
                         }

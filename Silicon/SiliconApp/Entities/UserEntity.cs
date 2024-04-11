@@ -15,5 +15,7 @@ namespace SiliconApp.Entities
 
         public int? AddressId { get; set; }
         public AddressEntity? Address { get; set; }
+
+        public bool IsExternal { get; set; } = false;
     }
 }

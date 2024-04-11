@@ -89,7 +89,8 @@ namespace SiliconApp.Controllers
             {
                 FirstName = userEntity.FirstName,
                 LastName = userEntity.LastName,
-                Email = userEntity.Email
+                Email = userEntity.Email,
+                IsExternal = userEntity.IsExternal
             };
 
             if (viewModel.BasicInfoForm.BasicInfoFormValue == "1") //Om BasicInfoFormValue är lika med 1 så innebär det att basicInfoSubmit() har körts, vilket alltså innebär att det är BasicInfo formuläret som har skickats.
@@ -102,16 +103,39 @@ namespace SiliconApp.Controllers
                     City = userEntity.Address?.City
                 };
 
+                if (userEntity.IsExternal) //Om det är en extern användare så måste dessa fält populeras igen, eftersom de inte postas då de är disabled. De sätts även som valid i ModelState
+                {
+                    viewModel.BasicInfoForm.FirstName = userEntity.FirstName;
+                    viewModel.BasicInfoForm.LastName = userEntity.LastName;
+                    viewModel.BasicInfoForm.Email = userEntity.Email!;
+
+                    ModelState["BasicInfoForm.FirstName"]!.ValidationState = ModelValidationState.Valid;
+                    ModelState["BasicInfoForm.FirstName"]!.Errors.Clear();
+                    ModelState["BasicInfoForm.LastName"]!.ValidationState = ModelValidationState.Valid;
+                    ModelState["BasicInfoForm.LastName"]!.Errors.Clear();
+                    ModelState["BasicInfoForm.Email"]!.ValidationState = ModelValidationState.Valid;
+                    ModelState["BasicInfoForm.Email"]!.Errors.Clear();
+                }
+
                 if (!ModelState.IsValid)
                 {
                     return View(viewModel);
                 }
 
-                userEntity.FirstName = viewModel.BasicInfoForm.FirstName;
-                userEntity.LastName = viewModel.BasicInfoForm.LastName;
-                userEntity.Email = viewModel.BasicInfoForm.Email;
-                userEntity.PhoneNumber = viewModel.BasicInfoForm.Phone;
-                userEntity.Bio = viewModel.BasicInfoForm.Bio;
+                if (userEntity.IsExternal) //Om det är en extern användare så ska bara dessa fält ändras (ifall man kör inspect element och tar bort disabled propertyn eller liknande)
+                {
+                    userEntity.PhoneNumber = viewModel.BasicInfoForm.Phone;
+                    userEntity.Bio = viewModel.BasicInfoForm.Bio;
+                }
+
+                else //Annars ska alla fält ändras
+                {
+                    userEntity.FirstName = viewModel.BasicInfoForm.FirstName;
+                    userEntity.LastName = viewModel.BasicInfoForm.LastName;
+                    userEntity.Email = viewModel.BasicInfoForm.Email;
+                    userEntity.PhoneNumber = viewModel.BasicInfoForm.Phone;
+                    userEntity.Bio = viewModel.BasicInfoForm.Bio;
+                }
 
                 string message = await _userService.UpdateUserAsync(userEntity);
 

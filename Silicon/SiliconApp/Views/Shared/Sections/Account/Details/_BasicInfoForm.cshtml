@@ -7,19 +7,43 @@
         <div class="double-input-container">
             <div>
                 <label asp-for="BasicInfoForm.FirstName"></label>
-                <input asp-for="BasicInfoForm.FirstName" class="text-input" />
+                @if (Model.UserEntity!.IsExternal)
+                {
+                    <input asp-for="BasicInfoForm.FirstName" class="text-input" disabled />
+                }
+
+                else
+                {
+                    <input asp-for="BasicInfoForm.FirstName" class="text-input" />
+                }
                 <span asp-validation-for="BasicInfoForm.FirstName"></span>
             </div>
             <div>
                 <label asp-for="BasicInfoForm.LastName"></label>
-                <input asp-for="BasicInfoForm.LastName" class="text-input" />
+                @if (Model.UserEntity!.IsExternal)
+                {
+                    <input asp-for="BasicInfoForm.LastName" class="text-input" disabled />
+                }
+
+                else
+                {
+                    <input asp-for="BasicInfoForm.LastName" class="text-input" />
+                }
                 <span asp-validation-for="BasicInfoForm.LastName"></span>
             </div>
         </div>
         <div class="double-input-container">
             <div>
                 <label asp-for="BasicInfoForm.Email"></label>
-                <input asp-for="BasicInfoForm.Email" class="text-input" />
+                @if (Model.UserEntity!.IsExternal)
+                {
+                    <input asp-for="BasicInfoForm.Email" class="text-input" disabled />
+                }
+
+                else
+                {
+                    <input asp-for="BasicInfoForm.Email" class="text-input" />
+                }
                 <span asp-validation-for="BasicInfoForm.Email"></span>
             </div>
             <div>
