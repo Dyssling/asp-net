@@ -212,7 +212,7 @@ namespace SiliconApp.Services
             {
                 if (info != null)
                 {
-                    var userEntity = new UserEntity()
+                    var userEntity = new UserEntity() //Skapa en ny entitet utav den externa informationen
                     {
                         Id = info.Principal.FindFirstValue(ClaimTypes.NameIdentifier)!,
                         FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
@@ -224,45 +224,47 @@ namespace SiliconApp.Services
 
 
 
-                    var user = await _userRepository.GetOneAsync(x => x.Id == userEntity.Id);
+                    var user = await _userRepository.GetOneAsync(x => x.Id == userEntity.Id); //Hämta en eventuell användare med samma Id (för att sedan kolla om användaren finns i databasen)
 
-                    if (user == null)
+                    if (user == null) //Om användaren inte finns i databasen
                     {
-                        var userWithSameEmail = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email);
+                        var userWithSameEmail = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email); //Hämta en eventuell användare med samma email
 
-                        if (userWithSameEmail != null)
+                        if (userWithSameEmail != null) //Om det redan finns en användare med samma email i databasen så får man ett felmeddelande
                         {
                             return "A user with the same email already exists.";
                         }
 
-                        var result = await _userManager.CreateAsync(userEntity);
+                        var result = await _userManager.CreateAsync(userEntity); //Annars skapas användaren i databasen
 
                         if (result.Succeeded)
                         {
-                            user = await _userRepository.GetOneAsync(x => x.Id == userEntity.Id);
+                            user = await _userRepository.GetOneAsync(x => x.Id == userEntity.Id); //Hämta upp den nya användaren för att sedan utföra lite saker
                         }
+
                     }
 
-                    if (user != null)
+                    if (user != null) //En extra check för att se om användaren finns vid detta laget
                     {
-                        if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email || !user.IsExternal)
+                        if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email || !user.IsExternal) //Om någon av denna information har ändrats externt
                         {
-                            var userWithSameEmail = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email);
+                            var userWithSameEmail = await _userRepository.GetOneAsync(x => x.Email == userEntity.Email); //Hämta återigen en eventuell användare med samma email
 
                             if (userWithSameEmail != null && userWithSameEmail.Id != userEntity.Id) //Om det finns en användare med samma email MEN ett annat Id, så innebär det att det finns en ANNAN användare med samma email i databasen
                             {
                                 return "A user with the new email already exists.";
                             }
 
-                            user.FirstName = userEntity.FirstName;
+                            user.FirstName = userEntity.FirstName; //Annars uppdateras informationen
                             user.LastName = userEntity.LastName;
                             user.Email = userEntity.Email;
+                            user.UserName = userEntity.Email;
                             user.IsExternal = true;
 
                             await _userManager.UpdateAsync(user);
                         }
 
-                        await _signInManager.SignInAsync(user, true);
+                        await _signInManager.SignInAsync(user, true); //Logga slutligen in användaren
 
                         return "Success!";
                     }

@@ -67,6 +67,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.UseStatusCodePagesWithRedirects("/Error/{0}"); //När det sker en error med en statuskod så dirigeras man till denna URL:en. Man kommer då hamna i ErrorController
+app.UseStatusCodePagesWithRedirects("/error/{0}"); //När det sker en error med en statuskod så dirigeras man till denna URL:en. Man kommer då hamna i ErrorController
 
 app.Run();
