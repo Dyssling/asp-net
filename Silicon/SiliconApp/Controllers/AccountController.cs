@@ -431,7 +431,7 @@ namespace SiliconApp.Controllers
                 }
             }
 
-            ViewData["ErrorMessage"] = message; //Om något gick snett så får man ut meddelandet på SignIn sidan sedan (eftersom man redirectas dit)
+            TempData["TempErrorMessage"] = message; //Om något gick snett så får man ut meddelandet på SignIn sidan som man redirectas till (eftersom man redirectas dit)
 
             return RedirectToRoute(new { controller = "Account", action = "SignIn" });
         }
