@@ -2,6 +2,10 @@
     <link rel="stylesheet" href="~/css/views/home.min.css" asp-append-version="true" />
 }
 
+@section Script {
+    <script src="~/js/validation.js" asp-append-version="true"></script>
+}
+
 @await Html.PartialAsync("~/Views/Shared/Sections/Home/_Showcase.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Sections/Home/_OurTool.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Sections/Home/_LightDark.cshtml")

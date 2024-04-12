@@ -1,0 +1,14 @@
+﻿@model AccountDetailsViewModel
+
+<section class="sidebar">
+    <div class="image-container">
+        <a href=""><i class="fa-solid fa-rotate-reverse"></i></a>
+        <img src="~/images/profile-pic.png" alt="Profile pic">
+    </div>
+    <h3>@Model.UserEntity?.FirstName @Model.UserEntity?.LastName</h3>
+    <p>@Model.UserEntity?.Email</p>
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "Details" ? " active" : "")" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-gear"></i>Account Details</a> @* Conditional rendering för att sätta en active klass på rätt knapp *@
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "Security" ? " active" : "")" asp-controller="Account" asp-action="Security"><i class="fa-regular fa-lock"></i>Security</a>
+    <a class="sidebar-btn@(ViewData["Active"]?.ToString() == "SavedCourses" ? " active" : "")" asp-controller="Account" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+    <a class="sidebar-btn" asp-controller="Account" asp-action="SignOut"><i class="fa-regular fa-arrow-left-from-line"></i>Sign Out</a>
+</section>

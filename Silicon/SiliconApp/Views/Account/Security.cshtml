@@ -3,5 +3,14 @@
     <link rel="stylesheet" href="~/css/components/account_sidebar.min.css" asp-append-version="true" />
 }
 
-@await Html.PartialAsync("~/Views/Shared/Components/_AccountSidebar.cshtml")
-@await Html.PartialAsync("~/Views/Shared/Sections/Account/Security/_Security.cshtml")
+@section Script {
+    <script src="~/js/validation.js" asp-append-version="true"></script>
+}
+
+@await Html.PartialAsync("~/Views/Shared/Components/_AccountSecuritySidebar.cshtml")
+
+<section class="security">
+    <h1>Security</h1>
+    @await Html.PartialAsync("~/Views/Shared/Sections/Account/Security/_PasswordForm.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/Sections/Account/Security/_DeleteAccountForm.cshtml")
+</section>

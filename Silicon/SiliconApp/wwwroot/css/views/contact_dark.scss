@@ -1,0 +1,266 @@
+header {
+    background-color: #0B0F19;
+}
+
+.contact {
+    background-color: #0B0F19;
+
+    .contact-container {
+        width: 1300px;
+        margin: auto;
+        padding: 25px 0 85px 0;
+
+        @media(max-width: 1400px) {
+            width: 85%;
+        }
+
+        @media(max-width: 768px) {
+            width: 95%;
+        }
+
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+            @media(max-width: 1400px) {
+                margin-left: 11px;
+            }
+
+            i {
+                color: #D4D7E5;
+                margin-right: 8px;
+            }
+
+            .fa-chevrons-right {
+                font-size: 10px;
+                margin: 0 14px;
+            }
+
+            a {
+                color: #D4D7E5;
+                font-size: 14px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            p {
+                display: inline-block;
+                color: #6366F1;
+                font-size: 14px;
+            }
+        }
+
+        .contact-us {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            @media(max-width: 992px) {
+                display: block;
+            }
+
+            .contact-us-container {
+                h1 {
+                    font-size: 40px;
+                    margin: 0 0 55px 0;
+
+                    @media(max-width: 768px) {
+                        text-align: center;
+                    }
+                }
+
+                .info {
+                    display: flex;
+                    justify-content: center;
+                    width: 60%;
+                    margin-bottom: 44px;
+
+                    @media(max-width: 1400px) {
+                        width: 70%;
+                    }
+
+                    @media(max-width: 768px) {
+                        margin: 0 auto 44px auto;
+                        width: 95%;
+                    }
+
+                    .fa-envelope, .fa-user-plus {
+                        color: #6366F1;
+                        font-size: 22px;
+                        min-width: 60px;
+                        height: 60px;
+                        background-color: #0B0F19;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                        margin-right: 20px;
+                    }
+
+                    div {
+                        h4 {
+                            font-size: 24px;
+                            margin: 0;
+                        }
+
+                        p {
+                            color: #E2E5F1;
+                            margin: 12px 0 26px 0;
+                        }
+
+                        a {
+                            color: #6366F1;
+
+                            i {
+                                margin-left: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .contact-form {
+                position: relative;
+
+                .contact-form-container {
+                    background-color: #0B0F19;
+                    position: absolute;
+                    left: 0;
+                    z-index: 100;
+                    padding: 70px 70px 55px 70px;
+                    width: 100%;
+                    box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.05);
+                    -webkit-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.05);
+                    -moz-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.05);
+
+                    @media(max-width: 1400px) {
+                        padding: 70px 30px 55px 30px;
+                    }
+
+                    @media(max-width: 992px) {
+                        position: relative;
+                        margin-top: 70px;
+                        padding: 70px 70px 55px 70px;
+                    }
+
+                    @media(max-width: 768px) {
+                        padding: 70px 20px 55px 20px;
+                    }
+
+                    h2 {
+                        font-size: 32px;
+                        margin-top: 0;
+
+                        @media(max-width: 768px) {
+                            text-align: center;
+                        }
+                    }
+
+                    form {
+                        label {
+                            font-weight: 700;
+                            display: block;
+                            margin-bottom: 8px;
+
+                            span {
+                                color: #D4D7E5;
+                            }
+                        }
+
+                        .text-input {
+                            width: 100%;
+                            padding: 12px 18px;
+                            border: none;
+                            outline: 1px solid #9397AD;
+                            border-radius: 6px;
+                            margin-bottom: 22px;
+                            font-size: 16px;
+                            font-weight: 400;
+                            font-family: 'Manrope', sans-serif;
+
+                            @media(max-width: 768px) {
+                                font-size: 14px;
+                                padding: 12px 14px;
+                            }
+                        }
+
+                        select {
+                            padding: 12px 15px;
+                            border: none;
+                            border-right: 12px solid transparent; //Detta ger lite utrymme mellan pilen och kanten
+                            width: 100%;
+                            outline: 1px solid #9397AD;
+                            border-radius: 6px;
+                            margin-bottom: 22px;
+                            font-size: 16px;
+                            font-weight: 400;
+                            font-family: 'Manrope', sans-serif;
+
+                            @media(max-width: 768px) {
+                                border-right: 6px solid transparent;
+                                font-size: 14px;
+                                padding: 12px 14px;
+                            }
+                        }
+
+                        textarea {
+                            resize: none;
+                            font-family: 'Manrope', sans-serif;
+                            font-size: 16px;
+                            height: 200px;
+
+                            @media(max-width: 768px) {
+                                font-size: 14px;
+                            }
+                        }
+
+                        .field-validation-error {
+                            color: red;
+                            margin: -10px 0 24px 0;
+                            display: block;
+                        }
+
+                        .btn {
+                            border: none;
+                            border-radius: 6px;
+                            cursor: pointer;
+                            padding: 12px 24px;
+
+                            @media(max-width: 768px) {
+                                display: block;
+                                margin: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.map {
+    width: 100%;
+    overflow: hidden;
+
+    .map-container {
+        display: inline-block; //Ett trick som gor att bilden centreras och beskars. Likadant i img taggen
+        position: relative;
+        right: -50%;
+    }
+
+    img {
+        width: 1920px;
+        position: relative;
+        left: -50%;
+
+        @media(max-width: 1400px) {
+            width: 1400px;
+        }
+
+        @media(max-width: 768px) {
+            width: 1200px;
+        }
+    }
+}

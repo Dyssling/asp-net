@@ -159,7 +159,7 @@
 .contact .contact-container .contact-us .contact-form .contact-form-container form label span {
   color: #9397AD;
 }
-.contact .contact-container .contact-us .contact-form .contact-form-container form input, .contact .contact-container .contact-us .contact-form .contact-form-container form select, .contact .contact-container .contact-us .contact-form .contact-form-container form textarea {
+.contact .contact-container .contact-us .contact-form .contact-form-container form .text-input {
   width: 100%;
   padding: 12px 18px;
   border: none;
@@ -171,18 +171,28 @@
   font-family: "Manrope", sans-serif;
 }
 @media (max-width: 768px) {
-  .contact .contact-container .contact-us .contact-form .contact-form-container form input, .contact .contact-container .contact-us .contact-form .contact-form-container form select, .contact .contact-container .contact-us .contact-form .contact-form-container form textarea {
+  .contact .contact-container .contact-us .contact-form .contact-form-container form .text-input {
     font-size: 14px;
     padding: 12px 14px;
   }
 }
 .contact .contact-container .contact-us .contact-form .contact-form-container form select {
   padding: 12px 15px;
+  border: none;
   border-right: 12px solid transparent;
+  width: 100%;
+  outline: 1px solid #D4D7E5;
+  border-radius: 6px;
+  margin-bottom: 22px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Manrope", sans-serif;
 }
 @media (max-width: 768px) {
   .contact .contact-container .contact-us .contact-form .contact-form-container form select {
     border-right: 6px solid transparent;
+    font-size: 14px;
+    padding: 12px 14px;
   }
 }
 .contact .contact-container .contact-us .contact-form .contact-form-container form textarea {
@@ -195,6 +205,11 @@
   .contact .contact-container .contact-us .contact-form .contact-form-container form textarea {
     font-size: 14px;
   }
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form .field-validation-error {
+  color: red;
+  margin: -10px 0 24px 0;
+  display: block;
 }
 .contact .contact-container .contact-us .contact-form .contact-form-container form .btn {
   border: none;

@@ -1,0 +1,77 @@
+﻿.sidebar {
+  border-right: 1px solid #565973;
+  height: 100%;
+  text-align: center;
+  padding: 35px 12px;
+}
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    border: none;
+  }
+}
+.sidebar .image-container {
+  position: relative;
+  display: inline-block;
+}
+.sidebar .image-container img {
+  width: 120px;
+  border-radius: 50%;
+}
+.sidebar .image-container a {
+  width: 36px;
+  height: 36px;
+  background-color: #0B0F19;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
+  transition: ease-in-out 30ms;
+  color: black;
+}
+.sidebar .image-container a:hover {
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+.sidebar h3 {
+  font-size: 20px;
+  margin: 10px 0 6px 0;
+}
+.sidebar p {
+  margin: 0 0 30px 0;
+  color: #E2E5F1;
+}
+.sidebar .sidebar-btn {
+  display: block;
+  text-align: left;
+  padding: 14px 24px;
+  border-radius: 8px;
+  transition: ease-in-out 80ms;
+  color: white;
+}
+.sidebar .sidebar-btn i {
+  margin-right: 12px;
+  color: #D4D7E5;
+}
+.sidebar .sidebar-btn:hover {
+  background-color: #6366F1;
+  color: white;
+}
+.sidebar .sidebar-btn:hover i {
+  color: white;
+}
+.sidebar .active {
+  background-color: #6366F1;
+  color: white;
+}
+.sidebar .active i {
+  color: white;
+}

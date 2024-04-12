@@ -50,5 +50,53 @@
   {
     "outputFile": "wwwroot/css/views/single_course.css",
     "inputFile": "wwwroot/css/views/single_course.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/components/account_sidebar_dark.css",
+    "inputFile": "wwwroot/css/components/account_sidebar_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/account_details_dark.css",
+    "inputFile": "wwwroot/css/views/account_details_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/account_security_dark.css",
+    "inputFile": "wwwroot/css/views/account_security_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/contact_dark.css",
+    "inputFile": "wwwroot/css/views/contact_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/courses_dark.css",
+    "inputFile": "wwwroot/css/views/courses_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/home_dark.css",
+    "inputFile": "wwwroot/css/views/home_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/not_found_dark.css",
+    "inputFile": "wwwroot/css/views/not_found_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/saved_courses_dark.css",
+    "inputFile": "wwwroot/css/views/saved_courses_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/sign_in_dark.css",
+    "inputFile": "wwwroot/css/views/sign_in_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/sign_up_dark.css",
+    "inputFile": "wwwroot/css/views/sign_up_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/views/single_course_dark.css",
+    "inputFile": "wwwroot/css/views/single_course_dark.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/main_dark.css",
+    "inputFile": "wwwroot/css/main_dark.scss"
   }
 ]

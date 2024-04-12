@@ -42,6 +42,10 @@ main {
             margin: 0 0 18px 0;
         }
 
+        .external-user {
+            color: #565973;
+        }
+
         form {
             label {
                 font-weight: 700;
@@ -53,7 +57,7 @@ main {
                 }
             }
 
-            #current-pass, #new-pass, #confirm-pass {
+            .text-input {
                 width: 100%;
                 padding: 12px 18px;
                 border: none;
@@ -66,6 +70,12 @@ main {
                 }
             }
 
+            .field-validation-error {
+                color: red;
+                margin: -10px 0 24px 0;
+                display: block;
+            }
+
             .double-input-container {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -74,6 +84,14 @@ main {
                 @media(max-width: 1200px) {
                     display: block;
                 }
+            }
+
+            .error-message {
+                color: red;
+            }
+
+            .success-message {
+                color: green;
             }
 
             .btn-container {
@@ -106,6 +124,10 @@ main {
             }
 
             form {
+                .error-message {
+                    color: red;
+                }
+
                 .btn-container {
                     margin-top: 28px;
 
@@ -118,6 +140,12 @@ main {
                     display: inline;
                     font-weight: 400;
                     color: #565973;
+                }
+
+                .field-validation-error {
+                    color: red;
+                    margin: 10px 0 34px 0;
+                    display: block;
                 }
             }
         }

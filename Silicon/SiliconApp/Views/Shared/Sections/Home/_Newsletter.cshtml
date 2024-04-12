@@ -1,42 +1,45 @@
-﻿<section class="newsletter">
-    <div class="newsletter-container">
+﻿@model HomeViewModel
+
+<section id="newsletter" class="newsletter">
+    <form class="newsletter-container" method="post" asp-controller="Home" asp-action="Index" asp-fragment="newsletter" novalidate>
         <h2>Don't Want to Miss Anything? <img src="~/images/squiggle.svg" alt="Squiggle"></h2>
         <div class="sign-up">
             <h3>Sign up for Newsletters</h3>
             <div class="sign-up-grid">
                 <div>
-                    <input type="checkbox" id="daily-newsletter" />
-                    <label for="daily-newsletter"> Daily Newsletter</label>
+                    <input asp-for="Form.DailyNewsletter" data-val="" data-val-required="" />
+                    <label asp-for="Form.DailyNewsletter"></label>
                 </div>
                 <div>
-                    <input type="checkbox" id="event-updates" />
-                    <label for="event-updates"> Event Updates</label>
+                    <input asp-for="Form.AdvertisingUpdates" data-val="" data-val-required="" />
+                    <label asp-for="Form.AdvertisingUpdates"></label>
                 </div>
                 <div>
-                    <input type="checkbox" id="advertising-updates" />
-                    <label for="advertising-updates"> Advertising Updates</label>
+                    <input asp-for="Form.WeekInReview" data-val="" data-val-required="" />
+                    <label asp-for="Form.WeekInReview"></label>
                 </div>
                 <div>
-                    <input type="checkbox" id="startups-weekly" />
-                    <label for="startups-weekly"> Startups Weekly</label>
+                    <input asp-for="Form.EventUpdates" data-val="" data-val-required="" />
+                    <label asp-for="Form.EventUpdates"></label>
                 </div>
                 <div>
-                    <input type="checkbox" id="week-in-review" />
-                    <label for="week-in-review"> Week in Review</label>
+                    <input asp-for="Form.StartupsWeekly" data-val="" data-val-required="" />
+                    <label asp-for="Form.StartupsWeekly"></label>
                 </div>
                 <div>
-                    <input type="checkbox" id="podcasts" />
-                    <label for="podcasts"> Podcasts</label>
+                    <input asp-for="Form.Podcasts" data-val="" data-val-required="" />
+                    <label asp-for="Form.Podcasts"></label>
                 </div>
             </div>
         </div>
         <div class="input-container">
             <i class="fa-regular fa-envelope"></i>
-            <input type="text" placeholder="Your Email"></input>
+            <input asp-for="Form.Email" class="text-input" />
             <button class="btn">Subscribe *</button>
+            <span asp-validation-for="Form.Email"></span>
         </div>
         <p>
             * Yes, I agree to the <a href="">terms</a> and <a href="">privacy</a> policy.
         </p>
-    </div>
+    </form>
 </section>

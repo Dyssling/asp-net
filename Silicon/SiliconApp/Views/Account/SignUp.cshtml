@@ -2,4 +2,8 @@
     <link rel="stylesheet" href="~/css/views/sign_up.min.css" asp-append-version="true" />
 }
 
+@section Script {
+    <script src="~/js/validation.js" asp-append-version="true"></script>
+}
+
 @await Html.PartialAsync("~/Views/Shared/Sections/Account/SignUp/_SignUp.cshtml")

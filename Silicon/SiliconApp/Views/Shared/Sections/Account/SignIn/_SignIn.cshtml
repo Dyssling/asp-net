@@ -1,24 +1,32 @@
-﻿<section class="sign-in">
+﻿@model SignInViewModel
+
+<section id="sign-in" class="sign-in">
     <h1>Welcome Back</h1>
     <p class="sign-up-here">Don't have an account yet? <a asp-controller="Account" asp-action="SignUp">Sign up here.</a></p>
-    <form>
-        <label for="email">Email address</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email address">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="********">
+    <form method="post" asp-controller="Account" asp-action="SignIn" asp-fragment="sign-in" novalidate>
+        <label asp-for="Form.Email"></label>
+        <input asp-for="Form.Email" class="text-input" />
+        <span asp-validation-for="Form.Email"></span>
+        <label asp-for="Form.Password"></label>
+        <input asp-for="Form.Password" class="text-input" />
+        <span asp-validation-for="Form.Password"></span>
         <div class="remember-me-container">
-            <input type="checkbox" id="remember-me" name="remember-me" />
-            <label for="remember-me">Remember me</label>
+            <input asp-for="Form.RememberMe" data-val="" data-val-required=""/>
+            <label asp-for="Form.RememberMe"></label>
         </div>
-        <button class="btn">Sign in</button>
+        <p class="error-message">
+            @ViewData["ErrorMessage"]
+            @TempData["TempErrorMessage"]
+        </p>
+        <button type="submit" class="btn">Sign in</button>
         <div class="forgot-password-container">
             <a href="">Forgot your password?</a>
         </div>
         <div class="socials-container">
             <p>Or sign in with your social network</p>
             <div>
-                <a class="btn light" href=""><i class="fa-brands fa-google"></i>Google</a>
-                <a class="btn light" href=""><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                <a class="btn light" asp-controller="Account" asp-action="Google"><i class="fa-brands fa-google"></i>Google</a>
+                <a class="btn light" asp-controller="Account" asp-action="Facebook"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
             </div>
         </div>
     </form>

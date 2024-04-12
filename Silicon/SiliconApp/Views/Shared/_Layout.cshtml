@@ -22,5 +22,6 @@
         </footer>
     </div>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Script", false) @* Här renderas länken till den nuvarande vyns script, för exempelvis validering av formulär *@
 </body>
 </html>
