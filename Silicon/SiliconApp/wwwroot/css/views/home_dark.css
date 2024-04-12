@@ -39,6 +39,7 @@ main .showcase .showcase-container .showcase-box h1 {
   font-size: 56px;
   margin-bottom: 0;
   padding-right: 100px;
+  color: white;
 }
 @media only screen and (max-width: 768px) {
   main .showcase .showcase-container .showcase-box h1 {
@@ -49,6 +50,7 @@ main .showcase .showcase-container .showcase-box h1 {
 main .showcase .showcase-container .showcase-box p {
   padding-right: 180px;
   margin: 25px 0 45px 0;
+  color: white;
 }
 @media only screen and (max-width: 768px) {
   main .showcase .showcase-container .showcase-box p {
@@ -60,6 +62,7 @@ main .showcase .showcase-container .showcase-box .btn {
 }
 main .showcase .showcase-container .showcase-box h4 {
   margin: 100px 0 45px 0;
+  color: white;
 }
 main .showcase .showcase-container .showcase-box img {
   margin-right: 20px;
@@ -80,7 +83,7 @@ main .showcase .showcase-container .showcase-image {
   }
 }
 main .our-tool {
-  background-color: #0B0F19;
+  background-color: #171822;
 }
 main .our-tool .our-tool-container {
   width: 1300px;
@@ -95,6 +98,7 @@ main .our-tool .our-tool-container {
 main .our-tool .our-tool-container h2 {
   text-align: center;
   margin-bottom: 20px;
+  color: white;
 }
 main .our-tool .our-tool-container .header-paragraph {
   text-align: center;
@@ -120,8 +124,9 @@ main .our-tool .our-tool-container .grid {
 }
 main .our-tool .our-tool-container .grid .grid-container {
   text-align: center;
-  border: 1px solid #565973;
+  border: 1px solid #33354D;
   padding: 20px;
+  color: white;
 }
 main .light-dark {
   position: relative;
@@ -130,6 +135,7 @@ main .light-dark {
   justify-content: center;
   align-items: center;
   padding: 80px 0;
+  background-color: #F3F6FF;
 }
 main .light-dark .dark-box {
   position: absolute;
@@ -212,11 +218,15 @@ main .manage-your-work .manage-your-work-container div {
 main .manage-your-work .manage-your-work-container div h3 {
   font-size: 32px;
   margin: 0 0 25px 0;
+  color: white;
 }
 @media only screen and (max-width: 768px) {
   main .manage-your-work .manage-your-work-container div h3 {
     text-align: center;
   }
+}
+main .manage-your-work .manage-your-work-container div p {
+  color: white;
 }
 main .manage-your-work .manage-your-work-container div p i {
   color: #6366F1;
@@ -230,7 +240,7 @@ main .manage-your-work .manage-your-work-container div .btn i {
   margin-left: 12px;
 }
 main .download-our-app {
-  background-color: #0B0F19;
+  background-color: #171822;
 }
 main .download-our-app .download-our-app-container {
   background-color: #33354D;
@@ -288,6 +298,7 @@ main .download-our-app .download-our-app-container .app-download {
 }
 main .download-our-app .download-our-app-container .app-download h2 {
   margin-bottom: 40px;
+  color: white;
 }
 @media only screen and (max-width: 768px) {
   main .download-our-app .download-our-app-container .app-download h2 {
@@ -328,9 +339,11 @@ main .download-our-app .download-our-app-container .app-download .app-download-c
 main .download-our-app .download-our-app-container .app-download .app-download-container .store-and-reviews h3 {
   font-size: 24px;
   margin: 18px 0 0 0;
+  color: white;
 }
 main .download-our-app .download-our-app-container .app-download .app-download-container .store-and-reviews .rating-reviews {
   margin: 8px 0 0 0;
+  color: white;
 }
 main .download-our-app .download-our-app-container .app-download .app-download-container .download {
   display: flex;
@@ -367,6 +380,7 @@ main .integrate .integrate-container {
 main .integrate .integrate-container h2 {
   text-align: center;
   margin: 0 0 20px 0;
+  color: white;
 }
 main .integrate .integrate-container .integrate-text {
   color: #D4D7E5;
@@ -386,9 +400,10 @@ main .integrate .integrate-container .integrate-grid {
 }
 main .integrate .integrate-container .integrate-grid div {
   margin-top: 20%;
+  color: white;
 }
 main .newsletter {
-  background-color: #0B0F19;
+  background-color: #171822;
 }
 main .newsletter .newsletter-container {
   width: 900px;
@@ -404,6 +419,7 @@ main .newsletter .newsletter-container h2 {
   position: relative;
   display: inline-block;
   margin: 0;
+  color: white;
 }
 @media only screen and (max-width: 768px) {
   main .newsletter .newsletter-container h2 {
@@ -422,6 +438,7 @@ main .newsletter .newsletter-container h2 img {
 main .newsletter .newsletter-container .sign-up {
   display: flex;
   margin: 36px 0 45px 0;
+  color: white;
 }
 @media only screen and (max-width: 992px) {
   main .newsletter .newsletter-container .sign-up {
@@ -464,6 +481,8 @@ main .newsletter .newsletter-container .input-container .text-input {
   border-radius: 10px;
   width: 76%;
   padding: 10px 10px 10px 50px;
+  background-color: #171822;
+  color: white;
 }
 @media only screen and (max-width: 768px) {
   main .newsletter .newsletter-container .input-container .text-input {

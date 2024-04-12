@@ -37,6 +37,7 @@ main .details {
 main .details h1 {
   font-size: 32px;
   margin: 0 0 22px 0;
+  color: white;
 }
 main .details h3 {
   font-size: 20px;
@@ -47,6 +48,7 @@ main .details form label {
   font-weight: 700;
   display: block;
   margin-bottom: 8px;
+  color: white;
 }
 main .details form label span {
   color: #D4D7E5;
@@ -58,6 +60,8 @@ main .details form .text-input {
   outline: 1px solid #9397AD;
   border-radius: 6px;
   margin-bottom: 22px;
+  background-color: #0B0F19;
+  color: white;
 }
 @media (max-width: 768px) {
   main .details form .text-input {

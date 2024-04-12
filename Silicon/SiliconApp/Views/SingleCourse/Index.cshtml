@@ -1,5 +1,10 @@
-﻿@section Styles {
-    <link rel="stylesheet" href="~/css/views/single_course.min.css" asp-append-version="true" />
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    bool isDark = (themeMode == "dark");
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/views/single_course@(isDark ? "_dark" : "").min.css" asp-append-version="true" />
 }
 
 @await Html.PartialAsync("~/Views/Shared/Sections/SingleCourse/_CourseHeading.cshtml")

@@ -170,10 +170,12 @@
 }
 .course-intro .course-intro-container .description-container h2 {
   margin: 0 0 20px 0;
+  color: white;
 }
 .course-intro .course-intro-container .description-container h3 {
   font-size: 28px;
   margin: 35px 0 25px 0;
+  color: white;
 }
 .course-intro .course-intro-container .description-container p i {
   color: #6366F1;
@@ -185,6 +187,8 @@
   -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.075);
   border-radius: 5px;
+  background-color: #171822;
+  border: 1px solid #565973;
 }
 @media (max-width: 768px) {
   .course-intro .course-intro-container .card {
@@ -195,6 +199,7 @@
 .course-intro .course-intro-container .card h4 {
   font-size: 24px;
   margin: 0 0 15px 0;
+  color: white;
 }
 .course-intro .course-intro-container .card p i {
   margin-right: 8px;
@@ -202,7 +207,7 @@
 .course-intro .course-intro-container .card .price {
   font-size: 32px;
   font-weight: 700;
-  color: black;
+  color: white;
   margin: 30px 0 15px 0;
   display: flex;
   align-items: start;
@@ -238,6 +243,7 @@
 }
 .program-details .program-details-container h2 {
   margin-bottom: 20px;
+  color: white;
 }
 .program-details .program-details-container .details-container {
   display: grid;
@@ -259,8 +265,10 @@
   align-items: center;
   height: 50px;
   margin: 0;
-  outline: 10px solid #0B0F19;
+  outline: 10px solid #171822;
   border-radius: 50%;
+  color: white;
+  background-color: #33354D;
 }
 .program-details .program-details-container .details-container div {
   margin: 22px 0;
@@ -269,6 +277,7 @@
   font-size: 24px;
   font-weight: 700;
   margin: 0 0 10px 0;
+  color: white;
 }
 .program-details .program-details-container .details-container div p {
   color: #E2E5F1;
@@ -291,6 +300,7 @@
   align-items: center;
   border-radius: 8px;
   padding: 40px 0;
+  border: 1px solid #33354D;
 }
 @media (max-width: 1400px) {
   .about-the-author .about-the-author-container {

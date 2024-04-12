@@ -34,6 +34,7 @@ main {
         h1 {
             font-size: 32px;
             margin: 0 0 22px 0;
+            color: white;
         }
 
         h3 {
@@ -43,7 +44,7 @@ main {
         }
 
         .external-user {
-            color: #E2E5F1;
+            color: white;
         }
 
         form {
@@ -51,6 +52,7 @@ main {
                 font-weight: 700;
                 display: block;
                 margin-bottom: 8px;
+                color: white;
 
                 span {
                     color: #D4D7E5;
@@ -64,6 +66,8 @@ main {
                 outline: 1px solid #9397AD;
                 border-radius: 6px;
                 margin-bottom: 22px;
+                background-color: #0B0F19;
+                color: white;
 
                 @media(max-width: 768px) {
                     font-size: 14px;

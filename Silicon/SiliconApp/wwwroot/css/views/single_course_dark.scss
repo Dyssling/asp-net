@@ -189,11 +189,13 @@
 
             h2 {
                 margin: 0 0 20px 0;
+                color: white;
             }
 
             h3 {
                 font-size: 28px;
                 margin: 35px 0 25px 0;
+                color: white;
             }
 
             p {
@@ -211,6 +213,9 @@
             -moz-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.075);
             border-radius: 5px;
 
+            background-color: #171822;
+            border: 1px solid #565973;
+
             @media(max-width: 768px) {
                 margin-top: 50px;
                 text-align: center;
@@ -219,6 +224,7 @@
             h4 {
                 font-size: 24px;
                 margin: 0 0 15px 0;
+                color: white;
             }
 
             p {
@@ -230,7 +236,7 @@
             .price {
                 font-size: 32px;
                 font-weight: 700;
-                color: black;
+                color: white;
                 margin: 30px 0 15px 0;
                 display: flex;
                 align-items: start;
@@ -269,6 +275,7 @@
 
         h2 {
             margin-bottom: 20px;
+            color: white;
         }
 
         .details-container {
@@ -290,8 +297,10 @@
                 align-items: center;
                 height: 50px;
                 margin: 0;
-                outline: 10px solid #0B0F19;
+                outline: 10px solid #171822;
                 border-radius: 50%;
+                color: white;
+                background-color: #33354D;
             }
 
             div {
@@ -301,6 +310,7 @@
                     font-size: 24px;
                     font-weight: 700;
                     margin: 0 0 10px 0;
+                    color: white;
                 }
 
                 p {
@@ -328,6 +338,8 @@
         align-items: center;
         border-radius: 8px;
         padding: 40px 0;
+
+        border: 1px solid #33354D;
 
         @media(max-width: 1400px) {
             width: 85%;

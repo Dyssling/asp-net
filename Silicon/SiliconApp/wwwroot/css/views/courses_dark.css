@@ -58,6 +58,7 @@
 .courses .heading-and-categories h1 {
   font-size: 40px;
   margin: 10px 0;
+  color: white;
 }
 @media (max-width: 768px) {
   .courses .heading-and-categories h1 {
@@ -97,6 +98,8 @@
   font-size: 16px;
   font-weight: 400;
   font-family: "Manrope", sans-serif;
+  background-color: #0B0F19;
+  color: white;
 }
 .courses .heading-and-categories .inputs .input-container {
   width: 26%;
@@ -121,6 +124,8 @@
   outline: 1px solid #9397AD;
   border-radius: 6px;
   width: 100%;
+  background-color: #0B0F19;
+  color: white;
 }
 .courses .courses-grid {
   display: grid;
@@ -140,6 +145,7 @@
   -moz-box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   position: relative;
+  border: 1px solid #565973;
 }
 .courses .courses-grid .grid-container button {
   position: absolute;
@@ -187,7 +193,7 @@
 .courses .courses-grid .grid-container .content-container h3 {
   font-size: 20px;
   margin-bottom: 12px;
-  color: black;
+  color: white;
 }
 .courses .courses-grid .grid-container .content-container .author {
   color: #E2E5F1;
@@ -256,7 +262,7 @@
   margin: auto;
   display: flex;
   justify-content: space-around;
-  background-color: #0B0F19;
+  background-color: #171822;
   padding: 30px 4% 30px 0;
 }
 @media (max-width: 1400px) {
@@ -290,6 +296,7 @@
 .work-with-us .work-with-us-container .flex .flex-container h2 {
   font-size: 40px;
   margin-top: 20px;
+  color: white;
 }
 .work-with-us .work-with-us-container .flex .flex-container h2 span {
   color: #6366F1;

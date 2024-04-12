@@ -1,6 +1,11 @@
-﻿@section Styles {
-    <link rel="stylesheet" href="~/css/views/saved_courses.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/components/account_sidebar.min.css" asp-append-version="true" />
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    bool isDark = (themeMode == "dark");
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/views/saved_courses@(isDark ? "_dark" : "").min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/account_sidebar@(isDark ? "_dark" : "").min.css" asp-append-version="true" />
 }
 
 @await Html.PartialAsync("~/Views/Shared/Components/_AccountSavedCoursesSidebar.cshtml")

@@ -9,6 +9,7 @@
     h1 {
         font-size: 40px;
         margin: 0;
+        color: white;
     }
 
     .sign-in-here {
@@ -29,6 +30,7 @@
             font-weight: 700;
             display: block;
             margin-bottom: 8px;
+            color: white;
         }
 
         .field-validation-error {
@@ -44,6 +46,8 @@
             outline: 1px solid #9397AD;
             border-radius: 6px;
             margin-bottom: 22px;
+            background-color: #0B0F19;
+            color: white;
 
             @media(max-width: 768px) {
                 font-size: 14px;

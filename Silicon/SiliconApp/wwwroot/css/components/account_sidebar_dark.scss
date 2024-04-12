@@ -1,5 +1,5 @@
 .sidebar {
-    border-right: 1px solid #565973;
+    border-right: 1px solid #33354D;
     height: 100%;
     text-align: center;
     padding: 35px 12px;
@@ -32,7 +32,8 @@
             -webkit-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.05);
             -moz-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.05);
             transition: ease-in-out 30ms;
-            color: black;
+            color: white;
+            border: 1px solid #33354D;
 
             &:hover {
                 -moz-transform: scale(1.05);
@@ -47,6 +48,7 @@
     h3 {
         font-size: 20px;
         margin: 10px 0 6px 0;
+        color: white;
     }
 
     p {

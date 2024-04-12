@@ -259,13 +259,15 @@ header {
                     font-size: 42px;
                     padding: 0 5px;
 
+                    color: white;
+
 
                     @media only screen and (max-width: 768px) {
                         display: block;
                     }
 
                     &:hover {
-                        background-color: rgba(245, 245, 245, 0.979);
+                        background-color: rgba(245, 245, 245, 0.1);
                     }
                 }
             }
@@ -277,7 +279,7 @@ header {
         display: none;
         position: absolute;
         width: 100%;
-        background-color: rgba(245, 245, 245, 0.979);
+        background-color: rgba(0, 0, 0, 0.979);
         padding-bottom: 30px;
         padding-bottom: 30px;
 

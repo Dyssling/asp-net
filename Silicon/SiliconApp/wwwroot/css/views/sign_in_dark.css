@@ -10,6 +10,7 @@
 .sign-in h1 {
   font-size: 40px;
   margin: 0;
+  color: white;
 }
 .sign-in .sign-up-here {
   color: #E2E5F1;
@@ -25,6 +26,7 @@
   font-weight: 700;
   display: block;
   margin-bottom: 8px;
+  color: white;
 }
 .sign-in form .text-input {
   width: 100%;
@@ -33,6 +35,8 @@
   outline: 1px solid #9397AD;
   border-radius: 6px;
   margin-bottom: 22px;
+  background-color: #0B0F19;
+  color: white;
 }
 @media (max-width: 768px) {
   .sign-in form .text-input {
@@ -74,12 +78,13 @@
 }
 .sign-in form .socials-container {
   margin-top: 30px;
-  border-top: 1px solid #E2E5F1;
+  border-top: 1px solid #33354D;
 }
 .sign-in form .socials-container p {
   font-weight: 700;
   text-align: center;
   margin: 20px 0 0 0;
+  color: white;
 }
 .sign-in form .socials-container div {
   display: grid;

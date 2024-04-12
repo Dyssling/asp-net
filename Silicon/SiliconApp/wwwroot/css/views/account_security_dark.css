@@ -37,6 +37,7 @@ main .security {
 main .security h1 {
   font-size: 32px;
   margin: 0 0 22px 0;
+  color: white;
 }
 main .security h3 {
   font-size: 20px;
@@ -44,12 +45,13 @@ main .security h3 {
   margin: 0 0 18px 0;
 }
 main .security .external-user {
-  color: #E2E5F1;
+  color: white;
 }
 main .security form label {
   font-weight: 700;
   display: block;
   margin-bottom: 8px;
+  color: white;
 }
 main .security form label span {
   color: #D4D7E5;
@@ -61,6 +63,8 @@ main .security form .text-input {
   outline: 1px solid #9397AD;
   border-radius: 6px;
   margin-bottom: 22px;
+  background-color: #0B0F19;
+  color: white;
 }
 @media (max-width: 768px) {
   main .security form .text-input {

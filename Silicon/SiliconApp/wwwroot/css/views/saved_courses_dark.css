@@ -52,6 +52,7 @@ main .saved-courses .heading-and-delete {
 main .saved-courses .heading-and-delete h1 {
   font-size: 32px;
   margin: 10px 0;
+  color: white;
 }
 @media (max-width: 768px) {
   main .saved-courses .heading-and-delete h1 {
@@ -95,6 +96,8 @@ main .saved-courses .courses-grid .grid-container {
   -moz-box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   position: relative;
+  background-color: #171822;
+  border: 1px solid #565973;
 }
 main .saved-courses .courses-grid .grid-container button {
   position: absolute;
@@ -142,7 +145,7 @@ main .saved-courses .courses-grid .grid-container .content-container:hover {
 main .saved-courses .courses-grid .grid-container .content-container h3 {
   font-size: 20px;
   margin-bottom: 12px;
-  color: black;
+  color: white;
 }
 main .saved-courses .courses-grid .grid-container .content-container .author {
   color: #E2E5F1;

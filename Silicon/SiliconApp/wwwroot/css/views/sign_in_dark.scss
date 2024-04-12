@@ -9,6 +9,7 @@
     h1 {
         font-size: 40px;
         margin: 0;
+        color: white;
     }
 
     .sign-up-here {
@@ -29,6 +30,7 @@
             font-weight: 700;
             display: block;
             margin-bottom: 8px;
+            color: white;
         }
 
         .text-input {
@@ -38,6 +40,8 @@
             outline: 1px solid #9397AD;
             border-radius: 6px;
             margin-bottom: 22px;
+            background-color: #0B0F19;
+            color: white;
 
             @media(max-width: 768px) {
                 font-size: 14px;
@@ -88,12 +92,13 @@
 
         .socials-container {
             margin-top: 30px;
-            border-top: 1px solid #E2E5F1;
+            border-top: 1px solid #33354D;
 
             p {
                 font-weight: 700;
                 text-align: center;
                 margin: 20px 0 0 0;
+                color: white;
             }
 
             div {

@@ -1,5 +1,10 @@
-﻿@section Styles {
-    <link rel="stylesheet" href="~/css/views/sign_in.min.css" asp-append-version="true" />
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    bool isDark = (themeMode == "dark");
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/views/sign_in@(isDark ? "_dark" : "").min.css" asp-append-version="true" />
 }
 
 @section Script {

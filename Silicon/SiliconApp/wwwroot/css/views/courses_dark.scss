@@ -59,6 +59,7 @@
         h1 {
             font-size: 40px;
             margin: 10px 0;
+            color: white;
 
             @media(max-width: 768px) {
                 text-align: center;
@@ -96,6 +97,8 @@
                     font-size: 16px;
                     font-weight: 400;
                     font-family: 'Manrope', sans-serif;
+                    background-color: #0B0F19;
+                    color: white;
                 }
             }
 
@@ -122,6 +125,8 @@
                     outline: 1px solid #9397AD;
                     border-radius: 6px;
                     width: 100%;
+                    background-color: #0B0F19;
+                    color: white;
                 }
             }
         }
@@ -144,6 +149,8 @@
             -moz-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.10);
             border-radius: 10px;
             position: relative;
+
+            border: 1px solid #565973;
 
             button {
                 position: absolute;
@@ -196,7 +203,7 @@
                 h3 {
                     font-size: 20px;
                     margin-bottom: 12px;
-                    color: black;
+                    color: white;
                 }
 
                 .author {
@@ -281,7 +288,7 @@
         margin: auto;
         display: flex;
         justify-content: space-around;
-        background-color: #0B0F19;
+        background-color: #171822;
         padding: 30px 4% 30px 0;
 
         @media(max-width: 1400px) {
@@ -313,6 +320,7 @@
                 h2 {
                     font-size: 40px;
                     margin-top: 20px;
+                    color: white;
 
                     span {
                         color: #6366F1;

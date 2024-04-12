@@ -1,9 +1,14 @@
 ﻿@inject UserService _userService
 
+@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light"; /* Hämta in theme läget från cookien, och sätter variabeln till light om cookien inte finns */
+    bool isDark = (themeMode == "dark");
+}
+
 <div class="header-container">
     <nav>
         <div class="nav-container">
-            <a class="logo" asp-controller="Home" asp-action="Index"><img src="~/images/logo.svg" alt="Logo"></a>
+            <a class="logo" asp-controller="Home" asp-action="Index"><img src="~/images/logo@(isDark ? "_darkmode" : "").svg" alt="Logo"></a>
             <a class="nav-links" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
             @if (!_userService.IsUserSignedIn(User)) @* Om användaren INTE är inloggad så renderas följande *@
             {
@@ -20,7 +25,7 @@
         <div class="nav-container">
             <p>Light</p>
             <label class="switch">
-                <input type="checkbox">
+                <input id="theme-switch" type="checkbox" checked=@isDark> @* Om det är dark theme så sätts den som bockad när den laddas in *@
                 <span class="slider round"></span>
             </label>
             <p>Dark</p>
@@ -53,7 +58,7 @@
             <div class="switch-container">
                 <p>Light</p>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input id="theme-switch-mobile" type="checkbox" checked=@isDark>
                     <span class="slider round"></span>
                 </label>
                 <p>Dark</p>
