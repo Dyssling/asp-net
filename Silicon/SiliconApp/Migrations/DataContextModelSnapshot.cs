@@ -184,6 +184,46 @@ namespace SiliconApp.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("SiliconApp.Entities.CourseEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Hours")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsBestSeller")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal?>("LikesInNumbers")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("LikesInPercent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Courses");
+                });
+
             modelBuilder.Entity("SiliconApp.Entities.UserEntity", b =>
                 {
                     b.Property<string>("Id")
