@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using SiliconAPI.Models;
 using SiliconAPI.Entities;
 using SiliconAPI.Services;
+using SiliconAPI.Filters;
 
 namespace SiliconAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [UseApiKey]
     public class CoursesController : ControllerBase
     {
         private readonly CourseService _courseService;
