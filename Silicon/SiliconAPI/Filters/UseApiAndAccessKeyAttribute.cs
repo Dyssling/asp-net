@@ -14,7 +14,7 @@ namespace SiliconAPI.Filters
             var apiKey = configuration.GetValue<string>("ApiKey");
             var accessKey = configuration.GetValue<string>("AccessKey");
 
-            if (!context.HttpContext.Request.Query.TryGetValue("key", out var providedKey) || !context.HttpContext.Request.Query.TryGetValue("access-key", out var providedAccessKey))
+            if (!context.HttpContext.Request.Query.TryGetValue("api-key", out var providedKey) || !context.HttpContext.Request.Query.TryGetValue("access-key", out var providedAccessKey))
             {
                 context.Result = new UnauthorizedResult();
                 return;
