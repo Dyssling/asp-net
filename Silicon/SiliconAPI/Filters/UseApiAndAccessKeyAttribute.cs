@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SiliconAPI.Filters
 {
+    //Detta attributet är till för när man ska kräva Api nyckeln SAMT ännu en dold nyckel, för att ha ett extra säkerhetslager när vi kör GetToken action metoden
+
     [AttributeUsage(validOn: AttributeTargets.Class | AttributeTargets.Method)]
     public class UseApiAndAccessKeyAttribute : Attribute, IAsyncActionFilter
     {
@@ -18,7 +20,7 @@ namespace SiliconAPI.Filters
                 return;
             }
 
-            if (apiKey != providedKey || accessKey != providedAccessKey)
+            if (apiKey != providedKey.ToString() || accessKey != providedAccessKey.ToString())
             {
                 context.Result = new UnauthorizedResult();
                 return;
