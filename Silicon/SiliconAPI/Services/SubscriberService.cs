@@ -19,11 +19,17 @@ namespace SiliconAPI.Services
             {
                 var alreadyExists = await _repo.GetOneAsync(x => x.Email == model.Email); //Försöker hämta en entitet med samma email
 
-                if (alreadyExists == null)
+                if (alreadyExists == null) //Om det inte finns en entitet med samma email
                 {
                     var entity = new SubscriberEntity()
                     {
-                        Email = model.Email
+                        Email = model.Email,
+                        DailyNewsletter = model.DailyNewsletter,
+                        AdvertisingUpdates = model.AdvertisingUpdates,
+                        WeekInReview = model.WeekInReview,
+                        EventUpdates = model.EventUpdates,
+                        StartupsWeekly = model.StartupsWeekly,
+                        Podcasts = model.Podcasts
                     };
 
                     var result = await _repo.CreateAsync(entity);
