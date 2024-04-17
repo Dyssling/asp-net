@@ -5,13 +5,79 @@ using SiliconAPI.Repositories;
 using SiliconAPI.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c => //Här konfigureras Swagger, så att man kan lägga in nycklar och en Jwt token direkt i UI
+{
+    c.AddSecurityDefinition("apiKey", new OpenApiSecurityScheme()
+    {
+        Description = "Enter the Api Key",
+        Name = "api-key",
+        In = ParameterLocation.Query,
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    c.AddSecurityDefinition("accessKey", new OpenApiSecurityScheme()
+    {
+        Description = "Enter the access key",
+        Name = "access-key",
+        In = ParameterLocation.Query,
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\""
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "apiKey"
+                }
+            },
+            Array.Empty<string>()
+        },
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "accessKey"
+                }
+            },
+            Array.Empty<string>()
+        },
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference 
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddAuthentication(x =>
 {

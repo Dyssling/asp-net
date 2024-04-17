@@ -4,6 +4,7 @@ using SiliconAPI.Models;
 using SiliconAPI.Entities;
 using SiliconAPI.Services;
 using SiliconAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SiliconAPI.Controllers
 {
@@ -20,6 +21,7 @@ namespace SiliconAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateCourse(CourseModel model)
         {
             if (ModelState.IsValid)
@@ -28,7 +30,7 @@ namespace SiliconAPI.Controllers
 
                 if (result)
                 {
-                    return Created();
+                    return CreatedAtAction("CreateCourse", model);
                 }
             }
 

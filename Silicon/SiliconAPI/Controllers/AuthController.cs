@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SiliconAPI.Filters;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
@@ -18,6 +19,7 @@ namespace SiliconAPI.Controllers
             _configuration = configuration;
         }
 
+        [HttpPost]
         [UseApiAndAccessKey]
         public IActionResult GetToken()
         {
@@ -29,14 +31,16 @@ namespace SiliconAPI.Controllers
                     Issuer = "SiliconAPI",
                     Audience = "SiliconAPI",
                     Expires = DateTime.Now.AddMinutes(15),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetValue<string>("Secret")!)), SecurityAlgorithms.HmacSha512Signature)
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetValue<string>("Secret")!)), SecurityAlgorithms.HmacSha256Signature)
                 };
 
                 var token = tokenHandler.CreateToken(tokenDescriptor);
                 return Ok(tokenHandler.WriteToken(token)); //Eftersom CreateToken inte skapar en token i string format, så omvandlar jag den här
             }
 
-            catch { }
+            catch (Exception ex){
+                Debug.WriteLine(ex);            
+            }
 
             return BadRequest();
         }
