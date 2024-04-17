@@ -159,7 +159,7 @@ namespace SiliconApp.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SiliconAPI.Entitites.SubscriberEntity", b =>
+            modelBuilder.Entity("SiliconAPI.Entitites.ContactEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -170,6 +170,52 @@ namespace SiliconApp.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Service")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("SiliconAPI.Entitites.SubscriberEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("AdvertisingUpdates")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("DailyNewsletter")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EventUpdates")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Podcasts")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("StartupsWeekly")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("WeekInReview")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
