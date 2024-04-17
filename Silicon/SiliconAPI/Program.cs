@@ -103,6 +103,8 @@ builder.Services.AddAuthentication(x =>
 });
 builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<SubscriberRepository>();
+builder.Services.AddScoped<SubscriberService>();
 
 var app = builder.Build();
 

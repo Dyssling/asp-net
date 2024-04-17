@@ -19,7 +19,7 @@ namespace SiliconAPI.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost]
+        [HttpPost("GetToken")]
         [UseApiAndAccessKey]
         public IActionResult GetToken()
         {
