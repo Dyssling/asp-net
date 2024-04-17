@@ -266,6 +266,10 @@ namespace SiliconApp.Migrations
                     b.Property<int>("Hours")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsBestSeller")
                         .HasColumnType("bit");
 

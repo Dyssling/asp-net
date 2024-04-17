@@ -70,7 +70,8 @@ namespace SiliconApp.Migrations
                     LikesInNumbers = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Hours = table.Column<int>(type: "int", nullable: false),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsBestSeller = table.Column<bool>(type: "bit", nullable: false)
+                    IsBestSeller = table.Column<bool>(type: "bit", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

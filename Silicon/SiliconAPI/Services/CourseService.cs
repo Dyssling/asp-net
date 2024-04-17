@@ -27,7 +27,8 @@ namespace SiliconAPI.Services
                     LikesInNumbers = model.LikesInNumbers,
                     Hours = model.Hours,
                     Author = model.Author,
-                    IsBestSeller = model.IsBestSeller
+                    IsBestSeller = model.IsBestSeller,
+                    ImageName = model.ImageName
                 };
 
                 var result = await _repo.CreateAsync(entity);
@@ -91,7 +92,8 @@ namespace SiliconAPI.Services
                     LikesInNumbers = model.LikesInNumbers,
                     Hours = model.Hours,
                     Author = model.Author,
-                    IsBestSeller = model.IsBestSeller
+                    IsBestSeller = model.IsBestSeller,
+                    ImageName = model.ImageName
                 };
 
                 var result = await _repo.UpdateAsync(x => x.Id == id, entity);

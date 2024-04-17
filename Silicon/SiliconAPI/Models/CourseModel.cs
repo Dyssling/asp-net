@@ -9,11 +9,8 @@ namespace SiliconAPI.Models
 
         [Required]
         public string Description { get; set; } = null!;
-
         public int Rating { get; set; }
-        
         public decimal LikesInPercent { get; set; }
-
         public decimal LikesInNumbers { get; set; }
 
         [Required]
@@ -21,7 +18,9 @@ namespace SiliconAPI.Models
 
         [Required]
         public string Author { get; set; } = null!;
-
         public bool IsBestSeller { get; set; } = false;
+
+        [Required]
+        public string ImageName { get; set; } = null!;
     }
 }

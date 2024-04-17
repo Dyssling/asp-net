@@ -12,7 +12,7 @@ using SiliconApp.Contexts;
 namespace SiliconApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240417163810_Init")]
+    [Migration("20240417173149_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -268,6 +268,10 @@ namespace SiliconApp.Migrations
 
                     b.Property<int>("Hours")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsBestSeller")
                         .HasColumnType("bit");
