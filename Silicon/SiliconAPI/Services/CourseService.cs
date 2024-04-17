@@ -72,5 +72,22 @@ namespace SiliconAPI.Services
 
             return false;
         }
+
+        public async Task<bool> DeleteCourseAsync(int id)
+        {
+            try
+            {
+                var result = await _repo.DeleteAsync(x => x.Id == id);
+
+                if (result)
+                {
+                    return true;
+                }
+            }
+
+            catch { }
+
+            return false;
+        }
     }
 }

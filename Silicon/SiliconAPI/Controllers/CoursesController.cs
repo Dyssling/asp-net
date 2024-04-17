@@ -20,7 +20,7 @@ namespace SiliconAPI.Controllers
             _courseService = courseService;
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         [Authorize]
         public async Task<IActionResult> CreateCourse(CourseModel model)
         {
@@ -37,7 +37,7 @@ namespace SiliconAPI.Controllers
             return BadRequest();
         }
 
-        [HttpPost("{id:int}")]
+        [HttpPost("Update/{id:int}")]
         [Authorize]
         public async Task<IActionResult> UpdateCourse(CourseModel model, int id)
         {
@@ -51,7 +51,23 @@ namespace SiliconAPI.Controllers
                 }
             }
 
-            return BadRequest();
+            return NotFound();
+        }
+
+        [HttpPost("Delete/{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateCourse(int id)
+        {
+
+            var result = await _courseService.DeleteCourseAsync(id);
+
+            if (result)
+            {
+                return Ok();
+            }
+
+
+            return NotFound();
         }
     }
 }
