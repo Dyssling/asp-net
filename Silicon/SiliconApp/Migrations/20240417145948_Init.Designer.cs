@@ -12,7 +12,7 @@ using SiliconApp.Contexts;
 namespace SiliconApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240415181612_Init")]
+    [Migration("20240417145948_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -160,6 +160,23 @@ namespace SiliconApp.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("SiliconAPI.Entitites.SubscriberEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscribers");
                 });
 
             modelBuilder.Entity("SiliconApp.Entities.AddressEntity", b =>

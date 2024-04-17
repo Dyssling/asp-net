@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SiliconAPI.Entities;
+using SiliconAPI.Entitites;
 
 namespace SiliconAPI.Contexts
 {
@@ -10,5 +11,7 @@ namespace SiliconAPI.Contexts
         }
 
         public DbSet<CourseEntity> Courses { get; set; }
+
+        public DbSet<SubscriberEntity> Subscribers { get; set; }
     }
 }

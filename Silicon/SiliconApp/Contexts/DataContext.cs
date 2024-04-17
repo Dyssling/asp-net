@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SiliconAPI.Entitites;
 using SiliconApp.Entities;
 
 namespace SiliconApp.Contexts
@@ -12,5 +13,6 @@ namespace SiliconApp.Contexts
 
         public DbSet<AddressEntity> Addresses { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
+        public DbSet<SubscriberEntity> Subscribers { get; set; }
     }
 }

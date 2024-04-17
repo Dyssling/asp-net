@@ -62,6 +62,19 @@ namespace SiliconApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Subscribers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subscribers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
@@ -267,6 +280,9 @@ namespace SiliconApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Courses");
+
+            migrationBuilder.DropTable(
+                name: "Subscribers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
