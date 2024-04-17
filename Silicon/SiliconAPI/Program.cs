@@ -105,6 +105,8 @@ builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<CourseService>();
 builder.Services.AddScoped<SubscriberRepository>();
 builder.Services.AddScoped<SubscriberService>();
+builder.Services.AddScoped<ContactRepository>();
+builder.Services.AddScoped<ContactService>();
 
 var app = builder.Build();
 
