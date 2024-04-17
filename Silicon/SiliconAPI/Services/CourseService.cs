@@ -43,6 +43,40 @@ namespace SiliconAPI.Services
             return false;
         }
 
+        public async Task<IEnumerable<CourseEntity>> GetAllCoursesAsync()
+        {
+            try
+            {
+                var list = await _repo.GetAllAsync();
+
+                if (list != null)
+                {
+                    return list;
+                }
+            }
+
+            catch { }
+
+            return new List<CourseEntity>(); //En tom lista returneras om resultatet blev null av någon anledning
+        }
+
+        public async Task<CourseEntity> GetOneCourseAsync(int id)
+        {
+            try
+            {
+                var entity = await _repo.GetOneAsync(x => x.Id == id);
+
+                if (entity != null)
+                {
+                    return entity;
+                }
+            }
+
+            catch { }
+
+            return null!;
+        }
+
         public async Task<bool> UpdateCourseAsync(CourseModel model, int id)
         {
             try

@@ -5,6 +5,7 @@ using SiliconAPI.Entities;
 using SiliconAPI.Services;
 using SiliconAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
 
 namespace SiliconAPI.Controllers
 {
@@ -66,6 +67,27 @@ namespace SiliconAPI.Controllers
                 return Ok();
             }
 
+
+            return NotFound();
+        }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAllCourses()
+        {
+            var list = await _courseService.GetAllCoursesAsync();
+
+            return Ok(list);
+        }
+
+        [HttpGet("GetOne/{id:int}")]
+        public async Task<IActionResult> GetOneCourse(int id)
+        {
+            var entity = await _courseService.GetOneCourseAsync(id);
+
+            if (entity != null)
+            {
+                return Ok(entity);
+            }
 
             return NotFound();
         }

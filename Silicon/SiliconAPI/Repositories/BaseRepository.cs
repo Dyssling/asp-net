@@ -30,11 +30,11 @@ namespace SiliconAPI.Repositories
             }
         }
 
-        public virtual async Task<TEntity> GetOneAsync(Expression<Func<TEntity, bool>> expression) //Denna är lite krånglig, men helt enkelt kommer man sätta in en expression här
+        public virtual async Task<TEntity> GetOneAsync(Expression<Func<TEntity, bool>> expression)
         {
             try
             {
-                var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(expression); //Expressionet kommer vara false i FirstOrDefault metoden när det inte stämmer överens med den "nuvarande" kolumnen/raden, annars är den true, och då får man ut rätt entitet
+                var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(expression);
                 if (entity != null) //Default värdet i detta fallet kommer vara null
                 {
                     return entity;
