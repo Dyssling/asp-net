@@ -28,7 +28,9 @@ namespace SiliconAPI.Services
                     Hours = model.Hours,
                     Author = model.Author,
                     IsBestSeller = model.IsBestSeller,
-                    ImageName = model.ImageName
+                    ImageName = model.ImageName,
+                    Price = model.Price,
+                    DiscountedPrice = model.DiscountedPrice
                 };
 
                 var result = await _repo.CreateAsync(entity);
@@ -93,7 +95,9 @@ namespace SiliconAPI.Services
                     Hours = model.Hours,
                     Author = model.Author,
                     IsBestSeller = model.IsBestSeller,
-                    ImageName = model.ImageName
+                    ImageName = model.ImageName,
+                    Price = model.Price,
+                    DiscountedPrice = model.DiscountedPrice
                 };
 
                 var result = await _repo.UpdateAsync(x => x.Id == id, entity);

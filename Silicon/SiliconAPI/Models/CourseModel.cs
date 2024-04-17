@@ -9,9 +9,9 @@ namespace SiliconAPI.Models
 
         [Required]
         public string Description { get; set; } = null!;
-        public int Rating { get; set; }
-        public decimal LikesInPercent { get; set; }
-        public decimal LikesInNumbers { get; set; }
+        public int? Rating { get; set; }
+        public int? LikesInPercent { get; set; }
+        public int? LikesInNumbers { get; set; }
 
         [Required]
         public int Hours { get; set; }
@@ -22,5 +22,9 @@ namespace SiliconAPI.Models
 
         [Required]
         public string ImageName { get; set; } = null!;
+
+        [Required]
+        public decimal Price { get; set; }
+        public decimal? DiscountedPrice { get; set; }
     }
 }

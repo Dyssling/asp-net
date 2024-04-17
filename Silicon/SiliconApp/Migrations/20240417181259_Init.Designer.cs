@@ -12,7 +12,7 @@ using SiliconApp.Contexts;
 namespace SiliconApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240417173149_Init")]
+    [Migration("20240417181259_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -266,6 +266,9 @@ namespace SiliconApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal?>("DiscountedPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("Hours")
                         .HasColumnType("int");
 
@@ -276,10 +279,13 @@ namespace SiliconApp.Migrations
                     b.Property<bool>("IsBestSeller")
                         .HasColumnType("bit");
 
-                    b.Property<decimal?>("LikesInNumbers")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int?>("LikesInNumbers")
+                        .HasColumnType("int");
 
-                    b.Property<decimal?>("LikesInPercent")
+                    b.Property<int?>("LikesInPercent")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("Rating")

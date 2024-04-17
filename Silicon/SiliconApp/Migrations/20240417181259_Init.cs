@@ -66,12 +66,14 @@ namespace SiliconApp.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: true),
-                    LikesInPercent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    LikesInNumbers = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    LikesInPercent = table.Column<int>(type: "int", nullable: true),
+                    LikesInNumbers = table.Column<int>(type: "int", nullable: true),
                     Hours = table.Column<int>(type: "int", nullable: false),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsBestSeller = table.Column<bool>(type: "bit", nullable: false),
-                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DiscountedPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
                 },
                 constraints: table =>
                 {
