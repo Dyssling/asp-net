@@ -36,5 +36,22 @@ namespace SiliconAPI.Controllers
 
             return BadRequest();
         }
+
+        [HttpPost("{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateCourse(CourseModel model, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _courseService.UpdateCourseAsync(model, id);
+
+                if (result)
+                {
+                    return Ok();
+                }
+            }
+
+            return BadRequest();
+        }
     }
 }

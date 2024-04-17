@@ -41,7 +41,36 @@ namespace SiliconAPI.Services
             catch { }
 
             return false;
+        }
 
+        public async Task<bool> UpdateCourseAsync(CourseModel model, int id)
+        {
+            try
+            {
+                var entity = new CourseEntity()
+                {
+                    Id = id,
+                    Title = model.Title,
+                    Description = model.Description,
+                    Rating = model.Rating,
+                    LikesInPercent = model.LikesInPercent,
+                    LikesInNumbers = model.LikesInNumbers,
+                    Hours = model.Hours,
+                    Author = model.Author,
+                    IsBestSeller = model.IsBestSeller
+                };
+
+                var result = await _repo.UpdateAsync(x => x.Id == id, entity);
+
+                if (result)
+                {
+                    return true;
+                }
+            }
+
+            catch { }
+
+            return false;
         }
     }
 }
