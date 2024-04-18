@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SiliconAPI.Entitites;
+using System.ComponentModel.DataAnnotations;
 
 namespace SiliconAPI.Models
 {
@@ -26,5 +27,8 @@ namespace SiliconAPI.Models
         [Required]
         public decimal Price { get; set; }
         public decimal? DiscountedPrice { get; set; }
+
+        [Required]
+        public int CategoryId { get; set; }
     }
 }

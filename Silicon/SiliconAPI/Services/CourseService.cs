@@ -30,7 +30,8 @@ namespace SiliconAPI.Services
                     IsBestSeller = model.IsBestSeller,
                     ImageName = model.ImageName,
                     Price = model.Price,
-                    DiscountedPrice = model.DiscountedPrice
+                    DiscountedPrice = model.DiscountedPrice,
+                    CategoryId = model.CategoryId
                 };
 
                 var result = await _repo.CreateAsync(entity);
@@ -97,7 +98,8 @@ namespace SiliconAPI.Services
                     IsBestSeller = model.IsBestSeller,
                     ImageName = model.ImageName,
                     Price = model.Price,
-                    DiscountedPrice = model.DiscountedPrice
+                    DiscountedPrice = model.DiscountedPrice,
+                    CategoryId = model.CategoryId
                 };
 
                 var result = await _repo.UpdateAsync(x => x.Id == id, entity);
