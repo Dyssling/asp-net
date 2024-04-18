@@ -17,7 +17,7 @@ namespace SiliconAPI.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             var list = await _categoryService.GetAllCategoriesAsync();

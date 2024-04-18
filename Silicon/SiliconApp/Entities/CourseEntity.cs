@@ -1,7 +1,4 @@
-﻿using SiliconAPI.Entitites;
-using System.ComponentModel.DataAnnotations;
-
-namespace SiliconApp.Entities
+﻿namespace SiliconApp.Entities
 {
     public class CourseEntity
     {

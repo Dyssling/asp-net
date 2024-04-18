@@ -64,6 +64,23 @@ namespace SiliconAPI.Services
             return new List<CourseEntity>(); //En tom lista returneras om resultatet blev null av någon anledning
         }
 
+        public async Task<IEnumerable<CourseEntity>> GetAllCoursesFilteredAsync(string categoryId)
+        {
+            try
+            {
+                var list = await _repo.GetAllFilteredAsync(categoryId);
+
+                if (list != null)
+                {
+                    return list;
+                }
+            }
+
+            catch { }
+
+            return new List<CourseEntity>(); //En tom lista returneras om resultatet blev null av någon anledning
+        }
+
         public async Task<CourseEntity> GetOneCourseAsync(int id)
         {
             try

@@ -21,7 +21,7 @@ namespace SiliconAPI.Services
 
                 if (list != null)
                 {
-                    return list.OrderBy(x => x.CategoryName);
+                    return list;
                 }
             }
 

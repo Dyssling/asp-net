@@ -101,6 +101,8 @@ builder.Services.AddAuthentication(x =>
         ClockSkew = TimeSpan.FromSeconds(10)
     };
 });
+builder.Services.AddScoped<CategoryRepository>();
+builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<CourseService>();
 builder.Services.AddScoped<SubscriberRepository>();

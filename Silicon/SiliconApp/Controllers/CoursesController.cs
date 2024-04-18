@@ -1,26 +1,27 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using SiliconApp.Services;
+using SiliconApp.ViewModels;
 
 namespace SiliconApp.Controllers
 {
     public class CoursesController : Controller
     {
         private readonly UserService _userService;
+        private readonly CourseService _courseService;
+        private readonly CategoryService _categoryService;
 
-        public CoursesController(UserService userService)
+        public CoursesController(UserService userService, CourseService courseService, CategoryService categoryService)
         {
             _userService = userService;
+            _courseService = courseService;
+            _categoryService = categoryService;
         }
 
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string categoryId)
         {
-            //if (!_userService.IsUserSignedIn(User))
-            //{
-            //    return RedirectToRoute(new { controller = "Account", action = "SignIn" }); //Om användaren är utloggad redirectas man till Sign In sidan
-            //}
-
             ViewData["Title"] = "Courses";
 
             var userEntity = await _userService.GetUserEntityAsync(User);
@@ -30,7 +31,23 @@ namespace SiliconApp.Controllers
                 return RedirectToRoute(new { controller = "Account", action = "SignOut" });
             }
 
-            return View();
+            var test = await _courseService.GetAllCoursesAsync(categoryId);
+
+            if (!categoryId.IsNullOrEmpty())
+            {
+                return View(new CoursesViewModel()
+                {
+                    Courses = await _courseService.GetAllCoursesAsync(categoryId),
+                    Categories = await _categoryService.GetAllCategoriesAsync()
+                });
+            }
+
+            return View(new CoursesViewModel()
+            {
+                Courses = await _courseService.GetAllCoursesAsync("0"), //Om categoryId parametern skulle vara tom av någon anledning så blir den 0 istället (alla kategorier kommer visas)
+                Categories = await _categoryService.GetAllCategoriesAsync()
+            });
+
         }
     }
 }

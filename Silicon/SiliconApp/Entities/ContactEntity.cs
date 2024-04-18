@@ -1,4 +1,4 @@
-﻿namespace SiliconAPI.Entitites
+﻿namespace SiliconApp.Entities
 {
     public class ContactEntity
     {

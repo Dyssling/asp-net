@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SiliconAPI.Entitites;
 using SiliconApp.Entities;
 
 namespace SiliconApp.Contexts
