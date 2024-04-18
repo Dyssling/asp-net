@@ -20,7 +20,7 @@ namespace SiliconApp.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Index(string categoryId)
+        public async Task<IActionResult> Index(string categoryId = "", string search = "")
         {
             ViewData["Title"] = "Courses";
 
@@ -31,23 +31,11 @@ namespace SiliconApp.Controllers
                 return RedirectToRoute(new { controller = "Account", action = "SignOut" });
             }
 
-            var test = await _courseService.GetAllCoursesAsync(categoryId);
-
-            if (!categoryId.IsNullOrEmpty())
-            {
-                return View(new CoursesViewModel()
-                {
-                    Courses = await _courseService.GetAllCoursesAsync(categoryId),
-                    Categories = await _categoryService.GetAllCategoriesAsync()
-                });
-            }
-
             return View(new CoursesViewModel()
             {
-                Courses = await _courseService.GetAllCoursesAsync("0"), //Om categoryId parametern skulle vara tom av någon anledning så blir den 0 istället (alla kategorier kommer visas)
+                Courses = await _courseService.GetAllCoursesAsync(categoryId, search),
                 Categories = await _categoryService.GetAllCategoriesAsync()
             });
-
         }
     }
 }

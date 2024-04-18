@@ -14,11 +14,12 @@ namespace SiliconApp.Services
             _http = http;
         }
 
-        public async Task<IEnumerable<CourseEntity>> GetAllCoursesAsync(string categoryId)
+        public async Task<IEnumerable<CourseEntity>> GetAllCoursesAsync(string categoryId, string search)
         {
             try
             {
-                var result = await _http.GetAsync($"https://localhost:7231/api/Courses/GetAll?category={categoryId}&api-key=OWNmNDZhNmYtZDZiNS00NTViLTg4NzQtZWM4NjIxZjUwNGQ2");
+                //var result = await _http.GetAsync($"https://localhost:7231/api/Courses/GetAll?{(!categoryId.IsNullOrEmpty() ? $"category={categoryId}" : "")}{(!search.IsNullOrEmpty() ? (!categoryId.IsNullOrEmpty() ? "&" : "") : "")}{(!search.IsNullOrEmpty() ? $"search={search}" : "")}{(!search.IsNullOrEmpty() || !categoryId.IsNullOrEmpty() ? "&" : "")}api-key=OWNmNDZhNmYtZDZiNS00NTViLTg4NzQtZWM4NjIxZjUwNGQ2");
+                var result = await _http.GetAsync($"https://localhost:7231/api/Courses/GetAll?category={categoryId}&search={search}&api-key=OWNmNDZhNmYtZDZiNS00NTViLTg4NzQtZWM4NjIxZjUwNGQ2");
 
                 if (result.IsSuccessStatusCode)
                 {

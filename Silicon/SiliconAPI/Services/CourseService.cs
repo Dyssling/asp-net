@@ -64,11 +64,11 @@ namespace SiliconAPI.Services
             return new List<CourseEntity>(); //En tom lista returneras om resultatet blev null av någon anledning
         }
 
-        public async Task<IEnumerable<CourseEntity>> GetAllCoursesFilteredAsync(string categoryId)
+        public async Task<IEnumerable<CourseEntity>> GetAllCoursesFilteredAsync(string categoryId, string search)
         {
             try
             {
-                var list = await _repo.GetAllFilteredAsync(categoryId);
+                var list = await _repo.GetAllFilteredAsync(categoryId, search);
 
                 if (list != null)
                 {

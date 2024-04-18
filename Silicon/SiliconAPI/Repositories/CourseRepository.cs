@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SiliconAPI.Contexts;
 using SiliconAPI.Entities;
 using System.Linq.Expressions;
@@ -26,7 +27,7 @@ namespace SiliconAPI.Repositories
             return null!;
         }
 
-        public async Task<IEnumerable<CourseEntity>> GetAllFilteredAsync(string categoryId)
+        public async Task<IEnumerable<CourseEntity>> GetAllFilteredAsync(string categoryId, string search)
         {
             try
             {
@@ -34,12 +35,20 @@ namespace SiliconAPI.Repositories
 
                 if (int.TryParse(categoryId, out var intCategoryId)) //categoryId parseas till ett int, och om den lyckas så körs denna satsen
                 {
-                    query = query.Where(x => x.CategoryId == intCategoryId); //Alla kurser vars CategoryId är samma som den angivna parametern hämtas
-
-                    var list = await query.ToListAsync(); //Informationen omvandlas till en vanlig lista
-
-                    return list;
+                    if (intCategoryId != 0) //Filtreringen nedan sker inte om kategori valet är 0 (alla kategorier)
+                    {
+                        query = query.Where(x => x.CategoryId == intCategoryId); //Alla kurser vars CategoryId är samma som den angivna parametern hämtas
+                    }
                 }
+
+                if (!search.IsNullOrEmpty())
+                {
+                    query = query.Where(x => x.Title.Contains(search) || x.Author.Contains(search)); //Här filtrerar vi vidare från föregående filtreringen om TryParse lyckades, annars används bara detta filtret. Här går vi på söktermen, och inkluderar även alla resultat där söktermen hittas i Author
+                }
+
+                var list = await query.ToListAsync(); //Informationen omvandlas till en vanlig lista
+
+                return list;
             }
 
             catch { }

@@ -73,18 +73,21 @@ namespace SiliconAPI.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAllCourses(string category)
+        public async Task<IActionResult> GetAllCourses(string category = "", string search = "")
         {
             IEnumerable<CourseEntity> list;
 
-            if (category.IsNullOrEmpty() || category == "0")
-            {
-                list = await _courseService.GetAllCoursesAsync();
+            //if ((category.IsNullOrEmpty() || category == "0") && search.IsNullOrEmpty()) //Om ingen kategori är angiven, eller om den angivna kategorin är 0, OCH om söktermen är tom
+            //{
+            //    list = await _courseService.GetAllCoursesAsync(); //Så får man alla kurser
 
-                return Ok(list);
-            }
+            //    return Ok(list);
+            //}
 
-            list = await _courseService.GetAllCoursesFilteredAsync(category);
+            search = Uri.UnescapeDataString(search); //Mellanslag och andra specialtecken brukar "escapas" i en URL, och bli andra kombinationer av tecken istället. Här unescapas de igen
+            search = search.Replace("+", " "); //UnescapeDataString omvandlar inte plustecken till mellanslag (mellanslag kan ibland omvandlas till plustecken i URLen), så här görs det manuellt
+
+            list = await _courseService.GetAllCoursesFilteredAsync(category, search);
 
             return Ok(list);
         }
