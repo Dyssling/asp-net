@@ -159,6 +159,23 @@ namespace SiliconApp.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("SiliconAPI.Entitites.CategoryEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("SiliconAPI.Entitites.ContactEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -259,6 +276,9 @@ namespace SiliconApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -293,6 +313,8 @@ namespace SiliconApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Courses");
                 });
@@ -430,6 +452,15 @@ namespace SiliconApp.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SiliconApp.Entities.CourseEntity", b =>
+                {
+                    b.HasOne("SiliconAPI.Entitites.CategoryEntity", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("SiliconApp.Entities.UserEntity", b =>

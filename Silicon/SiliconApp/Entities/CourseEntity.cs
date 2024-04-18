@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SiliconAPI.Entitites;
+using System.ComponentModel.DataAnnotations;
 
 namespace SiliconApp.Entities
 {
@@ -17,5 +18,8 @@ namespace SiliconApp.Entities
         public string ImageName { get; set; } = null!;
         public decimal Price { get; set; }
         public decimal? DiscountedPrice { get; set; }
+
+        public int? CategoryId { get; set; }
+        public CategoryEntity? Category { get; set; }
     }
 }

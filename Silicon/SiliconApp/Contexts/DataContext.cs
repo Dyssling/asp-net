@@ -12,6 +12,7 @@ namespace SiliconApp.Contexts
         }
 
         public DbSet<AddressEntity> Addresses { get; set; }
+        public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
         public DbSet<SubscriberEntity> Subscribers { get; set; }
         public DbSet<ContactEntity> Contacts { get; set; }
