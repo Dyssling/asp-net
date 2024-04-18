@@ -20,7 +20,7 @@ namespace SiliconApp.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Index(string categoryId = "", string search = "")
+        public async Task<IActionResult> Index(string categoryId = "", string search = "", int currentPage = 1) //Att sätta default värden på parametrarna innebär att de är valfria
         {
             ViewData["Title"] = "Courses";
 
@@ -30,11 +30,17 @@ namespace SiliconApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Account", action = "SignOut" });
             }
+            var amountOfCourses = await _courseService.GetCourseCountAsync(categoryId, search);
+            var amountPerPage = 3;
+            var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
 
             return View(new CoursesViewModel()
             {
-                Courses = await _courseService.GetAllCoursesAsync(categoryId, search),
-                Categories = await _categoryService.GetAllCategoriesAsync()
+                Courses = await _courseService.GetAllCoursesAsync(categoryId, search, currentPage, amountPerPage),
+                Categories = await _categoryService.GetAllCategoriesAsync(),
+                AmountPerPage = amountPerPage,
+                NumberOfPages = numberOfPages,
+                CurrentPage = currentPage
             });
         }
     }

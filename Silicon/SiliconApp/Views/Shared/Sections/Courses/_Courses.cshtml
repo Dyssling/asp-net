@@ -11,7 +11,7 @@
         <h1>Courses</h1>
         <div class="inputs">
             <div class="select-container">
-                <select id="category-selection" onchange="updateFilter()">
+                <select id="category-selection" onchange="updateFilter(@Model.CurrentPage)">
                     <option value=0 selected>All categories</option>
                     @if (Model.Categories != null)
                     {
@@ -24,7 +24,7 @@
             </div>
             <div class="input-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input onkeyup="updateFilter()" id="search-courses" type="text" placeholder="Search courses">
+                <input onkeyup="updateFilter(@Model.CurrentPage)" id="search-courses" type="text" placeholder="Search courses">
             </div>
         </div>
     </div>
@@ -66,12 +66,29 @@
             }
         }
     </div>
-    <div class="pagnation">
-        <a href=""><i class="fa-solid fa-chevron-left"></i></a>
-        <a href="">1</a>
-        <a class="previous" href="">2</a>
-        <a class="active" href="">3</a>
-        <a href="">4</a>
-        <a href=""><i class="fa-solid fa-chevron-right"></i></a>
+    <div id="pagnation" class="pagnation">
+
+        @if(Model.CurrentPage > 1)
+        {
+            <button onclick="updateFilter(@Model.CurrentPage - 1)"><i class="fa-solid fa-chevron-left"></i></button>
+        }
+        
+        @for (int i = 1; i <= Model.NumberOfPages; i++)
+        {
+            if (i == Model.CurrentPage)
+            {
+                <button onclick="updateFilter(@i)" class="active">@i</button>
+            }
+            else
+            {
+                <button onclick="updateFilter(@i)">@i</button>
+            }
+        }
+
+        @if(Model.CurrentPage < Model.NumberOfPages)
+        {
+            <button onclick="updateFilter(@Model.CurrentPage + 1)"><i class="fa-solid fa-chevron-right"></i></button>
+        }
+        
     </div>
 </section>
