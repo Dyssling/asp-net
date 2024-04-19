@@ -94,9 +94,7 @@ main {
                 -moz-box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.10);
                 border-radius: 10px;
                 position: relative;
-
                 background-color: #171822;
-
                 border: 1px solid #565973;
 
                 button {
@@ -164,6 +162,20 @@ main {
                         font-size: 18px;
                         font-weight: 800;
                         margin: 0;
+                    }
+
+                    .discounted-price {
+                        color: red;
+                        font-size: 18px;
+                        font-weight: 800;
+                        margin: 0;
+
+                        span {
+                            color: #E2E5F1;
+                            font-size: 16px;
+                            font-weight: 400;
+                            text-decoration: line-through;
+                        }
                     }
 
                     div {

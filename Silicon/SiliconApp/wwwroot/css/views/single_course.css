@@ -212,7 +212,20 @@
     justify-content: center;
   }
 }
-.course-intro .course-intro-container .card .price span {
+.course-intro .course-intro-container .card .discounted-price {
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+  margin: 30px 0 15px 0;
+  display: flex;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .course-intro .course-intro-container .card .discounted-price {
+    justify-content: center;
+  }
+}
+.course-intro .course-intro-container .card .discounted-price span {
   font-size: 20px;
   color: #9397AD;
   text-decoration: line-through;
@@ -222,6 +235,11 @@
 .course-intro .course-intro-container .card .btn {
   margin: 0;
   padding: 12px 24px;
+  cursor: pointer;
+  border: none;
+}
+.course-intro .course-intro-container .card .leave-course {
+  background-color: red;
 }
 
 .program-details {

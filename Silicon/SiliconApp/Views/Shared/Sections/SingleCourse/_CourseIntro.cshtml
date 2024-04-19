@@ -1,4 +1,6 @@
-﻿<section class="course-intro">
+﻿@model SingleCourseViewModel
+
+<section class="course-intro">
     <div class="course-intro-container">
         <div class="description-container">
             <h2>Course Description</h2>
@@ -10,15 +12,33 @@
             <p><i class="fa-regular fa-circle-check"></i>Integer cursus vitae, odio feugiat iaculis aliquet diam, et purus.</p>
             <p><i class="fa-regular fa-circle-check"></i>In aenean dolor diam tortor orci eu.</p>
         </div>
-        <div class="card">
+        <div id="card" class="card">
             <h4>This course includes:</h4>
-            <p><i class="fa-regular fa-play"></i>148 hours on-demand video</p>
+            <p><i class="fa-regular fa-play"></i>@Model.CourseEntity!.Hours hours on-demand video</p>
             <p><i class="fa-regular fa-file-lines"></i>18 articles</p>
             <p><i class="fa-regular fa-download"></i>25 downloadable resources</p>
             <p><i class="fa-regular fa-infinity"></i>Full lifetime access</p>
             <p><i class="fa-regular fa-trophy"></i>Certificate of completion</p>
-            <p class="price">$28.99 <span>$49.00</span></p>
-            <a class="btn" href="">Join course</a>
+
+            @if (Model.CourseEntity.DiscountedPrice != null)
+            {
+                <p class="discounted-price">$@Model.CourseEntity.DiscountedPrice <span>$@Model.CourseEntity.Price</span></p>
+            }
+
+            else
+            {
+                <p class="price">$@Model.CourseEntity.Price</p>
+            }
+            
+            @if (Model.UserSavedCourses != null && Model.UserSavedCourses.Contains(Model.CourseEntity.Id))
+            {
+                <button onclick="leaveCourse(@Model.CourseEntity.Id)" class="btn leave-course">Leave course</button>
+            }
+
+            else
+            {
+                <button onclick="joinCourse(@Model.CourseEntity.Id)" class="btn">Join course</button>
+            }
         </div>
     </div>
 </section>

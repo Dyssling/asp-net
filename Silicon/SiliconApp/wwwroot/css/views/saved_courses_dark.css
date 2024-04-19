@@ -158,6 +158,18 @@ main .saved-courses .courses-grid .grid-container .content-container .price {
   font-weight: 800;
   margin: 0;
 }
+main .saved-courses .courses-grid .grid-container .content-container .discounted-price {
+  color: red;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+}
+main .saved-courses .courses-grid .grid-container .content-container .discounted-price span {
+  color: #E2E5F1;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: line-through;
+}
 main .saved-courses .courses-grid .grid-container .content-container div {
   display: flex;
   align-items: center;

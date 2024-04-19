@@ -1,9 +1,11 @@
-﻿<section class="about-the-author">
+﻿@model SingleCourseViewModel
+
+<section class="about-the-author">
     <div class="about-the-author-container">
         <img src="~/images/profile-pic.png" alt="Author">
         <div class="author-info">
             <p class="learn">Learn from the best</p>
-            <h2>Albert Flores</h2>
+            <h2>@Model.CourseEntity!.Author</h2>
             <p class="bio">Dolor ipsum amet cursus quisque porta adipiscing. Lorem convallis malesuada sed maecenas. Ac dui at vitae mauris cursus in nullam porta sem. Quis pellentesque elementum ac bibendum. Nunc aliquam in tortor facilisis. Vulputate eget risus, metus phasellus. Pellentesque faucibus amet, eleifend diam quam condimentum convallis ultricies placerat. Duis habitasse placerat amet, odio pellentesque rhoncus, feugiat at. Eget pellentesque tristique felis magna fringilla.</p>
             <div>
                 <a class="btn youtube" href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i>240k subscribers</a>

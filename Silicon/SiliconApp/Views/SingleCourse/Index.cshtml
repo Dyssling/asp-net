@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="~/css/views/single_course@(isDark ? "_dark" : "").min.css" asp-append-version="true" />
 }
 
+@section Script {
+    <script src="~/js/single_course.js" asp-append-version="true"></script>
+}
+
 @await Html.PartialAsync("~/Views/Shared/Sections/SingleCourse/_CourseHeading.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Sections/SingleCourse/_CourseIntro.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Sections/SingleCourse/_ProgramDetails.cshtml")

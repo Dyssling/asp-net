@@ -32,7 +32,7 @@ namespace SiliconApp.Services
 
             catch { }
 
-            return null!;
+            return new List<CategoryEntity>();
         }
     }
 }
