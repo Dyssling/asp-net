@@ -43,5 +43,31 @@ namespace SiliconApp.Controllers
                 CurrentPage = currentPage
             });
         }
+
+        [Authorize]
+        public async Task<IActionResult> SaveCourse(string id = "", string categoryId = "", string search = "", int currentPage = 1)
+        {
+            var amountOfCourses = await _courseService.GetCourseCountAsync(categoryId, search);
+            var amountPerPage = 9;
+            var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
+
+            if (int.TryParse(id, out var intId))
+            {
+                var userEntity = await _userService.GetUserEntityAsync(User);
+                var courseList = _userService.GetCourseList(userEntity).ToList();
+
+                courseList.Add(intId);
+                await _userService.UpdateCourseListAsync(userEntity, courseList);
+            }
+
+            return View("Index", new CoursesViewModel()
+            {
+                Courses = await _courseService.GetAllCoursesAsync(categoryId, search, currentPage, amountPerPage),
+                Categories = await _categoryService.GetAllCategoriesAsync(),
+                AmountPerPage = amountPerPage,
+                NumberOfPages = numberOfPages,
+                CurrentPage = currentPage
+            });
+        }
     }
 }

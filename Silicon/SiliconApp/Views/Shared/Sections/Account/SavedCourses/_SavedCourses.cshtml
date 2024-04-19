@@ -3,13 +3,18 @@
 <section class="saved-courses">
     <div class="heading-and-delete">
         <h1>Saved Items</h1>
-        <div class="delete-container">
-            <button class="btn"><i class="fa-regular fa-trash"></i>Delete all</button>
-        </div>
+
+        @if (Model.CourseList != null && Model.CourseList.Count() != 0)
+        {
+            <div class="delete-container">
+                <button class="btn"><i class="fa-regular fa-trash"></i>Delete all</button>
+            </div>
+        }
+
     </div>
     <div class="courses-grid">
 
-    @if (!Model.CourseList.IsNullOrEmpty())
+    @if (Model.CourseList != null)
     {
         foreach (var item in Model.CourseList)
         {

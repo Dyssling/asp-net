@@ -43,7 +43,7 @@ namespace SiliconApp.Services
             try
             {
                 //var result = await _http.GetAsync($"https://localhost:7231/api/Courses/GetAll?{(!categoryId.IsNullOrEmpty() ? $"category={categoryId}" : "")}{(!search.IsNullOrEmpty() ? (!categoryId.IsNullOrEmpty() ? "&" : "") : "")}{(!search.IsNullOrEmpty() ? $"search={search}" : "")}{(!search.IsNullOrEmpty() || !categoryId.IsNullOrEmpty() ? "&" : "")}api-key=OWNmNDZhNmYtZDZiNS00NTViLTg4NzQtZWM4NjIxZjUwNGQ2");
-                var result = await _http.GetAsync($"https://localhost:7231/api/Courses/GetOne?id={id}&api-key=OWNmNDZhNmYtZDZiNS00NTViLTg4NzQtZWM4NjIxZjUwNGQ2");
+                var result = await _http.GetAsync($"https://localhost:7231/api/Courses/GetOne/{id}?api-key=OWNmNDZhNmYtZDZiNS00NTViLTg4NzQtZWM4NjIxZjUwNGQ2");
 
                 if (result.IsSuccessStatusCode)
                 {
