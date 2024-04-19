@@ -1,10 +1,4 @@
-﻿.course-heading {
-  background: linear-gradient(0deg, rgba(0, 2, 24, 0.6), rgba(0, 2, 24, 0.6)), url("/images/writing-on-laptop.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-.course-heading .course-heading-container {
+﻿.course-heading .course-heading-container {
   width: 1300px;
   margin: auto;
   padding: 25px 0 80px 0;

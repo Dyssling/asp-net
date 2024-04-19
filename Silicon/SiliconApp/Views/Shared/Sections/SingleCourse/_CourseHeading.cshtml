@@ -1,6 +1,11 @@
 ﻿@model SingleCourseViewModel
 
-<section class="course-heading">
+<section class="course-heading" style="
+    background: linear-gradient(0deg, rgba(0, 2, 24, 0.6), rgba(0, 2, 24, 0.6)), url@($"('/images/{Model.CourseEntity!.ImageName}')");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+"> @* Jag vet att ovanstående sätt att ladda in en sådan bild på inte är helt vettigt, men men *@
     <div class="course-heading-container">
         <div class="breadcrumbs">
             <i class="fa-regular fa-house"></i>
