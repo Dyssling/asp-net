@@ -10,5 +10,7 @@ namespace SiliconApp.ViewModels
         public int NumberOfPages { get; set; }
         public int CurrentPage { get; set; }
         public int AmountPerPage { get; set; }
+
+        public IEnumerable<int>? UserSavedCourses { get; set; }
     }
 }

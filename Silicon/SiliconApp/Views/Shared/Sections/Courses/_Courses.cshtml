@@ -39,8 +39,17 @@
                     {
                         <div class="best-seller">Best Seller</div>
                     }
+                    
+                    @if (Model.UserSavedCourses != null && Model.UserSavedCourses.Contains(course.Id))
+                    {
+                        <button onclick="removeCourseWithFilters(@course.Id, @Model.CurrentPage)"><i class="fa-solid fa-bookmark"></i></button>
+                    }
 
-                    <button onclick="saveCourseWithFilters(@course.Id, @Model.CurrentPage)"><i class="fa-regular fa-bookmark"></i></button>
+                    else
+                    {
+                        <button onclick="saveCourseWithFilters(@course.Id, @Model.CurrentPage)"><i class="fa-regular fa-bookmark"></i></button>
+                    }
+                    
                     <img src="~/images/@course.ImageName" alt=@course.Title>
                     <a href="" class="content-container">
                         <h3>@course.Title</h3>

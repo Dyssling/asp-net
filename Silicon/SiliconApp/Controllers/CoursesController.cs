@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using SiliconApp.Entities;
 using SiliconApp.Services;
 using SiliconApp.ViewModels;
 
@@ -34,31 +35,46 @@ namespace SiliconApp.Controllers
             var amountPerPage = 9;
             var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
 
+            var userSavedCourses = _userService.GetCourseList(userEntity);
+
             return View(new CoursesViewModel()
             {
                 Courses = await _courseService.GetAllCoursesAsync(categoryId, search, currentPage, amountPerPage),
                 Categories = await _categoryService.GetAllCategoriesAsync(),
                 AmountPerPage = amountPerPage,
                 NumberOfPages = numberOfPages,
-                CurrentPage = currentPage
+                CurrentPage = currentPage,
+                UserSavedCourses = userSavedCourses
             });
         }
 
         [Authorize]
         public async Task<IActionResult> SaveCourse(string id = "", string categoryId = "", string search = "", int currentPage = 1)
         {
+            var userEntity = await _userService.GetUserEntityAsync(User);
+
+            if (userEntity == null)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            }
+
             var amountOfCourses = await _courseService.GetCourseCountAsync(categoryId, search);
             var amountPerPage = 9;
             var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
 
             if (int.TryParse(id, out var intId))
             {
-                var userEntity = await _userService.GetUserEntityAsync(User);
                 var courseList = _userService.GetCourseList(userEntity).ToList();
 
-                courseList.Add(intId);
-                await _userService.UpdateCourseListAsync(userEntity, courseList);
+                if (!courseList.Contains(intId)) //Om kurs Id't redan finns i listan så utförs inte koden inuti denna sats, eftersom den då inte ska läggas till igen
+                {
+                    courseList.Add(intId);
+                    await _userService.UpdateCourseListAsync(userEntity, courseList);
+                }
+
             }
+
+            var userSavedCourses = _userService.GetCourseList(userEntity);
 
             return View("Index", new CoursesViewModel()
             {
@@ -66,7 +82,46 @@ namespace SiliconApp.Controllers
                 Categories = await _categoryService.GetAllCategoriesAsync(),
                 AmountPerPage = amountPerPage,
                 NumberOfPages = numberOfPages,
-                CurrentPage = currentPage
+                CurrentPage = currentPage,
+                UserSavedCourses = userSavedCourses
+            });
+        }
+
+        [Authorize]
+        public async Task<IActionResult> RemoveCourse(string id = "", string categoryId = "", string search = "", int currentPage = 1)
+        {
+            var userEntity = await _userService.GetUserEntityAsync(User);
+
+            if (userEntity == null)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            }
+
+            var amountOfCourses = await _courseService.GetCourseCountAsync(categoryId, search);
+            var amountPerPage = 9;
+            var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
+
+            if (int.TryParse(id, out var intId))
+            {
+                var courseList = _userService.GetCourseList(userEntity).ToList();
+
+                if (courseList.Remove(intId)) //Om den lyckas att ta bort kursen från listan / Om kursen hittas i listan
+                {
+                    await _userService.UpdateCourseListAsync(userEntity, courseList);
+                }
+            }
+
+            var userSavedCourses = _userService.GetCourseList(userEntity);
+
+            return View("Index", new CoursesViewModel()
+            {
+                Courses = await _courseService.GetAllCoursesAsync(categoryId, search, currentPage, amountPerPage),
+                Categories = await _categoryService.GetAllCategoriesAsync(),
+                AmountPerPage = amountPerPage,
+                NumberOfPages = numberOfPages,
+                CurrentPage = currentPage,
+                UserSavedCourses = userSavedCourses
+                
             });
         }
     }
