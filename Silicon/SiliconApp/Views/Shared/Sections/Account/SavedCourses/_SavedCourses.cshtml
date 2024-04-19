@@ -27,7 +27,7 @@
                     
                 <button onclick="removeOneCourse(@item.Id)" title="Remove"><i class="fa-solid fa-bookmark"></i></button>
                 <img src="~/images/@item.ImageName" alt="@item.Title">
-                <a href="" class="content-container">
+                <a asp-controller="SingleCourse" asp-action="Index" asp-route-id="@item.Id" class="content-container">
                     <h3>@item.Title</h3>
                     <p class="author">By @item.Author</p>
 
@@ -45,7 +45,12 @@
                         <i class="fa-regular fa-clock"></i>
                         <p>@item.Hours hours</p>
                         <i class="fa-regular fa-thumbs-up"></i>
-                        <p>@item.LikesInPercent% (@(item.LikesInNumbers / 1000)K)</p>
+
+                            @if(item.LikesInPercent != null && item.LikesInNumbers != null)
+                            {
+                                <p>@item.LikesInPercent% (@(item.LikesInNumbers / 1000)K)</p>
+                            }
+
                     </div>
                 </a>
             </div>

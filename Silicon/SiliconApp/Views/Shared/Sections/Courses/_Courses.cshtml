@@ -51,7 +51,7 @@
                     }
                     
                     <img src="~/images/@course.ImageName" alt=@course.Title>
-                    <a href="" class="content-container">
+                    <a asp-controller="SingleCourse" asp-action="Index" asp-route-id="@course.Id" class="content-container">
                         <h3>@course.Title</h3>
                         <p class="author">By @course.Author</p>
 
@@ -68,7 +68,12 @@
                             <i class="fa-regular fa-clock"></i>
                             <p>@course.Hours hours</p>
                             <i class="fa-regular fa-thumbs-up"></i>
-                            <p>@course.LikesInPercent% (@(course.LikesInNumbers / 1000)K)</p>
+
+                            @if(course.LikesInPercent != null && course.LikesInNumbers != null)
+                            {
+                                <p>@course.LikesInPercent% (@(course.LikesInNumbers / 1000)K)</p>
+                            }
+
                         </div>
                     </a>
                 </div>
