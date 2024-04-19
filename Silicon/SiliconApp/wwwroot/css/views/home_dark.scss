@@ -518,7 +518,6 @@ main {
                     width: 76%;
                     padding: 10px 10px 10px 50px;
                     background-color: #171822;
-
                     color: white;
 
                     @media only screen and (max-width: 768px) {
@@ -583,6 +582,14 @@ main {
                         text-decoration: none;
                     }
                 }
+            }
+
+            .success-message {
+                color: green;
+            }
+
+            .error-message {
+                color: red;
             }
         }
     }

@@ -1,10 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SiliconApp.Entities;
+using SiliconApp.Services;
 using SiliconApp.ViewModels;
 
 namespace SiliconApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly SubscriberService _subscriberService;
+
+        public HomeController(SubscriberService subscriberService)
+        {
+            _subscriberService = subscriberService;
+        }
+
         public IActionResult Index()
         {
             ViewData["Title"] = "Home";
@@ -13,7 +22,7 @@ namespace SiliconApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(HomeViewModel viewModel)
+        public async Task<IActionResult> Index(HomeViewModel viewModel)
         {
             ViewData["Title"] = "Contact";
 
@@ -22,7 +31,25 @@ namespace SiliconApp.Controllers
                 return View(viewModel);
             }
 
-            return RedirectToRoute(new { controller = "Account", action = "SignIn" });
+            var statusCode = await _subscriberService.Subscribe(viewModel.Form);
+
+            switch (statusCode)
+            {
+                case "Created":
+                    TempData["SuccessStatus"] = "Thanks for subscribing!";
+                    break;
+                case "Conflict":
+                    TempData["ConflictStatus"] = "You are already subscribed.";
+                    break;
+                case "BadRequest":
+                    TempData["ErrorStatus"] = "An error has occurred.";
+                    break;
+                case "Error":
+                    TempData["ErrorStatus"] = "An error has occurred.";
+                    break;
+            }
+
+            return RedirectToRoute(new { controller = "Home", action = "Index" });
         }
     }
 }

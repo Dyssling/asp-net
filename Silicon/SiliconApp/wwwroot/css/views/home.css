@@ -522,3 +522,9 @@ main .newsletter .newsletter-container p a {
 main .newsletter .newsletter-container p a:hover {
   text-decoration: none;
 }
+main .newsletter .newsletter-container .success-message {
+  color: green;
+}
+main .newsletter .newsletter-container .error-message {
+  color: red;
+}
