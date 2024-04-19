@@ -339,17 +339,16 @@ namespace SiliconApp.Controllers
                 return RedirectToRoute(new { controller = "Account", action = "SignOut" });
             }
 
-            var courseIdList = _userService.GetCourseList(userEntity);
-            var courseList = new List<CourseEntity>();
+            var userSavedCourses = _userService.GetCourseList(userEntity);
+            var courseList = new List<CourseEntity>(); //En tom lista skapas, så att vi sedan kan hämta in de rätta kurserna och lagra dem här
 
-            if (!courseIdList.IsNullOrEmpty())
+            if (!userSavedCourses.IsNullOrEmpty())
             {
-                foreach (int id in courseIdList)
+                foreach (int id in userSavedCourses)
                 {
-                    courseList.Add(await _courseService.GetOneCourseAsync(id));
+                    courseList.Add(await _courseService.GetOneCourseAsync(id)); //Varje kurs vars id finns med i användarens kurs-lista hämtas
                 }
             }
-
 
             var viewModel = new AccountSavedCoursesViewModel()
             {
@@ -358,6 +357,68 @@ namespace SiliconApp.Controllers
             };
 
             return View(viewModel);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> RemoveOneCourse(string id = "")
+        {
+            var userEntity = await _userService.GetUserEntityAsync(User);
+
+            if (userEntity == null)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            }
+
+            var userSavedCourses = _userService.GetCourseList(userEntity);
+
+            if (int.TryParse(id, out var intId))
+            {
+                var courseIdList = userSavedCourses.ToList();
+
+                if (courseIdList.Remove(intId)) //Kursed med det angivna Id't försöks tas bort. Om den lyckas att ta bort kursen från listan / Om kursen hittas i listan så körs koden inuti if satsen
+                {
+                    await _userService.UpdateCourseListAsync(userEntity, courseIdList);
+
+                    userSavedCourses = courseIdList;
+                }
+            }
+
+            var courseList = new List<CourseEntity>();
+
+            if (!userSavedCourses.IsNullOrEmpty())
+            {
+                foreach (int courseId in userSavedCourses)
+                {
+                    courseList.Add(await _courseService.GetOneCourseAsync(courseId));
+                }
+            }
+
+            return View("SavedCourses", new AccountSavedCoursesViewModel()
+            {
+                UserEntity = userEntity, //Denna user entiteten ligger lite efter, eftersom kurserna inuti den RIKTIGA entiteten har uppdaterats. I detta fallet är det lugnt dock
+                CourseList = courseList
+            });
+        }
+
+        [Authorize]
+        public async Task<IActionResult> RemoveAllCourses()
+        {
+            var userEntity = await _userService.GetUserEntityAsync(User);
+
+            if (userEntity == null)
+            {
+                return RedirectToRoute(new { controller = "Account", action = "SignOut" });
+            }
+
+            var emptyList = new List<CourseEntity>(); //En tom lista skapas så att vi kan sätta in den i vår viewmodel
+
+            await _userService.UpdateCourseListAsync(userEntity, null!); //Eftersom användarens course list ska tas bort, så sätts listan som null
+
+            return View("SavedCourses", new AccountSavedCoursesViewModel()
+            {
+                UserEntity = userEntity,
+                CourseList = emptyList
+            });
         }
 
         public IActionResult SignIn()

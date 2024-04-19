@@ -235,9 +235,12 @@
 .courses .pagnation {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 40px 0 80px 0;
 }
-.courses .pagnation a {
+.courses .pagnation button {
+  cursor: pointer;
+  border: none;
   font-size: 14px;
   color: #EFF2FC;
   width: 36px;
@@ -248,15 +251,13 @@
   border-radius: 4px;
   margin: 0 4px;
   transition: ease-in-out 80ms;
+  background-color: #0B0F19;
 }
-.courses .pagnation a:hover {
-  background-color: rgb(231, 231, 231);
-}
-.courses .pagnation a i {
-  font-size: 10px;
-}
-.courses .pagnation .previous {
+.courses .pagnation button:hover {
   background-color: #33354D;
+}
+.courses .pagnation button i {
+  font-size: 10px;
 }
 .courses .pagnation .active {
   background-color: #6366F1;

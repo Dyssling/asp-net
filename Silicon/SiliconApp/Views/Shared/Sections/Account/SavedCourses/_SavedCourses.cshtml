@@ -1,13 +1,13 @@
 ﻿@model AccountSavedCoursesViewModel
 
-<section class="saved-courses">
+<section id="saved-courses" class="saved-courses">
     <div class="heading-and-delete">
         <h1>Saved Items</h1>
 
         @if (Model.CourseList != null && Model.CourseList.Count() != 0)
         {
             <div class="delete-container">
-                <button class="btn"><i class="fa-regular fa-trash"></i>Delete all</button>
+                <button onclick="removeAllCourses()" class="btn"><i class="fa-regular fa-trash"></i>Delete all</button>
             </div>
         }
 
@@ -25,7 +25,7 @@
                     <div class="best-seller">Best Seller</div>
                 }
                     
-                <button title="Remove"><i class="fa-solid fa-bookmark"></i></button>
+                <button onclick="removeOneCourse(@item.Id)" title="Remove"><i class="fa-solid fa-bookmark"></i></button>
                 <img src="~/images/@item.ImageName" alt="@item.Title">
                 <a href="" class="content-container">
                     <h3>@item.Title</h3>

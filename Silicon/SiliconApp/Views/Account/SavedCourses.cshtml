@@ -8,5 +8,9 @@
     <link rel="stylesheet" href="~/css/components/account_sidebar@(isDark ? "_dark" : "").min.css" asp-append-version="true" />
 }
 
+@section Script {
+    <script src="~/js/saved_courses.js" asp-append-version="true"></script>
+}
+
 @await Html.PartialAsync("~/Views/Shared/Components/_AccountSavedCoursesSidebar.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Sections/Account/SavedCourses/_SavedCourses.cshtml")

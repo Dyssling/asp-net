@@ -31,9 +31,9 @@ namespace SiliconApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Account", action = "SignOut" });
             }
-            var amountOfCourses = await _courseService.GetCourseCountAsync(categoryId, search);
-            var amountPerPage = 9;
-            var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
+            var amountOfCourses = await _courseService.GetCourseCountAsync(categoryId, search); //Mängden kurser som ska finnas efter filtreringen, hämtas upp
+            var amountPerPage = 9; //Här bestämmer man hur många kurser som ska synas på varje sida
+            var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage); //Här kalkyleras hur många sidor det kommer bli
 
             var userSavedCourses = _userService.GetCourseList(userEntity);
 
@@ -62,19 +62,21 @@ namespace SiliconApp.Controllers
             var amountPerPage = 9;
             var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
 
+            var userSavedCourses = _userService.GetCourseList(userEntity);
+
             if (int.TryParse(id, out var intId))
             {
-                var courseList = _userService.GetCourseList(userEntity).ToList();
+                var courseList = userSavedCourses.ToList();
 
                 if (!courseList.Contains(intId)) //Om kurs Id't redan finns i listan så utförs inte koden inuti denna sats, eftersom den då inte ska läggas till igen
                 {
                     courseList.Add(intId);
-                    await _userService.UpdateCourseListAsync(userEntity, courseList);
+                    await _userService.UpdateCourseListAsync(userEntity, courseList); //Kursen har lagts till i kurs-listan, och user entiteten uppdateras med den nya listan
+
+                    userSavedCourses = courseList;
                 }
 
             }
-
-            var userSavedCourses = _userService.GetCourseList(userEntity);
 
             return View("Index", new CoursesViewModel()
             {
@@ -101,17 +103,19 @@ namespace SiliconApp.Controllers
             var amountPerPage = 9;
             var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
 
+            var userSavedCourses = _userService.GetCourseList(userEntity);
+
             if (int.TryParse(id, out var intId))
             {
-                var courseList = _userService.GetCourseList(userEntity).ToList();
+                var courseList = userSavedCourses.ToList();
 
-                if (courseList.Remove(intId)) //Om den lyckas att ta bort kursen från listan / Om kursen hittas i listan
+                if (courseList.Remove(intId)) //Kursen försöks tas bort, och om kursen hittas / om den lyckas så utförs resten av koden i if satsen
                 {
                     await _userService.UpdateCourseListAsync(userEntity, courseList);
+
+                    userSavedCourses = courseList;
                 }
             }
-
-            var userSavedCourses = _userService.GetCourseList(userEntity);
 
             return View("Index", new CoursesViewModel()
             {
