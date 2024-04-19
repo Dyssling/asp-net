@@ -31,7 +31,7 @@ namespace SiliconApp.Controllers
                 return RedirectToRoute(new { controller = "Account", action = "SignOut" });
             }
             var amountOfCourses = await _courseService.GetCourseCountAsync(categoryId, search);
-            var amountPerPage = 3;
+            var amountPerPage = 9;
             var numberOfPages = (int)Math.Ceiling(amountOfCourses / (double)amountPerPage);
 
             return View(new CoursesViewModel()

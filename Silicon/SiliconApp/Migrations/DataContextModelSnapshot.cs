@@ -159,7 +159,32 @@ namespace SiliconApp.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SiliconAPI.Entitites.CategoryEntity", b =>
+            modelBuilder.Entity("SiliconApp.Entities.AddressEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("SiliconApp.Entities.CategoryEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -176,7 +201,7 @@ namespace SiliconApp.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("SiliconAPI.Entitites.ContactEntity", b =>
+            modelBuilder.Entity("SiliconApp.Entities.ContactEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -202,66 +227,6 @@ namespace SiliconApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("SiliconAPI.Entitites.SubscriberEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("AdvertisingUpdates")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("DailyNewsletter")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EventUpdates")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Podcasts")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("StartupsWeekly")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("WeekInReview")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subscribers");
-                });
-
-            modelBuilder.Entity("SiliconApp.Entities.AddressEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Address2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("SiliconApp.Entities.CourseEntity", b =>
@@ -319,6 +284,41 @@ namespace SiliconApp.Migrations
                     b.ToTable("Courses");
                 });
 
+            modelBuilder.Entity("SiliconApp.Entities.SubscriberEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("AdvertisingUpdates")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("DailyNewsletter")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EventUpdates")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Podcasts")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("StartupsWeekly")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("WeekInReview")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscribers");
+                });
+
             modelBuilder.Entity("SiliconApp.Entities.UserEntity", b =>
                 {
                     b.Property<string>("Id")
@@ -335,6 +335,9 @@ namespace SiliconApp.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CourseList")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -456,7 +459,7 @@ namespace SiliconApp.Migrations
 
             modelBuilder.Entity("SiliconApp.Entities.CourseEntity", b =>
                 {
-                    b.HasOne("SiliconAPI.Entitites.CategoryEntity", "Category")
+                    b.HasOne("SiliconApp.Entities.CategoryEntity", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId");
 

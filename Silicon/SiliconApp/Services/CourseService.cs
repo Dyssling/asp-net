@@ -38,6 +38,26 @@ namespace SiliconApp.Services
             return 0;
         }
 
+        public async Task<CourseEntity> GetOneCourseAsync(int id)
+        {
+            try
+            {
+                //var result = await _http.GetAsync($"https://localhost:7231/api/Courses/GetAll?{(!categoryId.IsNullOrEmpty() ? $"category={categoryId}" : "")}{(!search.IsNullOrEmpty() ? (!categoryId.IsNullOrEmpty() ? "&" : "") : "")}{(!search.IsNullOrEmpty() ? $"search={search}" : "")}{(!search.IsNullOrEmpty() || !categoryId.IsNullOrEmpty() ? "&" : "")}api-key=OWNmNDZhNmYtZDZiNS00NTViLTg4NzQtZWM4NjIxZjUwNGQ2");
+                var result = await _http.GetAsync($"https://localhost:7231/api/Courses/GetOne?id={id}&api-key=OWNmNDZhNmYtZDZiNS00NTViLTg4NzQtZWM4NjIxZjUwNGQ2");
+
+                if (result.IsSuccessStatusCode)
+                {
+                    var entity = JsonConvert.DeserializeObject<CourseEntity>(await result.Content.ReadAsStringAsync());
+
+                    return entity!;
+                }
+            }
+
+            catch (Exception ex) { Debug.WriteLine(ex); }
+
+            return null!; //Man får tillbaka null om man får NotFound eller om något annat gick snett
+        }
+
         public async Task<IEnumerable<CourseEntity>> GetAllCoursesAsync(string categoryId, string search, int currentPage, int amountPerPage)
         {
             try

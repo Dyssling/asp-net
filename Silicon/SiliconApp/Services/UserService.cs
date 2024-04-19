@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using SiliconApp.Entities;
 using SiliconApp.Models;
 using SiliconApp.Repositories;
@@ -277,6 +279,50 @@ namespace SiliconApp.Services
             }
 
             return "Failed to authenticate user.";
+        }
+
+        public async Task<bool> UpdateCourseListAsync(UserEntity userEntity, List<int> courseList)
+        {
+            try
+            {
+                string jsonList = null!;
+
+                if (!courseList.IsNullOrEmpty())
+                {
+                    jsonList = JsonConvert.SerializeObject(courseList);
+                }
+
+                userEntity.CourseList = jsonList;
+
+                await _userManager.UpdateAsync(userEntity);
+
+                return true;
+            }
+
+            catch { }
+
+            return false;
+        }
+
+        public IEnumerable<int> GetCourseList(UserEntity userEntity)
+        {
+            try
+            {
+                var jsonList = userEntity.CourseList;
+                IEnumerable<int> courseList = new List<int>();
+
+                if (!jsonList.IsNullOrEmpty())
+                {
+                    courseList = JsonConvert.DeserializeObject<IEnumerable<int>>(jsonList!)!;
+                }
+
+                return courseList;
+            }
+
+            catch { }
+
+            return new List<int>(); //En tom lista returneras om något gick snett
+
         }
     }
 }

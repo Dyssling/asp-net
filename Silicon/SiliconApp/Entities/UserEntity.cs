@@ -17,5 +17,7 @@ namespace SiliconApp.Entities
         public AddressEntity? Address { get; set; }
 
         public bool IsExternal { get; set; } = false;
+
+        public string? CourseList { get; set; }
     }
 }

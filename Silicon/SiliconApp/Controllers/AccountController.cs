@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.IdentityModel.Tokens;
 using SiliconApp.Entities;
 using SiliconApp.Models;
 using SiliconApp.Services;
@@ -16,11 +17,13 @@ namespace SiliconApp.Controllers
     {
         private readonly UserService _userService;
         private readonly SignInManager<UserEntity> _signInManager;
+        private readonly CourseService _courseService;
 
-        public AccountController(UserService userService, SignInManager<UserEntity> signInManager)
+        public AccountController(UserService userService, SignInManager<UserEntity> signInManager, CourseService courseService)
         {
             _userService = userService;
             _signInManager = signInManager;
+            _courseService = courseService;
         }
 
         [Authorize]
@@ -336,9 +339,22 @@ namespace SiliconApp.Controllers
                 return RedirectToRoute(new { controller = "Account", action = "SignOut" });
             }
 
+            var courseIdList = _userService.GetCourseList(userEntity);
+            var courseList = new List<CourseEntity>();
+
+            if (!courseIdList.IsNullOrEmpty())
+            {
+                foreach (int id in courseIdList)
+                {
+                    courseList.Add(await _courseService.GetOneCourseAsync(id));
+                }
+            }
+
+
             var viewModel = new AccountSavedCoursesViewModel()
             {
-                UserEntity = userEntity
+                UserEntity = userEntity,
+                CourseList = courseList
             };
 
             return View(viewModel);

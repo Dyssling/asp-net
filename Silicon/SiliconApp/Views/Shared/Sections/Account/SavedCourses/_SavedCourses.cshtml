@@ -1,4 +1,6 @@
-﻿<section class="saved-courses">
+﻿@model AccountSavedCoursesViewModel
+
+<section class="saved-courses">
     <div class="heading-and-delete">
         <h1>Saved Items</h1>
         <div class="delete-container">
@@ -6,51 +8,44 @@
         </div>
     </div>
     <div class="courses-grid">
-        <div class="grid-container">
-            <div class="best-seller">Best Seller</div>
-            <button title="Remove"><i class="fa-solid fa-bookmark"></i></button>
-            <img src="~/images/writing-on-laptop.png" alt="Writing on laptop">
-            <a href="" class="content-container">
-                <h3>Fullstack Web Developer Course from Scratch</h3>
-                <p class="author">By Robert Fox</p>
-                <p class="price">$12.50</p>
-                <div>
-                    <i class="fa-regular fa-clock"></i>
-                    <p>220 hours</p>
-                    <i class="fa-regular fa-thumbs-up"></i>
-                    <p>94% (4.2K)</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-container">
-            <button title="Remove"><i class="fa-solid fa-bookmark"></i></button>
-            <img src="~/images/writing-on-laptop.png" alt="Writing on laptop">
-            <a href="" class="content-container">
-                <h3>Fullstack Web Developer Course from Scratch</h3>
-                <p class="author">By Robert Fox</p>
-                <p class="price">$12.50</p>
-                <div>
-                    <i class="fa-regular fa-clock"></i>
-                    <p>220 hours</p>
-                    <i class="fa-regular fa-thumbs-up"></i>
-                    <p>94% (4.2K)</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-container">
-            <button title="Remove"><i class="fa-solid fa-bookmark"></i></button>
-            <img src="~/images/writing-on-laptop.png" alt="Writing on laptop">
-            <a href="" class="content-container">
-                <h3>Fullstack Web Developer Course from Scratch</h3>
-                <p class="author">By Robert Fox</p>
-                <p class="price">$12.50</p>
-                <div>
-                    <i class="fa-regular fa-clock"></i>
-                    <p>220 hours</p>
-                    <i class="fa-regular fa-thumbs-up"></i>
-                    <p>94% (4.2K)</p>
-                </div>
-            </a>
-        </div>
+
+    @if (!Model.CourseList.IsNullOrEmpty())
+    {
+        foreach (var item in Model.CourseList)
+        {
+            <div class="grid-container">
+
+                @if (item.IsBestSeller)
+                {
+                    <div class="best-seller">Best Seller</div>
+                }
+                    
+                <button title="Remove"><i class="fa-solid fa-bookmark"></i></button>
+                <img src="~/images/@item.ImageName" alt="@item.Title">
+                <a href="" class="content-container">
+                    <h3>@item.Title</h3>
+                    <p class="author">By @item.Author</p>
+
+                    @if (item.DiscountedPrice != null)
+                    {
+                        <p class="discounted-price">$@item.DiscountedPrice <span>$@item.Price</span></p>
+                    }
+
+                    else
+                    {
+                        <p class="price">$@item.Price</p>
+                    }
+
+                    <div>
+                        <i class="fa-regular fa-clock"></i>
+                        <p>@item.Hours hours</p>
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <p>@item.LikesInPercent% (@(item.LikesInNumbers / 1000)K)</p>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+
     </div>
 </section>
