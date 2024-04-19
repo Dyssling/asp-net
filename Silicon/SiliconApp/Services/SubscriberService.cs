@@ -13,21 +13,10 @@ namespace SiliconApp.Services
             _http = http;
         }
 
-        public async Task<string> Subscribe(HomeNewsletterModel form)
+        public async Task<string> Subscribe(HomeNewsletterModel model)
         {
             try
             {
-                SubscriberModel model = new SubscriberModel()
-                {
-                    Email = form.Email,
-                    DailyNewsletter = form.DailyNewsletter,
-                    AdvertisingUpdates = form.AdvertisingUpdates,
-                    WeekInReview = form.WeekInReview,
-                    EventUpdates = form.EventUpdates,
-                    StartupsWeekly = form.StartupsWeekly,
-                    Podcasts = form.Podcasts
-                };
-
                 var json = JsonConvert.SerializeObject(model); //För att kunna skicka med modellen i en POST måste den först omvandlas till en sträng
                 var content = new StringContent(json, Encoding.UTF8, "application/json"); //Sedan formateras den till HTTP innehåll, så att den sedan kan kommunicera i "HTTP språk"
 

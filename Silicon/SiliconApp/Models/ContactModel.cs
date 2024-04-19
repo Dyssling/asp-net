@@ -21,11 +21,6 @@ namespace SiliconApp.Models
 
         public string? Service { get; set; }
 
-        public List<SelectListItem> ServiceItems { get; set; } = new List<SelectListItem>()
-        {
-            new SelectListItem("Choose the service you are interested in", "", true, true),
-        };
-
         [DataType(DataType.MultilineText)]
         [Display(Name = "Message", Prompt = "Enter your message here...")]
         [Required(ErrorMessage = "You must enter a message.")]

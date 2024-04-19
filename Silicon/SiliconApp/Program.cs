@@ -36,6 +36,7 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<CourseService>();
 builder.Services.AddScoped<SubscriberService>();
+builder.Services.AddScoped<ContactService>();
 
 string appId = "";          //Facebook App Id
 string appSecret = "";      //Facebook App secret

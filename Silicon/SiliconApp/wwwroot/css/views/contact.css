@@ -223,6 +223,15 @@
     margin: auto;
   }
 }
+.contact .contact-container .contact-us .contact-form .contact-form-container form p {
+  margin: 10px 0 0 0;
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form .success-message {
+  color: green;
+}
+.contact .contact-container .contact-us .contact-form .contact-form-container form .error-message {
+  color: red;
+}
 
 .map {
   width: 100%;

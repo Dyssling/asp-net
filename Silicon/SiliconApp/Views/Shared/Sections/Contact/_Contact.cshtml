@@ -39,11 +39,17 @@
                         <input asp-for="Form.Email" class="text-input" />
                         <span asp-validation-for="Form.Email"></span>
                         <label asp-for="Form.Service">Service <span>(optional)</span></label>
-                        <select asp-for="Form.Service" asp-items="Model.Form.ServiceItems"></select>
+                        <select asp-for="Form.Service">
+                            <option value="" selected disabled>Choose the service you are interested in</option>
+                            <option value="work">Work</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
                         <label asp-for="Form.Message"></label>
                         <textarea asp-for="Form.Message" class="text-input"></textarea>
                         <span asp-validation-for="Form.Message"></span>
                         <button type="submit" class="btn">Send Contact Request</button>
+                        <p class="success-message">@TempData["SuccessStatus"]</p>
+                        <p class="error-message">@TempData["ErrorStatus"]</p>
                     </form>
                 </div>
             </div>
